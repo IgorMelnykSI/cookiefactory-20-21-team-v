@@ -1,4 +1,4 @@
-package java.manager;
+package cookies.manager;
 
 public class BrandManager {
 }

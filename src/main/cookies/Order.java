@@ -1,4 +1,4 @@
-package java;
+package cookies;
 
 import java.util.Date;
 

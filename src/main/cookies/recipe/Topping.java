@@ -1,9 +1,9 @@
-package java.recipe;
+package cookies.recipe;
 
 public class Topping {
     private String type;
 
-    Topping(String type){
+    public Topping(String type){
         this.type = type;
     }
     public String getType() {

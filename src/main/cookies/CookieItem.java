@@ -1,6 +1,6 @@
-package java;
+package cookies;
 
-import java.recipe.Recipe;
+import cookies.recipe.Recipe;
 
 public class CookieItem {
     private int quantity;

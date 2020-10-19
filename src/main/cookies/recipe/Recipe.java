@@ -1,4 +1,4 @@
-package java.recipe;
+package cookies.recipe;
 
 public class Recipe {
     private String name;

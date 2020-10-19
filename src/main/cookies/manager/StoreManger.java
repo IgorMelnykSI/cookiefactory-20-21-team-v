@@ -1,6 +1,7 @@
-package java.manager;
+package cookies.manager;
 
-import java.recipe.Recipe;
+import cookies.recipe.Recipe;
+
 import java.util.HashMap;
 
 class StoreManager {
