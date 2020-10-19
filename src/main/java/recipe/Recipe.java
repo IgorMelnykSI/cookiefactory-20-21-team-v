@@ -7,7 +7,7 @@ public class Recipe {
     private Flavour flavour;
     private Mix mix;
     private Cooking cooking;
-    Topping[] toppings;
+    private Topping[] toppings;
 
     Recipe(String name, double price){
         this.name=name;
@@ -18,15 +18,15 @@ public class Recipe {
         this.name = name;
     }
 
-    public void setPrice(double prcie) {
-        this.price = prcie;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getName() {
         return name;
     }
 
-    public double getPrcie() {
+    public double getPrice() {
         return price;
     }
 
