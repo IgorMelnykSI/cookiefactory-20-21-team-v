@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/V.iml" filepath="$PROJECT_DIR$/V.iml" />
       <module fileurl="file://$PROJECT_DIR$/src/cookiefactory-20-21-team-v.iml" filepath="$PROJECT_DIR$/src/cookiefactory-20-21-team-v.iml" />
     </modules>
   </component>
