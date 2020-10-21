@@ -13,4 +13,10 @@ class ToppingTest {
     void getType() {
         assertTrue(aa.getType()=="swe");
     }
+
+    @Test
+    void setType(){
+        aa.setType("hehe");
+        assertTrue(aa.getType()=="hehe");
+    }
 }
