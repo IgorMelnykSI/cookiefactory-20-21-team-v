@@ -16,8 +16,8 @@ public class Tourist {
             order.addCookieItem(new CookieItem(mp.get(recipe),recipe));
         }
         order.setPickUpDate(date);
-        order.caculatePrice();
-        System.out.println(order.getOrderID());
+        order.caculatePrice(0.0);
+        System.out.println(order.getOrderID()); //he use the ID to pick his cookies
         return order;
     }
 }

@@ -42,6 +42,17 @@ public class Member extends Tourist{
         return 0;
     }
 
+    public Order creatDiscountOrder(Map<Recipe, Integer> mp, Date date){
+        Order order = new Order();
+        for(Recipe recipe : mp.keySet()){
+            order.addCookieItem(new CookieItem(mp.get(recipe),recipe));
+        }
+        order.setPickUpDate(date);
+        order.caculatePrice(applyLoyaltyDiscount());
+        System.out.println(order.getOrderID());
+        return order;
+    }
+
     public int  getId() {
         return id;
     }

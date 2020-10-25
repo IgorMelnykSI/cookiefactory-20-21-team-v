@@ -59,16 +59,15 @@ public class Order {
     public void addCookieItem(CookieItem ci){
         cookieItems.add(ci);
     }
-    public void caculatePrice(){
+    public void caculatePrice(double discount){
         for(CookieItem ci : cookieItems){
             this.price += ci.getPrice();
         }
+        caculateDiscountPrice(discount);
     }
+
     public void caculateDiscountPrice(double discount){
-        for(CookieItem ci : cookieItems){
-            this.price += ci.getPrice();
-        }
-        this.price*=discount;
+        this.price = price*(1-discount);
     }
 //    public void setPrice(double price) {
 //        this.price = price;
