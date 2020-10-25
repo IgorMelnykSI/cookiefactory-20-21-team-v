@@ -15,6 +15,7 @@ public class Order {
         orderID = getGuid();
         price = 0;
         pickUpDate = null;
+        pickUpStore = null;
     }
     public static int Guid = 100;
     public static String getGuid() {
@@ -39,7 +40,9 @@ public class Order {
         return time + info.substring(2, info.length()) + ran;
     }
 
-
+public Set<CookieItem> getCookieItems(){
+        return cookieItems;
+}
     public Date getPickUpDate() {
         return pickUpDate;
     }
