@@ -1,4 +1,5 @@
-.idea
+.idea/
+target/
 V.iml
 pom.xml
 CookieFactory.iml
