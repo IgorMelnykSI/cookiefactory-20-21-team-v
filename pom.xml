@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>TeamV</groupId> <!-- CHANGE ME -->
-    <artifactId>V</artifactId> <!-- CHANGE ME -->
+    <artifactId>cookiefactory-20-21-team-v</artifactId> <!-- CHANGE ME -->
     <version>0.3-SNAPSHOT</version> <!-- CHANGE ME -->
 
     <properties>
