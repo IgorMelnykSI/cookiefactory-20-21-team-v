@@ -20,4 +20,8 @@ public class StoreManager{
         this.store.setCloseTime(closeTime);
     }
 
+    public void changeTax(double tax){
+        this.store.setTax(tax);
+    }
+
 }

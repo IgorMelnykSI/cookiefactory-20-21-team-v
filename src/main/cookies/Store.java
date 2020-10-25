@@ -44,7 +44,7 @@ public class Store {
         this.closeTime = closeTime;
     }
 
-    public void setTax(float tax) {
+    public void setTax(double tax) {
         this.tax = tax;
     }
 }
