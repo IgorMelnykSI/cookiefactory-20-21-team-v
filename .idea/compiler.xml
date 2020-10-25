@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="V" />
+        <module name="cookiefactory-20-21-team-v" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="V" target="11" />
+      <module name="cookiefactory-20-21-team-v" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
