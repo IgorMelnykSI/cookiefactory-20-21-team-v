@@ -26,9 +26,9 @@ class OrderTest {
 
     @Test
     void addCookieItem() {
-        assertEquals(order.getCookieItem().size(),0);
+        assertEquals(order.getCookieItems().size(),0);
         order.addCookieItem(item);
-        assertEquals(order.getCookieItem().size(),1);
+        assertEquals(order.getCookieItems().size(),1);
     }
 
     @Test
