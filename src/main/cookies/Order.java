@@ -46,7 +46,7 @@ public Set<CookieItem> getCookieItems(){
     public Date getPickUpDate() {
         return pickUpDate;
     }
-
+    public Store getPickUpStore(){return pickUpStore;}
     public String getOrderID() {
         return orderID;
     }
