@@ -17,6 +17,7 @@ public class Tourist {
         }
         order.setPickUpDate(date);
         order.caculatePrice();
+        System.out.println(order.getOrderID());
         return order;
     }
 }
