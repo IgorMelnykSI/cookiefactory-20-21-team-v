@@ -13,7 +13,7 @@ public class Store {
         address=a;
         tax=t;
         in=i;
-        }
+    }
     public String getName(){return name;}
     public String getAddress(){return address;}
     public float getTax(){return tax;}
@@ -21,8 +21,6 @@ public class Store {
     public void setIn(int t){in=t;}
     public void setName(String n){name=n;}
     public void setAddress(String a){address=a;}
-
-
 
     private void makeCookies(Recipe recipe){
 

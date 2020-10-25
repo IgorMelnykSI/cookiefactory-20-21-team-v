@@ -9,6 +9,7 @@ public class Order {
      private String orderID;
      private double price;
      private Date pickUpDate;
+     private Store pickUpStore;
      private Set<CookieItem> cookieItems = new HashSet<>();
     public Order(){
         orderID = getGuid();
@@ -75,6 +76,9 @@ public class Order {
 
     public void setPickUpDate(Date pickUpDate) {
         this.pickUpDate = pickUpDate;
+    }
+    public void setPickUpStore(Store pickUpStore) {
+        this.pickUpStore= pickUpStore;
     }
 
 }
