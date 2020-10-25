@@ -47,23 +47,27 @@ public class CookieFactory {
         return null;
     }
 
+    public Store getStore(String name){
+        for (Store s:storeList) {
+            if(s.getName().equals(name))
+                return s;
+        }
+        return null;
+    }
+
     public void addRecipe(Recipe newRecipe) {
         recipesList.add(newRecipe);
     }
 
     public void deleteRecipe(String name) {
-        Recipe recipe = getRecipe(name);
-        Iterator<Recipe> iter = this.recipesList.iterator();
-        while (iter.hasNext()) {
-            Recipe rep = iter.next();
-            if (rep.equals(recipe)) {
-                iter.remove();
-            }
-        }
+        recipesList.remove(getRecipe(name));
     }
 
     public void addStore(Store store) {
         storeList.add(store);
+    }
+    public void deleteStore(String name) {
+        storeList.remove(getStore(name));
     }
 
     public Set<Store> getStoreList() {
