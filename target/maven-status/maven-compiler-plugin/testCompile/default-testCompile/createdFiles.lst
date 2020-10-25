@@ -1,0 +1,15 @@
+recipe\MixTest.class
+recipe\RecipeTest.class
+OrderTest.class
+customer\TouristTest.class
+CookieFactoryTest.class
+recipe\CookingTest.class
+recipe\FlavourTest.class
+recipe\ToppingTest.class
+cucumberTest\StoreManagerStepdefs.class
+manager\StoreManagerTest.class
+customer\MemberTest.class
+cucumberTest\RunCucumberTest.class
+recipe\DoughTest.class
+StoreTest.class
+CookieItemTest.class
