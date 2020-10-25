@@ -25,9 +25,7 @@ public class Member extends Tourist{
         return loyalDiscount > 0;
     }
 
-    /**
-     * get and reset the loyalty discount
-     */
+    // get the loyalty discount and reset for next time
     public double applyLoyaltyDiscount() {
         if(this.hasDiscount()){
             this.loyalDiscount = 0;
