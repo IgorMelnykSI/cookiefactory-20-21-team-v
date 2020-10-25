@@ -2,7 +2,7 @@ package cookies.recipe;
 
 public class Mix {
     private String type;
-    Mix(String type){
+    public Mix(String type){
         this.type = type;
     }
     public String getType() {

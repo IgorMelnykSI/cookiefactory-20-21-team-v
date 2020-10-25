@@ -9,7 +9,7 @@ public class Recipe {
     private Cooking cooking;
     private Topping[] toppings;
 
-    Recipe(String name, double price){
+    public Recipe(String name, double price){
         this.name=name;
         this.price=price;
     }
@@ -48,5 +48,25 @@ public class Recipe {
 
     public void setToppings(Topping[] toppings) {
         this.toppings = toppings;
+    }
+
+    public Cooking getCooking(){
+        return cooking;
+    }
+
+    public Flavour getFlavour(){
+        return flavour;
+    }
+
+    public Dough getDough(){
+        return dough;
+    }
+
+    public Mix getMix(){
+        return mix;
+    }
+
+    public Topping[] getToppings(){
+        return toppings;
     }
 }

@@ -2,7 +2,7 @@ package cookies.recipe;
 
 public class Cooking {
     private String type;
-    Cooking(String type){
+    public Cooking(String type){
          this.type = type;
     }
 
