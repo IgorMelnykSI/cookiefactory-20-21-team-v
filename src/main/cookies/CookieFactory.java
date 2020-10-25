@@ -7,13 +7,13 @@ import java.util.*;
 
 public class CookieFactory {
 
-    private ArrayList<Recipe> recipesList;
-    private ArrayList<Store> storeList;
+    private Set<Recipe> recipesList;
+    private Set<Store> storeList;
 
 
     public CookieFactory() {
-        recipesList = new ArrayList<>();
-        storeList = new ArrayList<>();
+        recipesList = new HashSet<>();
+        storeList = new HashSet<>();
         initRecipeList();
         initStoreList();
     }
@@ -27,13 +27,14 @@ public class CookieFactory {
     }
 
     private void initRecipeList() {
+        recipesList = new HashSet<>();
     }
 
     private void initStoreList() {
-
+        storeList = new HashSet<>();
     }
 
-    public ArrayList<Recipe> getRecipesList() {
+    public Set<Recipe> getRecipesList() {
         return recipesList;
     }
 
@@ -65,8 +66,8 @@ public class CookieFactory {
         storeList.add(store);
     }
 
-    public ArrayList<Store> getStoreList() {
-        return this.storeList;
+    public Set<Store> getStoreList() {
+        return storeList;
     }
 
 

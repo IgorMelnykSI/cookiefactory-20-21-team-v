@@ -62,6 +62,12 @@ public class Order {
             this.price += ci.getPrice();
         }
     }
+    public void caculateDiscountPrice(double discount){
+        for(CookieItem ci : cookieItems){
+            this.price += ci.getPrice();
+        }
+        this.price*=discount;
+    }
 //    public void setPrice(double price) {
 //        this.price = price;
 //    }

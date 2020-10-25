@@ -1,5 +1,12 @@
 package cookies.customer;
 
+import cookies.CookieItem;
+import cookies.Order;
+import cookies.recipe.Recipe;
+
+import java.util.Date;
+import java.util.Map;
+
 public class Member extends Tourist{
 
     private int id;
