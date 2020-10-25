@@ -1,4 +1,4 @@
-package unitTest;
+package cookies.recipe;
 
 import org.junit.jupiter.api.Test;
 
