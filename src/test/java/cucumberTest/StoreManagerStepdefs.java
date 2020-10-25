@@ -13,10 +13,11 @@ public class StoreManagerStepdefs implements En {
 
 
     public StoreManagerStepdefs() { // implementation des steps dans le constructeur (aussi possible dans des méthodes)
-        Given("a store of name {string} and with the address {string}, openTime {string}, closeTime {string}",
-                (String name, String address, String openTime, String closeTime) ->
+        Given("a store of name {string} and with the address {string}, openTime {string}, closeTime {string}, tax {string}",
+                (String name, String address, String openTime, String closeTime, String tax) ->
                 {
-                    store1 = new Store(name,address,openTime,closeTime,0.2);
+                    double taxVal = Double.valueOf(tax);
+                    store1 = new Store(name,address,openTime,closeTime,taxVal);
                 });
         And("a store manager of name {string}",
                 (String nameOfStoreManager)->{
@@ -33,6 +34,17 @@ public class StoreManagerStepdefs implements En {
                     assertEquals(store1.getOpenTime(),openTime);
                     assertEquals(store1.getCloseTime(),closeTime);
         });
+        When("Paule changes the tax of the store, the new tax is {string}",
+                (String tax) ->
+                {
+                    double taxVal = Double.valueOf(tax);
+                    storeManager.changeTax(taxVal);
+                });
+        Then("Check the actual tax is {string}",
+                (String tax) -> {
+                    double taxVal = Double.valueOf(tax);
+                    assertEquals(store1.getTax(),taxVal,0.01);
+                });
     }
 
 }
