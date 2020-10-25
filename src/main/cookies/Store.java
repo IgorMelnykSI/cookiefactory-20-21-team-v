@@ -1,29 +1,50 @@
 package cookies;
 
-import cookies.recipe.Recipe;
-
 public class Store {
     private String name;
     private String address;
-    private float tax;
-    private int in;
+    protected String openTime;
+    protected String closeTime;
+    private double tax;
 
-    public Store(String n, String a, float t, int i){
-        name=n;
-        address=a;
-        tax=t;
-        in=i;
+    public Store(String name, String address, String openTime, String closeTime, double tax){
+        this.name = name;
+        this.address = address;
+        this.openTime = openTime;
+        this.closeTime = closeTime;
+        this.tax = tax;
     }
+
     public String getName(){return name;}
     public String getAddress(){return address;}
-    public float getTax(){return tax;}
-    public int getIn(){return in;}
-    public void setIn(int t){in=t;}
-    public void setName(String n){name=n;}
-    public void setAddress(String a){address=a;}
 
-    private void makeCookies(Recipe recipe){
-
+    public String getCloseTime() {
+        return closeTime;
     }
 
+    public String getOpenTime() {
+        return openTime;
+    }
+
+    public double getTax(){return tax;}
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setOpenTime(String openTime) {
+        this.openTime = openTime;
+    }
+
+    public void setCloseTime(String closeTime) {
+        this.closeTime = closeTime;
+    }
+
+    public void setTax(float tax) {
+        this.tax = tax;
+    }
 }
