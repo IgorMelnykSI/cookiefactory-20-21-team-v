@@ -7,13 +7,13 @@ import java.util.*;
 
 public class CookieFactory {
 
-    private ArrayList<Recipe> recipesList;
-    private ArrayList<Store> storeList;
+    private Set<Recipe> recipesList;
+    private Set<Store> storeList;
 
 
     public CookieFactory() {
-        recipesList = new ArrayList<>();
-        storeList = new ArrayList<>();
+        recipesList = new HashSet<>();
+        storeList = new HashSet<>();
         initRecipeList();
         initStoreList();
     }
@@ -27,13 +27,14 @@ public class CookieFactory {
     }
 
     private void initRecipeList() {
+        recipesList = new HashSet<>();
     }
 
     private void initStoreList() {
-
+        storeList = new HashSet<>();
     }
 
-    public ArrayList<Recipe> getRecipesList() {
+    public Set<Recipe> getRecipesList() {
         return recipesList;
     }
 
@@ -46,27 +47,31 @@ public class CookieFactory {
         return null;
     }
 
+    public Store getStore(String name){
+        for (Store s:storeList) {
+            if(s.getName().equals(name))
+                return s;
+        }
+        return null;
+    }
+
     public void addRecipe(Recipe newRecipe) {
         recipesList.add(newRecipe);
     }
 
     public void deleteRecipe(String name) {
-        Recipe recipe = getRecipe(name);
-        Iterator<Recipe> iter = this.recipesList.iterator();
-        while (iter.hasNext()) {
-            Recipe rep = iter.next();
-            if (rep.equals(recipe)) {
-                iter.remove();
-            }
-        }
+        recipesList.remove(getRecipe(name));
     }
 
     public void addStore(Store store) {
         storeList.add(store);
     }
+    public void deleteStore(String name) {
+        storeList.remove(getStore(name));
+    }
 
-    public ArrayList<Store> getStoreList() {
-        return this.storeList;
+    public Set<Store> getStoreList() {
+        return storeList;
     }
 
 

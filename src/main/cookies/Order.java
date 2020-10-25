@@ -1,14 +1,15 @@
 package cookies;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Order {
      private String orderID;
      private double price;
      private Date pickUpDate;
-     private ArrayList<CookieItem> cookieItems = new ArrayList<>();
+     private Set<CookieItem> cookieItems = new HashSet<>();
     public Order(){
         orderID = getGuid();
         price = 0;
@@ -61,6 +62,12 @@ public class Order {
         for(CookieItem ci : cookieItems){
             this.price += ci.getPrice();
         }
+    }
+    public void caculateDiscountPrice(double discount){
+        for(CookieItem ci : cookieItems){
+            this.price += ci.getPrice();
+        }
+        this.price*=discount;
     }
 //    public void setPrice(double price) {
 //        this.price = price;
