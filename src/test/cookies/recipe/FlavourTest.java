@@ -5,12 +5,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FlavourTest {
-
-    @Test
-    void setType() {
-    }
+    Flavour cinnamon=new Flavour("Cinnamon");
 
     @Test
     void getType() {
+        assertEquals("Cinnamon",cinnamon.getType());
+    }
+
+    @Test
+    void setType() {
+        cinnamon.setType("Chili");
+        assertEquals("Chili",cinnamon.getType());
     }
 }
