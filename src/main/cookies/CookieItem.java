@@ -5,7 +5,7 @@ import cookies.recipe.Recipe;
 public class CookieItem {
     private int quantity;
     private String recipeName;
-    private double recipePrice;
+    private final double recipePrice;
     private double price;
 
     public CookieItem(int quantity, Recipe recipe){
