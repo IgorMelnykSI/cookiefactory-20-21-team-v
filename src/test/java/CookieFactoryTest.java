@@ -11,46 +11,46 @@ class CookieFactoryTest {
     @Test
     void resetFactory() {
         cook.resetFactory();
-        assertEquals(cook.getStoreList().size(),0);
+        assertEquals(cook.getStoreList().size(),1);
     }
 
     @Test
     void getRecipesList() {
-        assertEquals(cook.getRecipesList().size(),0);
+        assertEquals(cook.getRecipesList().size(),2);
     }
 
     @Test
     void getRecipe() {
-        Recipe recipe1=new Recipe("recipe1",9.8);
-        cook.addRecipe(recipe1);
-        assertEquals(cook.getRecipe("recipe1"),recipe1);
-        assertEquals(cook.getRecipe("recipe2"),null);
+        Recipe recipeTest=new Recipe("recipeTest",9.8);
+        cook.addRecipe(recipeTest);
+        assertEquals(cook.getRecipe("recipeTest"),recipeTest);
+        assertEquals(cook.getRecipe("recipeTestNo"),null);
     }
 
     @Test
     void getStore() {
-        Store store1 = new Store("store1","address1","8:30","19:00",0.2);
-        cook.addStore(store1);
-        assertEquals(cook.getStore("store1"),store1);
-        assertEquals(cook.getStore("recipe2"),null);
+        Store storeTest = new Store("storeTest","address1","8:30","19:00",0.2);
+        cook.addStore(storeTest);
+        assertEquals(cook.getStore("storeTest"),storeTest);
+        assertEquals(cook.getStore("storeTestNo"),null);
     }
 
     @Test
     void addRecipe() {
-        assertEquals(cook.getRecipe("recipe1"),null);
-        Recipe recipe1=new Recipe("recipe1",9.8);
-        cook.addRecipe(recipe1);
-        assertEquals(cook.getRecipe("recipe1"),recipe1);
+        assertEquals(cook.getRecipe("recipeTest1"),null);
+        Recipe recipeTest1=new Recipe("recipeTest1",9.8);
+        cook.addRecipe(recipeTest1);
+        assertEquals(cook.getRecipe("recipeTest1"),recipeTest1);
 
     }
 
     @Test
     void deleteRecipe() {
-        Recipe recipe2=new Recipe("recipe2",9.5);
-        cook.addRecipe(recipe2);
-        assertTrue(cook.getRecipe("recipe2")==recipe2);
-        cook.deleteRecipe("recipe2");
-        assertTrue(cook.getRecipe("recipe2")==null);
+        Recipe recipeTest2=new Recipe("recipeTest2",9.5);
+        cook.addRecipe(recipeTest2);
+        assertTrue(cook.getRecipe("recipeTest2")==recipeTest2);
+        cook.deleteRecipe("recipeTest2");
+        assertTrue(cook.getRecipe("recipeTest2")==null);
     }
 
     @Test
@@ -71,9 +71,4 @@ class CookieFactoryTest {
         assertTrue(cook.getRecipe("store2")==null);
     }
 
-    @Test
-    void getStoreList() {
-        assertTrue(cook.getStoreList().isEmpty());
-
-    }
 }
