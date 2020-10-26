@@ -66,7 +66,6 @@ public Set<CookieItem> getCookieItems(){
         for(CookieItem ci : cookieItems){
             this.price += ci.getPrice();
         }
-        caculateDiscountPrice(discount);
     }
 
     public void caculateDiscountPrice(double discount){

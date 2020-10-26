@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class Tourist {
 
-    public Order creatTouristOrder(Map<Recipe, Integer> mp, Date date, Store store){
+    public Order creatNoDiscountOrder(Map<Recipe, Integer> mp, Date date, Store store){
         Order order = new Order();
         for(Recipe recipe : mp.keySet()){
             order.addCookieItem(new CookieItem(mp.get(recipe),recipe));
