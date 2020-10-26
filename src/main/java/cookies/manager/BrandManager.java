@@ -1,27 +1,28 @@
 package cookies.manager;
 
+import cookies.CookieFactory;
 import cookies.recipe.Recipe;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class BrandManager {
-    private ArrayList<Recipe>recipes=new ArrayList<>();
+    private String name;
+    private CookieFactory factory;
 
+    public BrandManager(String name){
+        this.name = name;
+        this.factory = new CookieFactory();
+    }
     public void addRecipe(Recipe recipe){
-        for(Recipe recipe1:recipes)
-            if(recipe1==recipe)
-                return;
-        recipes.add(recipe);
+        factory.addRecipe(recipe);
     }
 
-    public void deleteRecipe(Recipe recipe){
-        Iterator<Recipe> it= recipes.iterator();
-        while(it.hasNext())
-        {
-            Recipe recipe1=it.next();
-            if(recipe1==recipe)
-                it.remove();
-        }
+    public void deleteRecipe(String recipeName){
+        factory.deleteRecipe(recipeName);
+    }
+
+    public CookieFactory getFactory() {
+        return factory;
     }
 }
