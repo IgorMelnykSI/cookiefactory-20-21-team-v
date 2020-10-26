@@ -35,7 +35,7 @@ class TouristTest {
     }
     @Test
     void creatOrder() {
-        Order od = t.creatOrder(mp,date,store);
+        Order od = t.creatTouristOrder(mp,date,store);
         assertEquals(45,od.getPrice());
         assertEquals(date.toString(),od.getPickUpDate().toString());
         assertEquals(store,od.getPickUpStore());

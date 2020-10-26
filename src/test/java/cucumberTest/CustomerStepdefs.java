@@ -44,7 +44,7 @@ public class CustomerStepdefs implements En {
                     DateFormat fmt =new SimpleDateFormat("HH:mm");
                     Date date = fmt.parse(time);
                     Store s = factory.getStore(store);
-                    order1 = member1.creatOrder(mp,date,s);
+                    order1 = member1.creatTouristOrder(mp,date,s);
                 });
         Then("check the price of the order is {string}",
                 (String price) -> {
