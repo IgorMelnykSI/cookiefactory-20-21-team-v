@@ -62,7 +62,7 @@ public Set<CookieItem> getCookieItems(){
     public void addCookieItem(CookieItem ci){
         cookieItems.add(ci);
     }
-    public void caculatePrice(double discount){
+    public void caculatePrice(){
         for(CookieItem ci : cookieItems){
             this.price += ci.getPrice();
         }

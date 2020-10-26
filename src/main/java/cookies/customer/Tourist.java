@@ -17,7 +17,7 @@ public class Tourist {
             order.addCookieItem(new CookieItem(mp.get(recipe),recipe));
         }
         order.setPickUpDate(date);
-        order.caculatePrice(0.0);
+        order.caculatePrice();
         order.setPickUpStore(store);
         return order;
     }
