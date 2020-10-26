@@ -50,7 +50,6 @@ public class Member extends Tourist{
         }
         order.setPickUpDate(date);
         order.caculatePrice(applyLoyaltyDiscount());
-        System.out.println(order.getOrderID());
         return order;
     }
 

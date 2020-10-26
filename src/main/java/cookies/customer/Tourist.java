@@ -19,7 +19,6 @@ public class Tourist {
         order.setPickUpDate(date);
         order.caculatePrice(0.0);
         order.setPickUpStore(store);
-        System.out.println(order.getOrderID()); //he use the ID to pick his cookies
         return order;
     }
 }
