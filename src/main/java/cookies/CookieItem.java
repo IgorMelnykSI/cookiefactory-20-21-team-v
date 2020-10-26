@@ -12,7 +12,7 @@ public class CookieItem {
         this.quantity = quantity;
         this.recipeName = recipe.getName();
         this.recipePrice = recipe.getPrice();
-        this.price = quantity*recipePrice;
+        calculatePrice();
     }
 
     public double getPrice() {

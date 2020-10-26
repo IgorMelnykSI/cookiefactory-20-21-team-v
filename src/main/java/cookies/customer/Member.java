@@ -2,6 +2,7 @@ package cookies.customer;
 
 import cookies.CookieItem;
 import cookies.Order;
+import cookies.Store;
 import cookies.recipe.Recipe;
 
 import java.util.Date;
@@ -42,7 +43,7 @@ public class Member extends Tourist{
         return 0;
     }
 
-    public Order creatDiscountOrder(Map<Recipe, Integer> mp, Date date){
+    public Order creatDiscountOrder(Map<Recipe, Integer> mp, Date date, Store store){
         Order order = new Order();
         for(Recipe recipe : mp.keySet()){
             order.addCookieItem(new CookieItem(mp.get(recipe),recipe));
@@ -51,6 +52,10 @@ public class Member extends Tourist{
         order.caculatePrice(applyLoyaltyDiscount());
         System.out.println(order.getOrderID());
         return order;
+    }
+
+    public void setLoyal(boolean loyal) {
+        this.isLoyal = loyal;
     }
 
     public int  getId() {
