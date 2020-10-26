@@ -3,7 +3,6 @@ import cookies.CookieFactory;
 import cookies.Order;
 import cookies.Store;
 import cookies.customer.Member;
-import cookies.manager.StoreManager;
 import cookies.recipe.Recipe;
 import io.cucumber.java8.En;
 
