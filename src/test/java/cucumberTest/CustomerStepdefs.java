@@ -18,6 +18,7 @@ public class CustomerStepdefs implements En {
     Member member2;
     Order order1;
     Order order2;
+    Order order3;
 
     public CustomerStepdefs() { // implementation des steps dans le constructeur (aussi possible dans des méthodes)
         Given("init the factory",
@@ -25,11 +26,9 @@ public class CustomerStepdefs implements En {
                 {
                     factory = new CookieFactory();
                 });
-        And("A customer name {string} who join the \"Loyalty program\" and have the discount de 10%",
+        And("A customer name {string} who join the \"Loyalty program\"",
                 (String name)->{
-                    member1 = new Member(name);
-                    member1.setLoyal(true);
-                    member1.registerLoyal();
+                    member1 = new Member(name,true);
                 });
         And("A customer name {string} with an account",
                 (String name)->{
@@ -44,14 +43,14 @@ public class CustomerStepdefs implements En {
                     DateFormat fmt =new SimpleDateFormat("HH:mm");
                     Date date = fmt.parse(time);
                     Store s = factory.getStore(store);
-                    order1 = member1.creatNoDiscountOrder(mp,date,s);
+                    order1 = member1.creatDiscountOrder(mp,date,s);
                 });
         Then("check the price of the order is {string}",
                 (String price) -> {
                     double val = Double.valueOf(price);
                     assertEquals(order1.getPrice(), val);
                 });
-        When("Peter wants to order {int} cookies of {string}, He wants to pick it in {string} at {string}, and He wants to use the discount de 10% by \"Loyalty program\"",
+        When("Peter ordered {int} cookies of {string}, picked it in {string} at {string}",
                 (Integer sum, String recipe, String store, String time) ->
                 {
                     Recipe rp = factory.getRecipe(recipe);
@@ -62,10 +61,21 @@ public class CustomerStepdefs implements En {
                     Store s = factory.getStore(store);
                     order2 = member1.creatDiscountOrder(mp,date,s);
                 });
-        Then("check the price of the order by using discount is {string}",
+        And("he ordered again {int} cookies of {string}, pick it in {string} at {string}",
+                (Integer sum, String recipe, String store, String time) ->
+                {
+                    Recipe rp = factory.getRecipe(recipe);
+                    Map<Recipe, Integer> mp = new HashMap<>();
+                    mp.put(rp,sum);
+                    DateFormat fmt =new SimpleDateFormat("HH:mm");
+                    Date date = fmt.parse(time);
+                    Store s = factory.getStore(store);
+                    order3 = member1.creatDiscountOrder(mp,date,s);
+                });
+        Then("check the price of the second order by using discount is {string}",
                 (String price) -> {
                     double val = Double.valueOf(price);
-                    assertEquals(order2.getPrice(), val);
+                    assertEquals(order3.getPrice(), val);
                 });
         When("Laura wants to join the \"Loyalty program\"",
                 () ->
