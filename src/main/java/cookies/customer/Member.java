@@ -5,10 +5,7 @@ import cookies.Order;
 import cookies.Store;
 import cookies.recipe.Recipe;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Member extends Tourist{
 
@@ -25,6 +22,7 @@ public class Member extends Tourist{
         this.isLoyal = false;
         this.id = ++numberOfAccount;
         numCookiesOrdered = 0;
+        this.historyOrders = new ArrayList<>();
     }
 
     public Member(String name,Boolean isLoyal){
@@ -71,6 +69,12 @@ public class Member extends Tourist{
         }else{
             return 0;
         }
+    }
+
+    public Order creatMemberOrder(Map<Recipe, Integer> mp, Date date, Store store){
+        Order newOrder = creatNoDiscountOrder(mp, date, store);
+        saveOrderInHistory(newOrder);
+        return newOrder;
     }
 
     public Order creatDiscountOrder(Map<Recipe, Integer> mp, Date date, Store store){
