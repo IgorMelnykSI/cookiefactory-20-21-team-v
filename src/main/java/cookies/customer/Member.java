@@ -71,12 +71,8 @@ public class Member extends Tourist{
         }
     }
 
-    public Order creatMemberOrder(Map<Recipe, Integer> mp, Date date, Store store){
-        Order newOrder = creatNoDiscountOrder(mp, date, store);
-        saveOrderInHistory(newOrder);
-        return newOrder;
-    }
-
+    // Member can use this function to use loyal discount
+    // Otherwise he can use creatNoDiscountOrder() to make order without loyal discount
     public Order creatDiscountOrder(Map<Recipe, Integer> mp, Date date, Store store){
         Order newOrder = creatNoDiscountOrder(mp, date, store);
         newOrder.caculateDiscountPrice(applyLoyaltyDiscount());

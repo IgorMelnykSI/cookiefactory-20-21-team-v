@@ -55,15 +55,27 @@ public class MemberTest {
         assertFalse(member1.hasDiscount());
         member1.saveOrderInHistory(order);
         assertTrue(member1.hasDiscount());
+        assertEquals(member1.getNumCookiesOrdered(), 30);
     }
 
     @Test
     public void applyLoyaltyDiscount() {
         member1.registerLoyal();
-        member1.creatMemberOrder(mp,date,store);
+        member1.creatDiscountOrder(mp,date,store);
         assertEquals(member1.applyLoyaltyDiscount(),0.1,0.01);
         assertEquals(member2.applyLoyaltyDiscount(),0,0.01);
         assertEquals(member1.applyLoyaltyDiscount(),0,0.01);
+    }
+
+    @Test
+    public void creatDiscountOrder() {
+        member1.registerLoyal();
+        Order order1 = member1.creatDiscountOrder(mp,date,store);
+        assertEquals(order1.getPrice(),55.0,0.01);
+
+        Order order2 = member1.creatDiscountOrder(mp,date,store);
+        assertEquals(member1.applyLoyaltyDiscount(),0.1,0.01);
+        assertEquals(order2.getPrice(),49.5,0.01);
     }
 
     @Test
