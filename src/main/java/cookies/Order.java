@@ -40,7 +40,7 @@ public class Order {
         return time + info.substring(2, info.length()) + ran;
     }
 
-public Set<CookieItem> getCookieItems(){
+    public Set<CookieItem> getCookieItems(){
         return cookieItems;
 }
     public Date getPickUpDate() {
@@ -68,9 +68,11 @@ public Set<CookieItem> getCookieItems(){
         }
     }
 
-    public void caculateDiscountPrice(double discount){
-        this.price = price*(1-discount);
+    public void caculateDiscountPrice(double loyalDiscount){
+        //TODO caculate all the discount here
+        this.price = price*(1-loyalDiscount);
     }
+
 //    public void setPrice(double price) {
 //        this.price = price;
 //    }

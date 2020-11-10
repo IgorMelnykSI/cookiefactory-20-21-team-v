@@ -7,6 +7,7 @@ public class CookieItem {
     private String recipeName;
     private final double recipePrice;
     private double price;
+    private boolean isPersonalized;//TODO
 
     public CookieItem(int quantity, Recipe recipe){
         this.quantity = quantity;
@@ -25,6 +26,10 @@ public class CookieItem {
 
     public String getRecipeName() {
         return recipeName;
+    }
+
+    public boolean getIsPersonalized(){
+        return isPersonalized;
     }
 
     public void setPrice(double price) {
