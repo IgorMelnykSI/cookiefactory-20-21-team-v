@@ -9,20 +9,22 @@ import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BrandManagerTest {
-    private BrandManager brandManager;
+    private BrandManager brandManager=new BrandManager("Cookie");;
 
-    @BeforeEach
-    public void init(){
-        brandManager=new BrandManager("Cookie");
-    }
+
 
     @Test
     public void addRecipe(){
-
+//        brandManager.getFactory().resetFactory();
+        assertEquals(brandManager.getFactory().getRecipe("recipeTest1"),null);
+        Recipe recipeTest1=new Recipe("recipeTest1",9.8);
+        brandManager.addRecipe(recipeTest1);
+        assertEquals(brandManager.getFactory().getRecipe("recipeTest1"),recipeTest1);
     }
 
     @Test
     public void setRecipes(){
+
 
     }
 
