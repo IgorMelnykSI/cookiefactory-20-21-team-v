@@ -2,10 +2,7 @@ package cookies;
 
 import cookies.recipe.Recipe;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Store {
     private String name;
@@ -14,7 +11,6 @@ public class Store {
     protected String closeTime;
     private double tax;
     private List<Order> historyOrders = new ArrayList<>();
-    private Map<String, Integer> historyRecipes = new HashMap<>();
     private Recipe myBestOf;
     private Recipe nationalBestOf;
     private String country;
@@ -27,11 +23,38 @@ public class Store {
         this.tax = tax;
     }
 
-    public void checkOrder(Order order){
+    public boolean checkOrder(Order order){
+        //TODO check correct pickTime
         //TODO check correct ingredient
         //TODO check enough ingredient
+
+        deleteExpiredOrder();
+        saveOrder(order);
+        return true;
+    }
+
+    public void saveOrder(Order order){
         historyOrders.add(order);
         calculateRecipePopularity();
+    }
+
+    public void deleteExpiredOrder(){
+        Date today=new Date();
+        List<Order> expiredOrders = new ArrayList<>();
+        if(historyOrders.size()==0){
+            return;
+        }
+
+        for(Order order:historyOrders){
+            int days = (int) ((today.getTime() - order.getPickUpDate().getTime()) / (1000*3600*24));
+            if(days>30){
+                expiredOrders.add(order);
+            }
+        }
+
+        for(Order order:expiredOrders){
+            historyOrders.remove(order);
+        }
     }
 
     public void calculateRecipePopularity(){

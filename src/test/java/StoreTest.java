@@ -4,11 +4,16 @@ import org.junit.jupiter.api.Test;
 import cookies.Order;
 import cookies.manager.StoreManager;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import static org.junit.Assert.*;
 
 public class StoreTest {
     private Store store1;
     private Store store2;
+    Order order;
 
     @BeforeEach
     public void init(){
@@ -30,5 +35,21 @@ public class StoreTest {
     public void setHour(){
         store2.setOpenTime("6:00");
         assertEquals(store2.getOpenTime(),"6:00");
+    }
+
+    @Test
+    public void deleteExpiredOrder(){
+        order = new Order();
+        GregorianCalendar gc = new GregorianCalendar();
+        gc.set(Calendar.YEAR,2020);
+        gc.set(Calendar.MONTH, 1);
+        gc.set(Calendar.DAY_OF_MONTH, 2);
+        Date date = gc.getTime();
+        order.setPickUpDate(date);
+
+        store1.saveOrder(order);
+        assertEquals(1,store1.getHistoryOrders().size());
+        store1.deleteExpiredOrder();
+        assertEquals(0,store1.getHistoryOrders().size());
     }
 }

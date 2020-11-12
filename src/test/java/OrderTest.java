@@ -36,7 +36,7 @@ class OrderTest {
         assertEquals(order.getPrice(),0);
         order.addCookieItem(item);
         item.setPrice(7.5);
-        order.caculatePrice(0);
+        order.caculatePrice();
         assertEquals(order.getPrice(),7.5);
     }
 
@@ -44,7 +44,8 @@ class OrderTest {
     void caculateDiscountPrice() {
         order.addCookieItem(item);
         item.setPrice(10);
-        order.caculatePrice(0.1);
+        order.caculatePrice();
+        order.caculateDiscountPrice(0.1);
         assertEquals(order.getPrice(),9.0);
     }
 
