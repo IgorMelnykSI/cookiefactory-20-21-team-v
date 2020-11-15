@@ -7,8 +7,8 @@ import java.util.*;
 public class Store {
     private String name;
     private String address;
-    protected int[] openTime;
-    protected int[] closeTime;
+    protected int[] openTime= new int[2];
+    protected int[] closeTime = new int[2];
     private double tax;
     private List<Order> historyOrders = new ArrayList<>();
     private Recipe myBestOf ;

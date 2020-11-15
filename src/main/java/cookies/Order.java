@@ -9,7 +9,7 @@ public class Order {
      private String orderID;
      private double price;
      private Date pickUpDate;
-     private int[] pickUpTime;
+     private int[] pickUpTime = new int[2];
      private Store pickUpStore;
      private String pickUp="pickUp";
      private String homeDelivery="homeDelivery";
