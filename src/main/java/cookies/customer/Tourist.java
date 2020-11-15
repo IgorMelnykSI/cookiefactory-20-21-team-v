@@ -10,11 +10,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Scanner;
 
-class MyException extends Exception {
-    public MyException(String message){
-        super(message);
-    }
-}
+
 
 public class Tourist {
 

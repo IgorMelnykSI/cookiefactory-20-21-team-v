@@ -43,7 +43,9 @@ public class CustomerStepdefs implements En {
                     DateFormat fmt =new SimpleDateFormat("HH:mm");
                     Date date = fmt.parse(time);
                     Store s = factory.getStore(store);
-                    order1 = member1.creatDiscountOrder(mp,date,s);
+                    int way=1;
+                    String home="Polytech nice sophia";
+                    order1 = member1.creatDiscountOrder(mp,way,date,s,home);
                 });
         Then("check the price of the order is {string}",
                 (String price) -> {
@@ -59,7 +61,9 @@ public class CustomerStepdefs implements En {
                     DateFormat fmt =new SimpleDateFormat("HH:mm");
                     Date date = fmt.parse(time);
                     Store s = factory.getStore(store);
-                    order2 = member1.creatDiscountOrder(mp,date,s);
+                    int way=1;
+                    String home="Polytech nice sophia";
+                    order2 = member1.creatDiscountOrder(mp,way,date,s,home);
                 });
         And("he ordered again {int} cookies of {string}, pick it in {string} at {string}",
                 (Integer sum, String recipe, String store, String time) ->
@@ -70,7 +74,9 @@ public class CustomerStepdefs implements En {
                     DateFormat fmt =new SimpleDateFormat("HH:mm");
                     Date date = fmt.parse(time);
                     Store s = factory.getStore(store);
-                    order3 = member1.creatDiscountOrder(mp,date,s);
+                    int way=1;
+                    String home="Polytech nice sophia";
+                    order3 = member1.creatDiscountOrder(mp,way,date,s,home);
                 });
         Then("check the price of the second order by using discount is {string}",
                 (String price) -> {

@@ -1,6 +1,7 @@
 package customer;
 
 import cookies.Store;
+import cookies.customer.MyException;
 import cookies.recipe.Recipe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,8 @@ public class MemberTest {
     private Map<Recipe,Integer> mp;
     private Store store;
     private Date date;
+    private int way;
+    private String home;
 
     @BeforeEach
     public void init(){
@@ -37,6 +40,8 @@ public class MemberTest {
         gc.set(Calendar.DAY_OF_MONTH, 2);
         date = gc.getTime();
         store = new Store("store1","Antibes","8:00","16:00",0.15);
+        way=1;
+        home="polytech nice sophia";
     }
 
     @Test
@@ -48,9 +53,9 @@ public class MemberTest {
     }
 
     @Test
-    void saveOrderInHistory() {
+    void saveOrderInHistory() throws MyException {
         member1.registerLoyal();
-        Order order = member1.creatNoDiscountOrder(mp,date,store);
+        Order order = member1.creatNoDiscountOrder(mp,way,date,store,home);
 
         assertFalse(member1.hasDiscount());
         member1.saveOrderInHistory(order);
@@ -59,21 +64,21 @@ public class MemberTest {
     }
 
     @Test
-    public void applyLoyaltyDiscount() {
+    public void applyLoyaltyDiscount() throws MyException {
         member1.registerLoyal();
-        member1.creatDiscountOrder(mp,date,store);
+        member1.creatDiscountOrder(mp,way,date,store,home);
         assertEquals(member1.applyLoyaltyDiscount(),0.1,0.01);
         assertEquals(member2.applyLoyaltyDiscount(),0,0.01);
         assertEquals(member1.applyLoyaltyDiscount(),0,0.01);
     }
 
     @Test
-    public void creatDiscountOrder() {
+    public void creatDiscountOrder() throws MyException {
         member1.registerLoyal();
-        Order order1 = member1.creatDiscountOrder(mp,date,store);
+        Order order1 = member1.creatDiscountOrder(mp,way,date,store,home);
         assertEquals(order1.getPrice(),55.0,0.01);
 
-        Order order2 = member1.creatDiscountOrder(mp,date,store);
+        Order order2 = member1.creatDiscountOrder(mp,way,date,store,home);
         assertEquals(member1.applyLoyaltyDiscount(),0.1,0.01);
         assertEquals(order2.getPrice(),49.5,0.01);
     }

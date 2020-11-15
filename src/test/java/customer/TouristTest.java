@@ -2,6 +2,7 @@ package customer;
 
 import cookies.Order;
 import cookies.Store;
+import cookies.customer.MyException;
 import cookies.customer.Tourist;
 import cookies.recipe.Recipe;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +17,8 @@ class TouristTest {
     Map<Recipe,Integer> mp;
     Store store, store1;
     Date date;
+    int way;
+    String home;
     @BeforeEach
     void init(){
         t = new Tourist();
@@ -33,10 +36,12 @@ class TouristTest {
         date = gc.getTime();
         store = new Store("store1","Antibes","8:00","16:00",0.15);
         store1 = new Store("store2","Antibes","7:00","16:00",0.15);
+        way=1;
+        home="polytech nice sophia";
     }
     @Test
-    void creatOrder() {
-        Order od = t.creatNoDiscountOrder(mp,date,store);
+    void creatOrder() throws MyException {
+        Order od = t.creatNoDiscountOrder(mp,way, date,store,home);
         assertEquals(45,od.getPrice());
         assertEquals(date.toString(),od.getPickUpDate().toString());
         assertEquals(store,od.getPickUpStore());
