@@ -4,7 +4,7 @@ import cookies.Order;
 import cookies.Store;
 import cookies.customer.MyException;
 import cookies.customer.Tourist;
-import cookies.recipe.Recipe;
+import cookies.recipe.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import cookies.CookieFactory;
@@ -51,8 +51,40 @@ class TouristTest {
         assertEquals(store,od.getPickUpStore());
     }
 
-    @Test
-    void changeStore(){
+//    @Test
+//    void changeStore(){
+//
+//    }
 
+    @Test
+    void createPrivateOrder() throws MyException {
+        mp.clear();
+        Cooking crunchy=new Cooking("Crunchy");
+        Dough peabut=new Dough("Peanut butter");
+        Flavour vanilla=new Flavour("Vanilla");
+        Mix mixed=new Mix("Mixed");
+        Topping mm=new Topping("M&M’s™");
+        Topping reese=new Topping("Reese’s buttercup");
+        Topping[] tops1=new Topping[]{mm,reese};
+        Recipe myRecipe=t.createPrivateRecipe(crunchy,peabut,vanilla,mixed,tops1);
+        mp.put(myRecipe,15);
+
+        Order od = t.createPrivateOrder(mp,way, date,store,home);
+        assertEquals(71.25,od.getPrice());
+        assertEquals(date.toString(),od.getPickUpDate().toString());
+        assertEquals(store,od.getPickUpStore());
+    }
+
+    @Test
+    void addPrivateRecipe(){
+        Cooking crunchy=new Cooking("Crunchy");
+        Dough peabut=new Dough("Peanut butter");
+        Flavour vanilla=new Flavour("Vanilla");
+        Mix mixed=new Mix("Mixed");
+        Topping mm=new Topping("M&M’s™");
+        Topping reese=new Topping("Reese’s buttercup");
+        Topping[] tops1=new Topping[]{mm,reese};
+        Recipe myRecipe=t.createPrivateRecipe(crunchy,peabut,vanilla,mixed,tops1);
+        assertEquals(3.8,myRecipe.getPrice());
     }
 }
