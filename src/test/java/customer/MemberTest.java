@@ -2,7 +2,7 @@ package customer;
 
 import cookies.Store;
 import cookies.customer.MyException;
-import cookies.recipe.Recipe;
+import cookies.recipe.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import cookies.Order;
@@ -71,7 +71,6 @@ public class MemberTest {
         member1.creatDiscountOrder(mp,way,date,store,home);
         assertEquals(member1.applyLoyaltyDiscount(),0.1,0.01);
         assertEquals(member2.applyLoyaltyDiscount(),0,0.01);
-        assertEquals(member1.applyLoyaltyDiscount(),0,0.01);
     }
 
     @Test
@@ -92,7 +91,22 @@ public class MemberTest {
     }
 
     @Test
-    public void createPrivateDiscountOrder(){
+    public void createPrivateDiscountOrder() throws MyException{
+        mp.clear();
+        member1.registerLoyal();
+        Cooking crunchy=new Cooking("Crunchy");
+        Dough peabut=new Dough("Peanut butter");
+        Flavour vanilla=new Flavour("Vanilla");
+        Mix mixed=new Mix("Mixed");
+        Topping mm=new Topping("M&M’s™");
+        Topping reese=new Topping("Reese’s buttercup");
+        Topping[] tops1=new Topping[]{mm,reese};
+        Recipe myRecipe=member1.createPrivateRecipe(crunchy,peabut,vanilla,mixed,tops1);
+        mp.put(myRecipe,30);
+        Order od = member1.createPrivateDiscountOrder(mp,way, date,store,home);
+        member1.saveOrderInHistory(od);
+        od.caculateDiscountPrice(member1.applyLoyaltyDiscount());
+        assertEquals(od.getPrice(),128.25,0.01);
 
     }
 

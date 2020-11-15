@@ -63,12 +63,9 @@ public class Member extends Tourist{
     // get the loyalty discount and reset for next time
     public double applyLoyaltyDiscount() {
         if(this.hasDiscount()){
-            this.loyalDiscount = 0;
-            this.numCookiesOrdered = 0;
             return 0.1;
-        }else{
-            return 0;
         }
+        return 0;
     }
 
     // Member can use this function to use loyal discount
@@ -83,6 +80,7 @@ public class Member extends Tourist{
 
     public Order createPrivateDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store, String address) throws MyException {
         Order newOrder = createPrivateOrder(mp, way , date, store,address);
+//        System.out.println(newOrder.getPrice());
         newOrder.caculateDiscountPrice(applyLoyaltyDiscount());
         saveOrderInHistory(newOrder);
         return newOrder;
