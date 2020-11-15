@@ -16,11 +16,11 @@ public class Store {
     private String country;
     private boolean hasProblem = false;
 
-    public Store(String name, String address, int openhour, int openmin, int closeHour, int closeMin,double tax){
+    public Store(String name, String address, int openHour, int openMin, int closeHour, int closeMin,double tax){
         this.name = name;
         this.address = address;
-        this.openTime[0] = openhour;
-        this.openTime[1] = openmin;
+        this.openTime[0] = openHour;
+        this.openTime[1] = openMin;
         this.closeTime[0] = closeHour;
         this.closeTime[1]=closeMin;
         this.tax = tax;
