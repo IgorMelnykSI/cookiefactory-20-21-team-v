@@ -33,15 +33,18 @@ public class BrandManagerTest {
 
     }
 
-    @Test
-    public void setCountCookies(){
 
-
-    }
 
     @Test
     public void addCount(){
-
+        brandManager.getFactory().resetFactory();
+        brandManager.setMap(brandManager.getFactory().getRecipesList());
+        assertAll(
+                () -> assertEquals(brandManager.getMap().get(brandManager.getFactory().getRecipe("recipe1")),0),
+                () -> assertEquals(brandManager.getMap().get(brandManager.getFactory().getRecipe("recipe2")),0)
+        );
+        brandManager.addCount("recipe1");
+        assertEquals(brandManager.getMap().get(brandManager.getFactory().getRecipe("recipe1")),1);
 
     }
 
@@ -66,6 +69,24 @@ public class BrandManagerTest {
 
     @Test
     public void getFactory(){
+        brandManager.getFactory().resetFactory();
+        assertAll(
+                () -> assertNotEquals(brandManager.getFactory().getRecipe("recipe1"),null),
+                () -> assertNotEquals(brandManager.getFactory().getRecipe("recipe2"),null)
+        );
+
+
+    }
+
+    @Test
+    public void getMap(){
+        brandManager.getFactory().resetFactory();
+        brandManager.setMap(brandManager.getFactory().getRecipesList());
+        assertAll(
+                () -> assertTrue(brandManager.getMap().containsKey(brandManager.getFactory().getRecipe("recipe1"))),
+                () -> assertTrue(brandManager.getMap().containsKey(brandManager.getFactory().getRecipe("recipe2")))
+        );
+
 
     }
 
