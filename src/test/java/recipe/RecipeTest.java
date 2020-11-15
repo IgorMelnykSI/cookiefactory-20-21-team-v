@@ -4,6 +4,8 @@ import cookies.recipe.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RecipeTest {
@@ -26,8 +28,11 @@ class RecipeTest {
         mixed=new Mix("Mixed");
         mm=new Topping("M&M’s™");
         reese=new Topping("Reese’s buttercup");
-        tops1=new Topping[]{mm,reese};
-        tops2=new Topping[]{reese};
+        tops1=new Topping[3];
+        tops1[0]=mm;
+        tops1[1]=reese;
+        tops2=new Topping[3];
+        tops2[0]=reese;
     }
 
     @Test
@@ -93,8 +98,7 @@ class RecipeTest {
                 ()->assertTrue(recipe1.getCooking()==null),
                 ()->assertTrue(recipe1.getDough()==null),
                 ()->assertTrue(recipe1.getFlavour()==null),
-                ()->assertTrue(recipe1.getMix()==null),
-                ()->assertTrue(recipe1.getToppings()==null)
+                ()->assertTrue(recipe1.getMix()==null)
         );
     }
 
@@ -125,7 +129,7 @@ class RecipeTest {
     @Test
     void setToppings() {
         recipe1.setToppings(tops1);
-        assertNotEquals(tops2,recipe1.getToppings());
-        assertEquals(tops1,recipe1.getToppings());
+        assertTrue(Arrays.equals(tops1, recipe1.getToppings()));
+        assertFalse(Arrays.equals(tops2, recipe1.getToppings()));
     }
 }
