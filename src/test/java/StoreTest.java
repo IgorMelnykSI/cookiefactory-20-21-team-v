@@ -53,4 +53,12 @@ public class StoreTest {
         store1.deleteExpiredOrder();
         assertEquals(0,store1.getHistoryOrders().size());
     }
+
+    @Test
+    public void setPosition(){
+        double[] position = {1.1,2.2};
+        store1.setPosition(position[0],position[1]);
+        assertEquals(position[0], store1.getPosition()[0], 0.0);
+        assertEquals(position[1], store1.getPosition()[1], 0.0);
+    }
 }

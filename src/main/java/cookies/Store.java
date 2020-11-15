@@ -21,6 +21,7 @@ public class Store {
     private HashMap<Dough,Integer> cookingAvailable;
     private HashMap<Flavour,Integer> flavourAvailable;
     private HashMap<Topping,Integer> toppingAvailable;
+    private double[] position = {0,0};
 
     public Store(String name, String address, int openHour, int openMin, int closeHour, int closeMin,double tax){
         this.name = name;
@@ -34,6 +35,14 @@ public class Store {
         this.nationalBestOf = new Recipe("");
     }
 
+    public void setPosition(double X, double Y) {
+        this.position[0] = X;
+        this.position[1] = Y;
+    }
+
+    public double[] getPosition(){
+        return position;
+    }
     public boolean checkOrder(Order order){
         if (this.openTime[0]>order.getPickUpHour()||this.closeTime[0]<order.getPickUpMin()){
             return false;
