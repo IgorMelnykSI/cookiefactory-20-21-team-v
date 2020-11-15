@@ -207,5 +207,70 @@ public class CookieFactory {
         }
         return nearbyStores;
     }
+
+    public Set<Cooking> getCookingList() {
+        return cookingList;
+    }
+
+    public Set<Dough> getDoughList() {
+        return doughList;
+    }
+
+    public Set<Flavour> getFlavourList() {
+        return flavourList;
+    }
+
+    public Set<Mix> getMixList() {
+        return mixList;
+    }
+
+    public Set<Topping> getToppingList() {
+        return toppingList;
+    }
+
+    public Cooking getCooking(String name){
+        for(Cooking cooking:this.cookingList){
+            if(cooking.getType().equals(name)){
+                return cooking;
+            }
+        }
+        return null;
+    }
+
+    public Dough getDough(String name) {
+        for(Dough dough:this.doughList){
+            if(dough.getType().equals(name)){
+                return dough;
+            }
+        }
+        return null;
+    }
+
+    public Flavour getFlavor(String name) {
+        for (Flavour flavor : this.flavourList) {
+            if (flavor.getType ().equals (name)) {
+                return flavor;
+            }
+        }
+        return null;
+    }
+
+    public Mix getMix(String name) {
+        for (Mix mix : this.mixList) {
+            if (mix.getType ().equals (name)) {
+                return mix;
+            }
+        }
+        return null;
+    }
+
+    public Topping getTopping(String name) {
+        for(Topping topping:this.toppingList){
+            if(topping.getType().equals(name)){
+                return topping;
+            }
+        }
+        return null;
+    }
 }
 
