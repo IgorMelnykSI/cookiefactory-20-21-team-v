@@ -39,9 +39,9 @@ public class MemberTest {
         gc.set(Calendar.MONTH, 11);
         gc.set(Calendar.DAY_OF_MONTH, 2);
         date = gc.getTime();
-        store = new Store("store1","Antibes","8:00","16:00",0.15);
         way=1;
         home="polytech nice sophia";
+        store = new Store("store1","Antibes",8,0,16,0,0.15);
     }
 
     @Test

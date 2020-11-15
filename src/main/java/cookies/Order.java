@@ -9,6 +9,7 @@ public class Order {
      private String orderID;
      private double price;
      private Date pickUpDate;
+     private int[] pickUpTime;
      private Store pickUpStore;
      private String pickUp="pickUp";
      private String homeDelivery="homeDelivery";
@@ -19,7 +20,6 @@ public class Order {
         price = 0;
         pickUpDate = null;
         pickUpStore = null;
-        deliveryAddress=null;
     }
     public static int Guid = 100;
     public static String getGuid() {
@@ -52,6 +52,29 @@ public class Order {
     }
     public Store getPickUpStore(){return pickUpStore;}
     public String getDeliveryAddress(){return deliveryAddress;}
+    //选择配送方式
+    public String chooseTheWayToPick(int way){
+        switch (way){
+            case 1:
+                return pickUp;
+            case 2:
+                return homeDelivery;
+            default:
+                return null;
+        }
+    }
+
+    public int[] getPickUpTime() {
+        return pickUpTime;
+    }
+    public int getPickUpHour(){
+        return pickUpTime[0];
+    }
+
+    public int getPickUpMin(){
+        return pickUpTime[1];
+    }
+
     public String getOrderID() {
         return orderID;
     }
@@ -85,18 +108,6 @@ public class Order {
 //    public void setPrice(double price) {
 //        this.price = price;
 //    }
-
-    //选择配送方式
-    public String chooseTheWayToPick(int way){
-        switch (way){
-            case 1:
-                return pickUp;
-            case 2:
-                return homeDelivery;
-            default:
-                return null;
-        }
-    }
 
     public void setPickUpDate(Date pickUpDate) {
         this.pickUpDate = pickUpDate;

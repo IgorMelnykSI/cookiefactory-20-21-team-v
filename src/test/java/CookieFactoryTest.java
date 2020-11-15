@@ -39,7 +39,7 @@ class CookieFactoryTest {
 
     @Test
     void getStore() {
-        Store storeTest = new Store("storeTest","address1","8:30","19:00",0.2);
+        Store storeTest = new Store("storeTest","address1",8,30,19,0,0.2);
         cook.addStore(storeTest);
         assertEquals(cook.getStore("storeTest"),storeTest);
         assertEquals(cook.getStore("storeTestNo"),null);
@@ -66,7 +66,7 @@ class CookieFactoryTest {
     @Test
     void addStore() {
         assertEquals(cook.getStore("store2"),null);
-        Store store2 = new Store("store2","address2","8:00","18:00",0.15);
+        Store store2 = new Store("store2","address2",8,0,18,0,0.15);
         cook.addStore(store2);
         assertEquals(cook.getStore("store2"),store2);
 
@@ -74,7 +74,7 @@ class CookieFactoryTest {
 
     @Test
     void deleteStore() {
-        Store store2 = new Store("store2","address2","8:00","18:00",0.15);
+        Store store2 = new Store("store2","address2",8,0,18,0,0.15);
         cook.addStore(store2);
         assertTrue(cook.getStore("store2")==store2);
         cook.deleteRecipe("store2");

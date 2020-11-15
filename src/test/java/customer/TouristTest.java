@@ -34,10 +34,10 @@ class TouristTest {
         gc.set(Calendar.MONTH, 10);//这里0是1月..以此向后推
         gc.set(Calendar.DAY_OF_MONTH, 2);//设置天
         date = gc.getTime();
-        store = new Store("store1","Antibes","8:00","16:00",0.15);
-        store1 = new Store("store2","Antibes","7:00","16:00",0.15);
         way=1;
         home="polytech nice sophia";
+        store = new Store("store1","Antibes",8,0,16,0,0.15);
+        store1 = new Store("store2","Antibes",7,0,16,0,0.15);
     }
     @Test
     void creatOrder() throws MyException {

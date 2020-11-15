@@ -58,7 +58,7 @@ class OrderTest {
 
     @Test
     void setPickUpStore() {
-        Store store=new Store("store1","address1","8:30","19:00",0.2);
+        Store store=new Store("store1","address1",8,30,19,0,0.2);
         order.setPickUpStore(store);
         assertEquals(order.getPickUpStore(),store);
     }

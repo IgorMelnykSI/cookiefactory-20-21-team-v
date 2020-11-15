@@ -7,8 +7,8 @@ import java.util.*;
 public class Store {
     private String name;
     private String address;
-    protected String openTime;
-    protected String closeTime;
+    protected int[] openTime;
+    protected int[] closeTime;
     private double tax;
     private List<Order> historyOrders = new ArrayList<>();
     private Recipe myBestOf ;
@@ -16,18 +16,26 @@ public class Store {
     private String country;
     private boolean hasProblem = false;
 
-    public Store(String name, String address, String openTime, String closeTime, double tax){
+    public Store(String name, String address, int openhour, int openmin, int closeHour, int closeMin,double tax){
         this.name = name;
         this.address = address;
-        this.openTime = openTime;
-        this.closeTime = closeTime;
+        this.openTime[0] = openhour;
+        this.openTime[1] = openmin;
+        this.closeTime[0] = closeHour;
+        this.closeTime[1]=closeMin;
         this.tax = tax;
         this.myBestOf = new Recipe("",0);
         this.nationalBestOf = new Recipe("",0);
     }
 
     public boolean checkOrder(Order order){
-        //TODO check correct pickTime
+        if (this.openTime[0]>order.getPickUpHour()||this.closeTime[0]<order.getPickUpMin()){
+            return false;
+        }
+        if (this.openTime[0]==order.getPickUpHour()&&this.openTime[1]>order.getPickUpMin()||this.closeTime[0]==order.getPickUpMin()&&this.closeTime[1]<order.getPickUpMin()){
+            return false;
+        }
+
         //TODO check correct ingredient
         //TODO check enough ingredient
 
@@ -79,19 +87,24 @@ public class Store {
                 }
             }
         }
-
          */
     }
 
     public String getName(){return name;}
     public String getAddress(){return address;}
 
-    public String getCloseTime() {
-        return closeTime;
+    public int getCloseHour() {
+        return closeTime[0];
     }
 
-    public String getOpenTime() {
-        return openTime;
+    public int getOpenHour() {
+        return openTime[0];
+    }
+    public int getOpenMin(){
+        return openTime[1];
+    }
+    public int getCloseMin(){
+        return closeTime[1];
     }
 
     public double getTax(){return tax;}
@@ -104,12 +117,14 @@ public class Store {
         this.address = address;
     }
 
-    public void setOpenTime(String openTime) {
-        this.openTime = openTime;
+    public void setOpenTime(int openHour,int openMin) {
+        this.openTime[0] = openHour;
+        this.openTime[1] = openMin;
     }
 
-    public void setCloseTime(String closeTime) {
-        this.closeTime = closeTime;
+    public void setCloseTime(int closeHour,int closeMin) {
+        this.closeTime[0] = closeHour;
+        this.closeTime[1] = closeMin;
     }
 
     public void setTax(double tax) {

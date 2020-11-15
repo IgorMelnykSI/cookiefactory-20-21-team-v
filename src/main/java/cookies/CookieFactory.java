@@ -59,7 +59,7 @@ public class CookieFactory {
 
     private void initStoreList() {
         storeList = new HashSet<>();
-        Store store1 = new Store("store1","Biot","8:30","18:00",0.2);
+        Store store1 = new Store("store1","Biot",8,30,18,0,0.2);
         storeList.add(store1);
     }
 
