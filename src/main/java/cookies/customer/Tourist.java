@@ -24,22 +24,14 @@ public class Tourist {
              order.setPickUpDate(date);
              order.setPickUpStore(store);
          }else if(wayToTake=="homeDelivery"){
+             order.setPickUpStore(store);//这是为了确定客户选择哪家店下订单
              order.setDeliveryAddress(deliveryAddress);
          }else {
              throw new MyException("非法配送方式, 请输入序号选择配送方式:" +
                      "\n1. Pick up" +
                      "\n2. Home delivery");
          }
-//        if (order.chooseTheWayToPick(way)=="pickUp"){
-//            order.setPickUpDate(date);
-//            order.setPickUpStore(store);
-//        }else if(order.chooseTheWayToPick(way)=="homeDelivery"){
-//            order.setDeliveryAddress(deliveryAddress);
-//        }else {
-//            throw new MyException("非法配送方式, 请输入序号选择配送方式:" +
-//                    "\n1. Pick up" +
-//                    "\n2. Home delivery");
-//        }
+
         for(Recipe recipe : mp.keySet()){
             CookieItem item=new CookieItem(mp.get(recipe),recipe);
             item.calculatePrice();

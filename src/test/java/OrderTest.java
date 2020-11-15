@@ -64,4 +64,17 @@ class OrderTest {
         assertEquals(order.getPrice(),9.0);
     }
 
+    @Test
+    void setDeliveryAddress(){
+        order.setDeliveryAddress("Villa nador");
+        assertEquals("Villa nador",order.getDeliveryAddress());
+    }
+
+    @Test
+    void chooseTheWayToPick(){
+        assertEquals("pickUp",order.chooseTheWayToPick(1));
+        assertEquals("homeDelivery",order.chooseTheWayToPick(2));
+        assertEquals(null,order.chooseTheWayToPick(3));
+    }
+
 }

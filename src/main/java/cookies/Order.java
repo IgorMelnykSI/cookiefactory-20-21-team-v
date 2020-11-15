@@ -19,7 +19,9 @@ public class Order {
         orderID = getGuid();
         price = 0;
         pickUpDate = null;
+        pickUpTime=null;
         pickUpStore = null;
+        deliveryAddress=null;
     }
 
     public static int Guid = 100;
