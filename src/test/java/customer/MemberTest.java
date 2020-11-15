@@ -28,8 +28,10 @@ public class MemberTest {
         member1 = new Member("testLu");
         member2 = new Member("trialYao");
         Recipe[] r = new Recipe[2];
-        r[0] = new Recipe("cookie1",1.5);
-        r[1] = new Recipe("cookie2",2);
+        r[0] = new Recipe("cookie1");//1.5
+        r[0].setPrice(3.0);
+        r[1] = new Recipe("cookie2");//2
+        r[1].setPrice(2.5);
         mp = new HashMap<>();
         mp.put(r[0],10);
         mp.put(r[1],20);
@@ -76,11 +78,11 @@ public class MemberTest {
     public void creatDiscountOrder() throws MyException {
         member1.registerLoyal();
         Order order1 = member1.creatDiscountOrder(mp,way,date,store,home);
-        assertEquals(order1.getPrice(),55.0,0.01);
+        assertEquals(order1.getPrice(),80,0.01);
 
         Order order2 = member1.creatDiscountOrder(mp,way,date,store,home);
         assertEquals(member1.applyLoyaltyDiscount(),0.1,0.01);
-        assertEquals(order2.getPrice(),49.5,0.01);
+        assertEquals(order2.getPrice(),72,0.01);
     }
 
     @Test

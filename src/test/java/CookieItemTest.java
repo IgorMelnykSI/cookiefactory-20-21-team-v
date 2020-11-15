@@ -1,7 +1,7 @@
 
 
 import cookies.CookieItem;
-import cookies.recipe.Recipe;
+import cookies.recipe.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,16 +14,25 @@ class CookieItemTest {
     void init(){
 
         r = new Recipe[2];
-        r[0] = new Recipe("cookie1",1.5);
-        r[1] = new Recipe("cookie2",2);
+        r[0] = new Recipe("cookie1");//1.5
+        r[1] = new Recipe("cookie2");//2
+        r[0].setCooking(new Cooking("Crunchy"));
+        r[0].setFlavour(new Flavour("Vanilla"));
+        r[0].setDough(new Dough("Peanut butter"));
+        r[0].setMix(new Mix("Mixed"));
+        Topping mm=new Topping("M&M’s™");
+        Topping[] tops1=new Topping[]{mm};
+        r[0].setToppings(tops1);
         ck = new CookieItem[2];
         ck[0] = new CookieItem(10,r[0]);
         ck[1] = new CookieItem(5,r[1]);
     }
     @Test
     void getPrice() {
-        assertEquals(15,ck[0].getPrice());
-        assertEquals(10,ck[1].getPrice());
+        r[0].calculatePrice();
+        ck[0].calculatePrice();
+        assertEquals(34.0,ck[0].getPrice());
+        assertEquals(0,ck[1].getPrice());
     }
 
     @Test
@@ -54,15 +63,22 @@ class CookieItemTest {
     @Test
     void changeToBestOf(){
         ck[0].changeToBestOf();
-        assertEquals(ck[0].getPrice(),13.5);
+        assertEquals(ck[0].getPrice(),0);
+        r[0].calculatePrice();
+        ck[0].calculatePrice();
+        ck[0].changeToBestOf();
+        assertEquals(30.6,ck[0].getPrice());
+
     }
 
     @Test
     void calculatePrice(){
-        assertEquals(15,ck[0].getPrice());
+        r[0].calculatePrice();
+        ck[0].calculatePrice();
+        assertEquals(34.0,ck[0].getPrice());
         ck[0].setIsPersonalized();
         ck[0].calculatePrice();
-        assertEquals(18.75,ck[0].getPrice());
+        assertEquals(42.5,ck[0].getPrice());
 
     }
 

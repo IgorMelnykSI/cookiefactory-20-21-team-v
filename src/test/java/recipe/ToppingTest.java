@@ -7,16 +7,28 @@ import cookies.recipe.Topping;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ToppingTest {
-    Topping aa=new Topping("swe");
+    Topping aa=new Topping("White chocolate");
 
     @Test
     void getType() {
-        assertTrue(aa.getType()=="swe");
+        assertTrue(aa.getType()=="White chocolate");
     }
 
     @Test
     void setType(){
-        aa.setType("hehe");
-        assertTrue(aa.getType()=="hehe");
+        aa.setType("Milk chocolate");
+        assertTrue(aa.getType()=="Milk chocolate");
+    }
+
+    @Test
+    void setPrice(){
+        aa.setPrice();
+        assertEquals(0.2,aa.getPrice());
+    }
+
+    @Test
+    void getPrice(){
+        aa.setPrice();
+        assertEquals(0.2,aa.getPrice());
     }
 }

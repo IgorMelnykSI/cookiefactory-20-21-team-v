@@ -7,14 +7,15 @@ public class CookieItem {
     private String recipeName;
     private double recipePrice;
     private double price;
+    private Recipe recipe;
     private boolean isPersonalized = false;//TODO
 
 
     public CookieItem(int quantity, Recipe recipe){
         this.quantity = quantity;
+        this.recipe=recipe;
         this.recipeName = recipe.getName();
         this.recipePrice = recipe.getPrice();
-        calculatePrice();
     }
 
     public void setIsPersonalized(){
@@ -50,6 +51,7 @@ public class CookieItem {
     }
 
     public  void calculatePrice(){
+        recipePrice=recipe.getPrice();
         if(isPersonalized==false)
         this.price = quantity*recipePrice;
         else

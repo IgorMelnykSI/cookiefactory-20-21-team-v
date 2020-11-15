@@ -19,4 +19,16 @@ class DoughTest {
         assertEquals("Chocolate",plain.getType());
     }
 
+    @Test
+    void setPrice(){
+        plain.setPrice();
+        assertEquals(2.0,plain.getPrice());
+    }
+
+    @Test
+    void getPrice(){
+        plain.setPrice();
+        assertEquals(2.0,plain.getPrice());
+    }
+
 }

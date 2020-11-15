@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 public class Tourist {
 
+    private boolean isPrivateCookieItem=false;
 
     public Order creatNoDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store,String deliveryAddress) throws MyException {
         Order order = new Order();
@@ -40,11 +41,15 @@ public class Tourist {
         }
 
         for(Recipe recipe : mp.keySet()){
-            order.addCookieItem(new CookieItem(mp.get(recipe),recipe));
+            CookieItem item=new CookieItem(mp.get(recipe),recipe);
+            item.calculatePrice();
+            order.addCookieItem(item);
         }
         order.caculatePrice();
         return order;
     }
+
+//    public void createPrivateItem(Recipe recipe)
 
 
 }

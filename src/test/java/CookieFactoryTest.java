@@ -31,7 +31,7 @@ class CookieFactoryTest {
 
     @Test
     void getRecipe() {
-        Recipe recipeTest=new Recipe("recipeTest",9.8);
+        Recipe recipeTest=new Recipe("recipeTest");//9.8
         cook.addRecipe(recipeTest);
         assertEquals(cook.getRecipe("recipeTest"),recipeTest);
         assertEquals(cook.getRecipe("recipeTestNo"),null);
@@ -48,7 +48,7 @@ class CookieFactoryTest {
     @Test
     void addRecipe() {
         assertEquals(cook.getRecipe("recipeTest1"),null);
-        Recipe recipeTest1=new Recipe("recipeTest1",9.8);
+        Recipe recipeTest1=new Recipe("recipeTest1");//9.8
         cook.addRecipe(recipeTest1);
         assertEquals(cook.getRecipe("recipeTest1"),recipeTest1);
 
@@ -56,7 +56,7 @@ class CookieFactoryTest {
 
     @Test
     void deleteRecipe() {
-        Recipe recipeTest2=new Recipe("recipeTest2",9.5);
+        Recipe recipeTest2=new Recipe("recipeTest2");//9.5
         cook.addRecipe(recipeTest2);
         assertTrue(cook.getRecipe("recipeTest2")==recipeTest2);
         cook.deleteRecipe("recipeTest2");
@@ -105,7 +105,7 @@ class CookieFactoryTest {
       cook.addCount("recipe2");
       cook.deleteFewOrderRecipe();
        assertEquals(cook.getRecipe("recipe2"),null);
-       Recipe recipeTest1=new Recipe("recipeTest1",9.8);
+       Recipe recipeTest1=new Recipe("recipeTest1");//9.8
        cook.addRecipe(recipeTest1);
        for(int i=0;i<4;i++)
           cook.addCount("recipeTest1");

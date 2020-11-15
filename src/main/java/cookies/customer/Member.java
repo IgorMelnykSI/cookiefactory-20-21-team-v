@@ -32,7 +32,7 @@ public class Member extends Tourist{
 
     public void registerLoyal(){
         isLoyal = true;
-    }
+    }//注册loyal计划
 
     public boolean hasDiscount(){     // check if the client has discount
         return loyalDiscount > 0;

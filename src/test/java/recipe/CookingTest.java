@@ -18,4 +18,15 @@ class CookingTest {
         crunchy.setType("Chewy");
         assertEquals("Chewy",crunchy.getType());
     }
+    @Test
+    void setPrice(){
+//        crunchy.setPrice();
+        assertEquals(0.3,crunchy.getPrice());
+    }
+
+    @Test
+    void getPrice(){
+        crunchy.setPrice();
+        assertEquals(0.3,crunchy.getPrice());
+    }
 }

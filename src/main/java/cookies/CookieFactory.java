@@ -36,7 +36,7 @@ public class CookieFactory {
 
     private void initRecipeList() {
         recipesList = new HashSet<>();
-        Recipe recipe1 = new Recipe("recipe1",2.5);
+        Recipe recipe1 = new Recipe("recipe1");
         recipe1.setDough(new Dough("Plain"));
         recipe1.setFlavour(new Flavour("Vanilla"));
         Topping[] toppings1 = new Topping[3];
@@ -46,7 +46,7 @@ public class CookieFactory {
         recipe1.setCooking(new Cooking("Crunchy"));
         recipesList.add(recipe1);
 
-        Recipe recipe2 = new Recipe("recipe2",3.5);
+        Recipe recipe2 = new Recipe("recipe2");
         recipe2.setDough(new Dough("Chocolate"));
         recipe2.setFlavour(new Flavour("Cinnamon"));
         Topping[] toppings2 = new Topping[3];

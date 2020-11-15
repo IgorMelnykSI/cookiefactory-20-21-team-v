@@ -18,4 +18,9 @@ class FlavourTest {
         cinnamon.setType("Chili");
         assertEquals("Chili",cinnamon.getType());
     }
+
+    @Test
+    void getPrice(){
+        assertTrue(cinnamon.getPrice()==0.1);
+    }
 }

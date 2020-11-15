@@ -18,4 +18,16 @@ class MixTest {
         mixed.setType("Topped");
         assertEquals("Topped",mixed.getType());
     }
+
+    @Test
+    void setPrice(){
+        mixed.setPrice();
+        assertEquals(0.2,mixed.getPrice());
+    }
+
+    @Test
+    void getPrice(){
+        mixed.setPrice();
+        assertEquals(0.2,mixed.getPrice());
+    }
 }

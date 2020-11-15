@@ -1,5 +1,7 @@
 package cookies.recipe;
 
+import java.math.BigDecimal;
+
 public class Recipe {
     private String name;
     private double price;
@@ -9,17 +11,25 @@ public class Recipe {
     private Cooking cooking;
     private Topping[] toppings;
 
-    public Recipe(String name, double price){
+    public Recipe(String name){
         this.name=name;
-        this.price=price;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice(double price){
+        this.price=price;
+
+    }
+    public void calculatePrice(){
+        this.price=0;
+        for(Topping top:toppings)
+            price=price+top.getPrice();
+        this.price= price+dough.getPrice()+flavour.getPrice()+ mix.getPrice()+ cooking.getPrice();
+        BigDecimal b = new BigDecimal(price);
+        price = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
     public String getName() {

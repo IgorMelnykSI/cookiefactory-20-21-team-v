@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RecipeTest {
-    Recipe recipe1=new Recipe("recipe1",5.5);
+    Recipe recipe1=new Recipe("recipe1");//5.5
     Cooking crunchy=new Cooking("Crunchy");
     Flavour vanilla=new Flavour("Vanilla");
     Dough peabut=new Dough("Peanut butter");
@@ -23,7 +23,14 @@ class RecipeTest {
 
     @Test
     void getPrice() {
-        assertTrue(recipe1.getPrice()==5.5);
+        assertEquals(recipe1.getPrice(),0);
+        recipe1.setCooking(crunchy);
+        recipe1.setFlavour(vanilla);
+        recipe1.setDough(peabut);
+        recipe1.setMix(mixed);
+        recipe1.setToppings(tops1);
+        recipe1.calculatePrice();
+        assertEquals(3.8,recipe1.getPrice());
     }
 
 
@@ -38,11 +45,14 @@ class RecipeTest {
 
     @Test
     void setPrice() {
-        recipe1.setPrice(7.82);
-        assertAll(
-                ()->assertFalse(recipe1.getPrice()==5.5),
-                ()->assertEquals(7.82,recipe1.getPrice())
-        );
+        recipe1.setCooking(crunchy);
+        recipe1.setFlavour(vanilla);
+        recipe1.setDough(peabut);
+        recipe1.setMix(mixed);
+        recipe1.setToppings(tops1);
+        recipe1.calculatePrice();
+        assertEquals(3.8,recipe1.getPrice());
+
     }
 
     @Test

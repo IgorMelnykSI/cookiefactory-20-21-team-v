@@ -24,8 +24,8 @@ public class Store {
         this.closeTime[0] = closeHour;
         this.closeTime[1]=closeMin;
         this.tax = tax;
-        this.myBestOf = new Recipe("",0);
-        this.nationalBestOf = new Recipe("",0);
+        this.myBestOf = new Recipe("");
+        this.nationalBestOf = new Recipe("");
     }
 
     public boolean checkOrder(Order order){
