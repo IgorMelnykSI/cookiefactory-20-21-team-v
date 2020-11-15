@@ -20,9 +20,24 @@ class OrderTest {
         recipe=new Recipe("recipe1",8.8);
         item=new CookieItem(3,recipe);
         order =new Order();
+        Store store1=new Store("store1","address1",8,30,19,0,0.2);
+
     }
 
 
+    @Test
+    void setPickUpDate() {
+        Date date=new Date();
+        order.setPickUpDate(date);
+        assertEquals(order.getPickUpDate(),date);
+    }
+
+    @Test
+    void setPickUpStore() {
+        Store store=new Store("store1","address1",8,30,19,0,0.2);
+        order.setPickUpStore(store);
+        assertEquals(order.getPickUpStore(),store);
+    }
 
     @Test
     void addCookieItem() {
@@ -49,17 +64,4 @@ class OrderTest {
         assertEquals(order.getPrice(),9.0);
     }
 
-    @Test
-    void setPickUpDate() {
-        Date date=new Date();
-        order.setPickUpDate(date);
-        assertEquals(order.getPickUpDate(),date);
-    }
-
-    @Test
-    void setPickUpStore() {
-        Store store=new Store("store1","address1",8,30,19,0,0.2);
-        order.setPickUpStore(store);
-        assertEquals(order.getPickUpStore(),store);
-    }
 }

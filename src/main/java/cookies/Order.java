@@ -21,6 +21,7 @@ public class Order {
         pickUpDate = null;
         pickUpStore = null;
     }
+
     public static int Guid = 100;
     public static String getGuid() {
 
@@ -87,9 +88,11 @@ public class Order {
 //    }
 
     public void addCookieItem(CookieItem ci) {
-        if (ci.getRecipeName().equals(pickUpStore.getMyBestOf().getName())
-                || ci.getRecipeName().equals(pickUpStore.getnationalBestOf().getName()))
-            ci.changeToBestOf();
+        if(pickUpStore != null) {
+            if (ci.getRecipeName().equals(pickUpStore.getMyBestOf().getName())
+                    || ci.getRecipeName().equals(pickUpStore.getnationalBestOf().getName()))
+                ci.changeToBestOf();
+        }
         cookieItems.add(ci);
 
     }
