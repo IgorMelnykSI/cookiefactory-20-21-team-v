@@ -56,4 +56,32 @@ class CookieItemTest {
         ck[0].changeToBestOf();
         assertEquals(ck[0].getPrice(),13.5);
     }
+
+    @Test
+    void calculatePrice(){
+        assertEquals(15,ck[0].getPrice());
+        ck[0].setIsPersonalized();
+        ck[0].calculatePrice();
+        assertEquals(18.75,ck[0].getPrice());
+
+    }
+
+    @Test
+    void setIsPersonalized(){
+        ck[0].setIsPersonalized();
+        assertAll(
+                () -> assertEquals(ck[0].getIsPersonalized(),true),
+                () -> assertEquals(ck[1].getIsPersonalized(),false)
+        );
+    }
+
+    @Test
+    void getIsPersonalized(){
+        assertAll(
+                () -> assertEquals(ck[0].getIsPersonalized(),false),
+                () -> assertEquals(ck[1].getIsPersonalized(),false)
+        );
+        ck[0].setIsPersonalized();
+        assertEquals(ck[0].getIsPersonalized(),true);
+    }
 }
