@@ -20,6 +20,16 @@ class CookieFactoryTest {
     }
 
     @Test
+    void setMap(){
+        cook.resetFactory();
+        cook.setMap();
+        assertAll(
+                () -> assertTrue(cook.getMap().containsKey(cook.getRecipe("recipe1"))),
+                () -> assertTrue(cook.getMap().containsKey(cook.getRecipe("recipe2")))
+        );
+    }
+
+    @Test
     void getRecipe() {
         Recipe recipeTest=new Recipe("recipeTest",9.8);
         cook.addRecipe(recipeTest);
@@ -70,5 +80,48 @@ class CookieFactoryTest {
         cook.deleteRecipe("store2");
         assertTrue(cook.getRecipe("store2")==null);
     }
+
+    @Test
+    void addCount(){
+        cook.resetFactory();
+        cook.setMap();
+        assertAll(
+                () -> assertEquals(cook.getMap().get(cook.getRecipe("recipe1")),0),
+                () -> assertEquals(cook.getMap().get(cook.getRecipe("recipe2")),0)
+        );
+        cook.addCount("recipe1");
+        assertEquals(cook.getMap().get(cook.getRecipe("recipe1")),1);
+
+
+    }
+
+    @Test
+    void deleteFewOrderRecipe(){
+        cook.resetFactory();
+        cook.setMap();
+       for(int i=0;i<10;i++) {
+           cook.addCount("recipe1");
+       }
+      cook.addCount("recipe2");
+      cook.deleteFewOrderRecipe();
+       assertEquals(cook.getRecipe("recipe2"),null);
+       Recipe recipeTest1=new Recipe("recipeTest1",9.8);
+       cook.addRecipe(recipeTest1);
+       for(int i=0;i<4;i++)
+          cook.addCount("recipeTest1");
+       cook.deleteFewOrderRecipe();
+       assertEquals(cook.getRecipe("recipeTest1"),null);
+    }
+
+    @Test
+    void getMap(){
+        cook.resetFactory();
+        cook.setMap();
+        assertAll(
+                () -> assertTrue(cook.getMap().containsKey(cook.getRecipe("recipe1"))),
+                () -> assertTrue(cook.getMap().containsKey(cook.getRecipe("recipe2")))
+        );
+    }
+
 
 }

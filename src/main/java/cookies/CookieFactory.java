@@ -9,11 +9,13 @@ public class CookieFactory {
 
     private Set<Recipe> recipesList;
     private Set<Store> storeList;
+    private Map<Recipe,Integer>map;
 
 
     public CookieFactory() {
         recipesList = new HashSet<>();
         storeList = new HashSet<>();
+        this.map=new HashMap<>();
         initRecipeList();
         initStoreList();
     }
@@ -24,6 +26,12 @@ public class CookieFactory {
         initRecipeList();
         initStoreList();
 
+    }
+
+    public void setMap(){
+        for(Recipe recipe:recipesList)
+            if(!map.containsKey(recipe))
+                map.put(recipe,0);
     }
 
     private void initRecipeList() {
@@ -78,10 +86,36 @@ public class CookieFactory {
 
     public void addRecipe(Recipe newRecipe) {
         recipesList.add(newRecipe);
+        setMap();
+    }
+
+    public void addCount(String recipeName) {
+        int i = 0;
+        for (Recipe recipe : map.keySet())
+            if (recipeName.equals(recipe.getName())) {
+                i=map.get(recipe)+1;
+                map.put(recipe,i);
+            }
     }
 
     public void deleteRecipe(String name) {
-        recipesList.remove(getRecipe(name));
+
+       recipesList.remove(getRecipe(name));
+    }
+
+    public void deleteFewOrderRecipe(){
+        Set<Recipe>set=map.keySet();
+        Iterator<Recipe> it=set.iterator();
+        while(it.hasNext())
+        {
+            Recipe recipe=(Recipe)it.next();
+            int count=(int)map.get(recipe);
+            if(count<5)
+            {
+                recipesList.remove(getRecipe(recipe.getName()));
+                it.remove();
+            }
+        }
     }
 
     public void addStore(Store store) {
@@ -93,6 +127,10 @@ public class CookieFactory {
 
     public Set<Store> getStoreList() {
         return storeList;
+    }
+
+    public Map<Recipe,Integer> getMap(){
+        return this.map;
     }
 
 
