@@ -141,5 +141,18 @@ public class CookieFactory {
         getStore(name).setHasProblem(false);
     }
 
+    public Set<Store> getNearbyStores(Store store){
+        Set<Store> nearbyStores = new HashSet<>();
+        double distance = 0;
+        for(Store s: storeList){
+            if(s.getName().equals(store.getName())) continue;
+            distance = Math.sqrt(Math.pow((s.getPosition()[0] - store.getPosition()[0]),2)
+                    + Math.pow((s.getPosition()[1] - store.getPosition()[1]),2));
+            if(distance < 5){
+                nearbyStores.add(s);
+            }
+        }
+        return nearbyStores;
+    }
 }
 
