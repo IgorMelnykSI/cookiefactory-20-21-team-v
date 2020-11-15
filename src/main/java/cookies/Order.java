@@ -10,12 +10,16 @@ public class Order {
      private double price;
      private Date pickUpDate;
      private Store pickUpStore;
+     private String pickUp="pickUp";
+     private String homeDelivery="homeDelivery";
+     private String deliveryAddress;
      private Set<CookieItem> cookieItems = new HashSet<>();
     public Order(){
         orderID = getGuid();
         price = 0;
         pickUpDate = null;
         pickUpStore = null;
+        deliveryAddress=null;
     }
     public static int Guid = 100;
     public static String getGuid() {
@@ -47,6 +51,7 @@ public class Order {
         return pickUpDate;
     }
     public Store getPickUpStore(){return pickUpStore;}
+    public String getDeliveryAddress(){return deliveryAddress;}
     public String getOrderID() {
         return orderID;
     }
@@ -81,11 +86,27 @@ public class Order {
 //        this.price = price;
 //    }
 
+    //选择配送方式
+    public String chooseTheWayToPick(int way){
+        switch (way){
+            case 1:
+                return pickUp;
+            case 2:
+                return homeDelivery;
+            default:
+                return null;
+        }
+    }
+
     public void setPickUpDate(Date pickUpDate) {
         this.pickUpDate = pickUpDate;
     }
     public void setPickUpStore(Store pickUpStore) {
             this.pickUpStore= pickUpStore;
+    }
+
+    public void setDeliveryAddress(String deliveryAddress){
+        this.deliveryAddress=deliveryAddress;
     }
 
 }
