@@ -14,6 +14,7 @@ public class Recipe {
 
     public Recipe(String name){
         this.name=name;
+        toppings = new Topping[3];
     }
 
     public boolean compareRecipe(Recipe re){
@@ -39,8 +40,11 @@ public class Recipe {
     }
     public void calculatePrice(){
         this.price=0;
-        for(Topping top:toppings)
-            price=price+top.getPrice();
+        for(Topping top:toppings) {
+            if (top != null)
+                price = price + top.getPrice();
+        }
+
         this.price= price+dough.getPrice()+flavour.getPrice()+ mix.getPrice()+ cooking.getPrice();
         BigDecimal b = new BigDecimal(price);
         price = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
@@ -71,7 +75,7 @@ public class Recipe {
     }
 
     public void setToppings(Topping[] toppings) {
-        this.toppings = toppings;
+        this.toppings = Arrays.copyOfRange(toppings,0,3);
     }
 
     public Cooking getCooking(){
