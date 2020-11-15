@@ -62,6 +62,9 @@ public class Tourist {
                     "\n1. Pick up" +
                     "\n2. Home delivery");
         }
+        if(store.hasProblem()){
+            throw new MyException("The store has technical problems, please choose another store\n");
+        }
 //
         for(Recipe recipe : mp.keySet()){
             CookieItem item=new CookieItem(mp.get(recipe),recipe);

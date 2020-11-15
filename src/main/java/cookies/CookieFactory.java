@@ -133,7 +133,13 @@ public class CookieFactory {
         return this.map;
     }
 
+    public void makeStoreHaveProblem(String name){
+        getStore(name).setHasProblem(true);
+    }
 
+    public void fixStoreProblem(String name){
+        getStore(name).setHasProblem(false);
+    }
 
 }
 
