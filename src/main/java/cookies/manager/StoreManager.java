@@ -24,4 +24,8 @@ public class StoreManager{
         this.store.setTax(tax);
     }
 
+    public void setStoreProblem(boolean i){
+        store.setHasProblem(i);
+    }
+
 }
