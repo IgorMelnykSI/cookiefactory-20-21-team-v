@@ -3,11 +3,11 @@ package cookies.customer;
 import cookies.CookieItem;
 import cookies.Order;
 import cookies.Store;
-import cookies.recipe.*;
+import cookies.recipe.Recipe;
 
 import java.util.*;
 
-public class Member extends Tourist {
+public class Member extends Tourist{
 
     private int id;
     private boolean isLoyal;
@@ -17,7 +17,7 @@ public class Member extends Tourist {
     private List<Order> historyOrders;
     private String name;
 
-    public Member(String name) {
+    public Member(String name){
         this.name = name;
         this.isLoyal = false;
         this.id = ++numberOfAccount;
@@ -25,16 +25,16 @@ public class Member extends Tourist {
         this.historyOrders = new ArrayList<>();
     }
 
-    public Member(String name, Boolean isLoyal) {
+    public Member(String name,Boolean isLoyal){
         this(name);
         this.isLoyal = isLoyal;
     }
 
-    public void registerLoyal() {
+    public void registerLoyal(){
         isLoyal = true;
     }//注册loyal计划
 
-    public boolean hasDiscount() {     // check if the client has discount
+    public boolean hasDiscount(){     // check if the client has discount
         return loyalDiscount > 0;
     }
 
@@ -42,17 +42,16 @@ public class Member extends Tourist {
      * Calculate the amount of Loyal discount
      * Set the amount of discount and reset the counter of cookies ordered if over 30 cookies
      * Otherwise set 0 if is not suitable
-     *
      * @param cookieItems newly ordered
      */
     private void computeLoyalDiscount(Set<CookieItem> cookieItems) {
-        if (!isLoyal) {
+        if (!isLoyal){
             return;
         }
         cookieItems.forEach((cookieItem) -> numCookiesOrdered += cookieItem.getQuantity());
 
-        if (numCookiesOrdered >= 30) {    // over 30 cookies
-            this.loyalDiscount = 0.1;    // 10% discount
+        if (numCookiesOrdered >= 30) {	// over 30 cookies
+            this.loyalDiscount = 0.1;	// 10% discount
         }
     }
 
@@ -63,19 +62,19 @@ public class Member extends Tourist {
 
     // get the loyalty discount and reset for next time
     public double applyLoyaltyDiscount() {
-        if (this.hasDiscount()) {
+        if(this.hasDiscount()){
             this.loyalDiscount = 0;
             this.numCookiesOrdered = 0;
             return 0.1;
-        } else {
+        }else{
             return 0;
         }
     }
 
     // Member can use this function to use loyal discount
     // Otherwise he can use creatNoDiscountOrder() to make order without loyal discount
-    public Order creatDiscountOrder(Map<Recipe, Integer> mp, int way, Date date, Store store, String address) throws MyException {
-        Order newOrder = creatNoDiscountOrder(mp, way, date, store, address);
+    public Order creatDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store, String address) throws MyException {
+        Order newOrder = creatNoDiscountOrder(mp, way , date, store,address);
         newOrder.caculateDiscountPrice(applyLoyaltyDiscount());
         saveOrderInHistory(newOrder);
         return newOrder;
@@ -85,7 +84,7 @@ public class Member extends Tourist {
         this.isLoyal = loyal;
     }
 
-    public int getId() {
+    public int  getId() {
         return id;
     }
 
@@ -99,13 +98,5 @@ public class Member extends Tourist {
 
     public int getNumCookiesOrdered() {
         return numCookiesOrdered;
-    }
-
-
-    public Order createPrivateDiscountOrder(Map<Recipe, Integer> mp, int way, Date date, Store store, String Address) throws MyException {
-        Order newOrder = createPrivateOrder(mp, way, date, store, Address);
-        newOrder.caculateDiscountPrice(applyLoyaltyDiscount());
-        saveOrderInHistory(newOrder);
-        return newOrder;
     }
 }
