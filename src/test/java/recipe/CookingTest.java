@@ -6,27 +6,26 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CookingTest {
-    Cooking crunchy=new Cooking("Crunchy");
+    Cooking cooking=new Cooking("Crunchy",0.3);
 
     @Test
     void getType() {
-        assertEquals("Crunchy",crunchy.getType());
+        assertEquals("Crunchy",cooking.getType());
     }
 
     @Test
     void setType() {
-        crunchy.setType("Chewy");
-        assertEquals("Chewy",crunchy.getType());
+        cooking.setType("Chewy");
+        assertEquals("Chewy",cooking.getType());
     }
     @Test
     void setPrice(){
-//        crunchy.setPrice();
-        assertEquals(0.3,crunchy.getPrice());
+        cooking.setPrice(0.2);
+        assertEquals(0.2,cooking.getPrice());
     }
 
     @Test
     void getPrice(){
-        crunchy.setPrice();
-        assertEquals(0.3,crunchy.getPrice());
+        assertEquals(0.3,cooking.getPrice());
     }
 }

@@ -4,10 +4,9 @@ public class Cooking {
     private String type;
     private double price;
 
-    public Cooking(String type){
+    public Cooking(String type,double price){
          this.type = type;
-         setPrice();
-         this.price=getPrice();
+         this.price= price;
 
     }
 
@@ -19,12 +18,10 @@ public class Cooking {
         this.type = type;
     }
 
-    public void setPrice(){
-        if(this.type=="Crunchy")
-            this.price=0.3;
-        else if(this.type=="Chewy")
-            this.price=0.4;
+    public void setPrice(double price) {
+        this.price = price;
     }
+
     public double getPrice(){
         return this.price;
     }

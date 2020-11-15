@@ -16,11 +16,11 @@ class CookieItemTest {
         r = new Recipe[2];
         r[0] = new Recipe("cookie1");//1.5
         r[1] = new Recipe("cookie2");//2
-        r[0].setCooking(new Cooking("Crunchy"));
-        r[0].setFlavour(new Flavour("Vanilla"));
-        r[0].setDough(new Dough("Peanut butter"));
-        r[0].setMix(new Mix("Mixed"));
-        Topping mm=new Topping("M&M’s™");
+        r[0].setCooking(new Cooking("Crunchy",0.3));
+        r[0].setFlavour(new Flavour("Vanilla",0.1));
+        r[0].setDough(new Dough("Peanut butter",2.5));
+        r[0].setMix(new Mix("Mixed",0.2));
+        Topping mm=new Topping("M&M’s™",0.3);
         Topping[] tops1=new Topping[]{mm};
         r[0].setToppings(tops1);
         ck = new CookieItem[2];

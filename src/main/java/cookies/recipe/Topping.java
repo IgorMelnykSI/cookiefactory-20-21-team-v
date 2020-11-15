@@ -4,10 +4,9 @@ public class Topping {
     private String type;
     private double price;
 
-    public Topping(String type){
+    public Topping(String type,double price){
         this.type = type;
-        setPrice();
-        this.price=getPrice();
+        this.price= price;
     }
     public String getType() {
         return type;
@@ -17,13 +16,8 @@ public class Topping {
         this.type = type;
     }
 
-    public void setPrice(){
-        if(this.type=="White chocolate"||this.type=="Milk chocolate")
-            this.price=0.2;
-        else if(this.type=="M&M’s™")
-            this.price=0.3;
-        else if(this.type=="Reese’s buttercup")
-            this.price=0.4;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public double getPrice(){

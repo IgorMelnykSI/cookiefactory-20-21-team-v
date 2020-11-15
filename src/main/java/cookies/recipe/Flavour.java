@@ -2,10 +2,11 @@ package cookies.recipe;
 
 public class Flavour {
     private String type;
-    private final double price=0.1;
+    private double price;
 
-    public Flavour(String type){
+    public Flavour(String type,double price){
         this.type = type;
+        this.price = price;
     }
 
     public void setType(String type) {
@@ -14,6 +15,10 @@ public class Flavour {
 
     public String getType() {
         return type;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public double getPrice(){

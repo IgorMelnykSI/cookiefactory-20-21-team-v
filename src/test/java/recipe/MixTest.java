@@ -6,28 +6,27 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MixTest {
-    Mix mixed=new Mix("Mixed");
+    Mix mix=new Mix("Mixed",0.2);
 
     @Test
     void getType() {
-        assertEquals("Mixed",mixed.getType());
+        assertEquals("Mixed",mix.getType());
     }
 
     @Test
     void setType() {
-        mixed.setType("Topped");
-        assertEquals("Topped",mixed.getType());
+        mix.setType("Topped");
+        assertEquals("Topped",mix.getType());
     }
 
     @Test
     void setPrice(){
-        mixed.setPrice();
-        assertEquals(0.2,mixed.getPrice());
+        mix.setPrice(0.3);
+        assertEquals(0.3,mix.getPrice());
     }
 
     @Test
     void getPrice(){
-        mixed.setPrice();
-        assertEquals(0.2,mixed.getPrice());
+        assertEquals(0.2,mix.getPrice());
     }
 }

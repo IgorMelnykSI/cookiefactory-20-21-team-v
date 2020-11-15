@@ -22,12 +22,12 @@ class RecipeTest {
     @BeforeEach
     public void init(){
         recipe1=new Recipe("recipe1");//5.5
-        crunchy=new Cooking("Crunchy");
-        vanilla=new Flavour("Vanilla");
-        peabut=new Dough("Peanut butter");
-        mixed=new Mix("Mixed");
-        mm=new Topping("M&M’s™");
-        reese=new Topping("Reese’s buttercup");
+        crunchy=new Cooking("Crunchy",0.3);
+        vanilla=new Flavour("Vanilla",0.1);
+        peabut=new Dough("Peanut butter",2.5);
+        mixed=new Mix("Mixed",0.2);
+        mm=new Topping("M&M’s™",0.3);
+        reese=new Topping("Reese’s buttercup",0.4);
         tops1=new Topping[3];
         tops1[0]=mm;
         tops1[1]=reese;
