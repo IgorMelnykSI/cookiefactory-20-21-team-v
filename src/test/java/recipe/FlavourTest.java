@@ -6,21 +6,21 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FlavourTest {
-    Flavour cinnamon=new Flavour("Cinnamon");
+    Flavour flavour=new Flavour("Cinnamon",0.1);
 
     @Test
     void getType() {
-        assertEquals("Cinnamon",cinnamon.getType());
+        assertEquals("Cinnamon",flavour.getType());
     }
 
     @Test
     void setType() {
-        cinnamon.setType("Chili");
-        assertEquals("Chili",cinnamon.getType());
+        flavour.setType("Chili");
+        assertEquals("Chili",flavour.getType());
     }
 
     @Test
     void getPrice(){
-        assertTrue(cinnamon.getPrice()==0.1);
+        assertTrue(flavour.getPrice()==0.1);
     }
 }

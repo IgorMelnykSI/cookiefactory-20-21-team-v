@@ -7,25 +7,49 @@ import java.util.*;
 
 public class CookieFactory {
 
-    private Set<Recipe> recipesList;
     private Set<Store> storeList;
+    private Set<Dough> doughList;
+    private Set<Topping> toppingList;
+    private Set<Mix> mixList;
+    private Set<Flavour> flavourList;
+    private Set<Cooking> cookingList;
+    private Set<Recipe> recipesList;
     private Map<Recipe,Integer>map;
 
 
     public CookieFactory() {
-        recipesList = new HashSet<>();
         storeList = new HashSet<>();
+        doughList = new HashSet<>();
+        toppingList = new HashSet<>();
+        mixList = new HashSet<>();
+        flavourList = new HashSet<>();
+        cookingList = new HashSet<>();
+        recipesList = new HashSet<>();
         this.map=new HashMap<>();
-        initRecipeList();
         initStoreList();
+        initDoughList();
+        initToppingList();
+        initMixList();
+        initFlavourList();
+        initCookingList();
+        initRecipeList();
     }
 
     public void resetFactory() {
-        this.recipesList.clear();
         this.storeList.clear();
-        initRecipeList();
+        this.doughList.clear();
+        this.toppingList.clear();
+        this.mixList.clear();
+        this.flavourList.clear();
+        this.cookingList.clear();
+        this.recipesList.clear();
         initStoreList();
-
+        initDoughList();
+        initToppingList();
+        initMixList();
+        initFlavourList();
+        initCookingList();
+        initRecipeList();
     }
 
     public void setMap(){
@@ -34,26 +58,55 @@ public class CookieFactory {
                 map.put(recipe,0);
     }
 
+    private void initDoughList(){
+        doughList.add(new Dough("Plain",2.0));
+        doughList.add(new Dough("Chocolate",2.4));
+        doughList.add(new Dough("Peanut butter",2.5));
+        doughList.add(new Dough("Oatmeal",2.6));
+    }
+
+    private  void initToppingList(){
+        toppingList.add(new Topping("White chocolate",0.2));
+        toppingList.add(new Topping("Milk chocolate",0.2));
+        toppingList.add(new Topping("M&M’s™",0.3));
+        toppingList.add(new Topping("Reese’s buttercup",0.4));
+    }
+
+    private void initMixList(){
+        mixList.add(new Mix("Mixed",0.2));
+        mixList.add(new Mix("Topped",0.3));
+    }
+
+    private void initFlavourList(){
+        flavourList.add(new Flavour("Vanilla",0.1));
+        flavourList.add(new Flavour("Cinnamon",0.1));
+        flavourList.add(new Flavour("Chili",0.1));
+    }
+
+    private void initCookingList(){
+        cookingList.add(new Cooking("Crunchy",0.3));
+        cookingList.add(new Cooking("Chewy",0.4));
+    }
+
     private void initRecipeList() {
-        recipesList = new HashSet<>();
         Recipe recipe1 = new Recipe("recipe1");
-        recipe1.setDough(new Dough("Plain"));
-        recipe1.setFlavour(new Flavour("Vanilla"));
+        recipe1.setDough(new Dough("Plain",2.0));
+        recipe1.setFlavour(new Flavour("Vanilla",0.1));
         Topping[] toppings1 = new Topping[3];
-        toppings1[0] = new Topping("White chocolate");
+        toppings1[0] = new Topping("White chocolate",0.2);
         recipe1.setToppings(toppings1);
-        recipe1.setMix(new Mix("Mixed"));
-        recipe1.setCooking(new Cooking("Crunchy"));
+        recipe1.setMix(new Mix("Mixed",0.2));
+        recipe1.setCooking(new Cooking("Crunchy",0.3));
         recipesList.add(recipe1);
 
         Recipe recipe2 = new Recipe("recipe2");
-        recipe2.setDough(new Dough("Chocolate"));
-        recipe2.setFlavour(new Flavour("Cinnamon"));
+        recipe2.setDough(new Dough("Chocolate",2.4));
+        recipe2.setFlavour(new Flavour("Cinnamon",0.1));
         Topping[] toppings2 = new Topping[3];
-        toppings2[0] = new Topping("Milk chocolate");
+        toppings2[0] = new Topping("Milk chocolate",0.2);
         recipe2.setToppings(toppings2);
-        recipe2.setMix(new Mix("Mixed"));
-        recipe2.setCooking(new Cooking("Chewy"));
+        recipe2.setMix(new Mix("Mixed",0.2));
+        recipe2.setCooking(new Cooking("Chewy",0.4));
         recipesList.add(recipe2);
     }
 

@@ -59,19 +59,19 @@ public class Recipe {
     }
 
     public void setCooking(Cooking cooking) {
-        this.cooking = new Cooking(cooking.getType());
+        this.cooking = new Cooking(cooking.getType(),cooking.getPrice());
     }
 
     public void setFlavour(Flavour flavour) {
-        this.flavour = new Flavour(flavour.getType());
+        this.flavour = new Flavour(flavour.getType(),flavour.getPrice());
     }
 
     public void setDough(Dough dough) {
-        this.dough = new Dough(dough.getType());
+        this.dough = new Dough(dough.getType(),dough.getPrice());
     }
 
     public void setMix(Mix mix) {
-        this.mix = new Mix(mix.getType());
+        this.mix = new Mix(mix.getType(),mix.getPrice());
     }
 
     public void setToppings(Topping[] toppings) {
