@@ -73,8 +73,8 @@ public class Member extends Tourist{
 
     // Member can use this function to use loyal discount
     // Otherwise he can use creatNoDiscountOrder() to make order without loyal discount
-    public Order creatDiscountOrder(Map<Recipe, Integer> mp, Date date, Store store){
-        Order newOrder = creatNoDiscountOrder(mp, date, store);
+    public Order creatDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store, String address) throws MyException {
+        Order newOrder = creatNoDiscountOrder(mp, way , date, store,address);
         newOrder.caculateDiscountPrice(applyLoyaltyDiscount());
         saveOrderInHistory(newOrder);
         return newOrder;
