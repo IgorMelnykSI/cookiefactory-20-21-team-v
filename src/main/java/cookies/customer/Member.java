@@ -80,6 +80,14 @@ public class Member extends Tourist{
         return newOrder;
     }
 
+
+    public Order createPrivateDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store, String address) throws MyException {
+        Order newOrder = createPrivateOrder(mp, way , date, store,address);
+        newOrder.caculateDiscountPrice(applyLoyaltyDiscount());
+        saveOrderInHistory(newOrder);
+        return newOrder;
+    }
+
     public void setLoyal(boolean loyal) {
         this.isLoyal = loyal;
     }
