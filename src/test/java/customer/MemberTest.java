@@ -90,4 +90,10 @@ public class MemberTest {
         assertEquals(member1.getId() + 1, member2.getId());
         assertTrue(member2.getId() > 0);
     }
+
+    @Test
+    public void createPrivateDiscountOrder(){
+
+    }
+
 }
