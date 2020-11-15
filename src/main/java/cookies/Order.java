@@ -58,10 +58,13 @@ public class Order {
 //        this.orderID = orderID;
 //    }
 
-
     public void addCookieItem(CookieItem ci){
+        if(ci.getRecipeName().equals(pickUpStore.getMyBestOf().getName())
+                ||ci.getRecipeName().equals(pickUpStore.getnationalBestOf().getName()))
+            ci.changeToBestOf();
         cookieItems.add(ci);
     }
+
     public void caculatePrice(){
         for(CookieItem ci : cookieItems){
             this.price += ci.getPrice();

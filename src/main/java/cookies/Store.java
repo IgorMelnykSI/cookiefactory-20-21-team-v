@@ -125,6 +125,9 @@ public class Store {
         this.nationalBestOf = BestOf;
     }
 
+    public void setMyBestOf(Recipe BestOf){
+        myBestOf = BestOf;
+    }
     public Recipe getMyBestOf(){
         return myBestOf;
     }

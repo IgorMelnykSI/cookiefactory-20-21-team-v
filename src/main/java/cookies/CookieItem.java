@@ -5,9 +5,10 @@ import cookies.recipe.Recipe;
 public class CookieItem {
     private int quantity;
     private String recipeName;
-    private final double recipePrice;
+    private double recipePrice;
     private double price;
-    private boolean isPersonalized;//TODO
+    private boolean isPersonalized = false;//TODO
+
 
     public CookieItem(int quantity, Recipe recipe){
         this.quantity = quantity;
@@ -47,4 +48,10 @@ public class CookieItem {
     private void calculatePrice(){
         this.price = quantity*recipePrice;
     }
+
+    public void changeToBestOf(){
+        this.price = quantity*recipePrice*0.9;
+    }
+
+
 }

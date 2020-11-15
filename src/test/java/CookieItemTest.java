@@ -50,4 +50,10 @@ class CookieItemTest {
         ck[0].setRecipeName("cookie3");
         assertEquals("cookie3",ck[0].getRecipeName());
     }
+
+    @Test
+    void changeToBestOf(){
+        ck[0].changeToBestOf();
+        assertEquals(ck[0].getPrice(),13.5);
+    }
 }
