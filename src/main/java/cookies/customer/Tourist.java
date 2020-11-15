@@ -17,10 +17,11 @@ public class Tourist {
 
     public Order creatNoDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store,String deliveryAddress) throws MyException {
         Order order = new Order();
-         if (order.chooseTheWayToPick(way)=="pickUp"){
+        String wayToTake=order.chooseTheWayToPick(way);
+         if (wayToTake=="pickUp"){
              order.setPickUpDate(date);
              order.setPickUpStore(store);
-         }else if(order.chooseTheWayToPick(way)=="homeDelivery"){
+         }else if(wayToTake=="homeDelivery"){
              order.setDeliveryAddress(deliveryAddress);
          }else {
              throw new MyException("非法配送方式, 请输入序号选择配送方式:" +
