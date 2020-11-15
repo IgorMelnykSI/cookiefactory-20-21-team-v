@@ -58,11 +58,12 @@ public class Order {
 //        this.orderID = orderID;
 //    }
 
-    public void addCookieItem(CookieItem ci){
-        if(ci.getRecipeName().equals(pickUpStore.getMyBestOf().getName())
-                ||ci.getRecipeName().equals(pickUpStore.getnationalBestOf().getName()))
+    public void addCookieItem(CookieItem ci) {
+        if (ci.getRecipeName().equals(pickUpStore.getMyBestOf().getName())
+                || ci.getRecipeName().equals(pickUpStore.getnationalBestOf().getName()))
             ci.changeToBestOf();
         cookieItems.add(ci);
+
     }
 
     public void caculatePrice(){
@@ -84,7 +85,7 @@ public class Order {
         this.pickUpDate = pickUpDate;
     }
     public void setPickUpStore(Store pickUpStore) {
-        this.pickUpStore= pickUpStore;
+            this.pickUpStore= pickUpStore;
     }
 
 }

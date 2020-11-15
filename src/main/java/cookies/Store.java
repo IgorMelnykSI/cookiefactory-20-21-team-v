@@ -11,9 +11,10 @@ public class Store {
     protected String closeTime;
     private double tax;
     private List<Order> historyOrders = new ArrayList<>();
-    private Recipe myBestOf;
+    private Recipe myBestOf ;
     private Recipe nationalBestOf;
     private String country;
+    private boolean hasProblem = false;
 
     public Store(String name, String address, String openTime, String closeTime, double tax){
         this.name = name;
@@ -21,6 +22,8 @@ public class Store {
         this.openTime = openTime;
         this.closeTime = closeTime;
         this.tax = tax;
+        this.myBestOf = new Recipe("",0);
+        this.nationalBestOf = new Recipe("",0);
     }
 
     public boolean checkOrder(Order order){
@@ -138,5 +141,13 @@ public class Store {
 
     public List<Order> getHistoryOrders(){
         return historyOrders;
+    }
+
+    public boolean hasProblem(){
+        return hasProblem;
+    }
+
+    public void setHasProblem(boolean i){
+        hasProblem = i;
     }
 }
