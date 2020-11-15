@@ -6,10 +6,10 @@ import cookies.recipe.Recipe;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BrandManagerTest {
-    private BrandManager brandManager=new BrandManager("Cookie");;
+    private BrandManager brandManager=new BrandManager("Manager1");;
 
 
 
@@ -23,8 +23,13 @@ public class BrandManagerTest {
     }
 
     @Test
-    public void setRecipes(){
-
+    public void setMap(){
+        brandManager.getFactory().resetFactory();
+        brandManager.setMap(brandManager.getFactory().getRecipesList());
+        assertAll(
+                () -> assertTrue(brandManager.getMap().containsKey(brandManager.getFactory().getRecipe("recipe1"))),
+                () -> assertTrue(brandManager.getMap().containsKey(brandManager.getFactory().getRecipe("recipe2")))
+        );
 
     }
 
@@ -42,7 +47,20 @@ public class BrandManagerTest {
 
     @Test
     public void deleteRecipe(){
-
+       brandManager.getFactory().resetFactory();
+       brandManager.setMap(brandManager.getFactory().getRecipesList());
+       for(int i=0;i<10;i++) {
+           brandManager.addCount("recipe1");
+       }
+       brandManager.addCount("recipe2");
+       brandManager.deleteRecipe();
+       assertEquals(brandManager.getFactory().getRecipe("recipe2"),null);
+       Recipe recipeTest1=new Recipe("recipeTest1",9.8);
+       brandManager.addRecipe(recipeTest1);
+       for(int i=0;i<4;i++)
+           brandManager.addCount("recipeTest1");
+       brandManager.deleteRecipe();
+       assertEquals(brandManager.getFactory().getRecipe("recipeTest1"),null);
 
     }
 
