@@ -1,6 +1,7 @@
 package cookies.recipe;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 public class Recipe {
     private String name;
@@ -13,6 +14,19 @@ public class Recipe {
 
     public Recipe(String name){
         this.name=name;
+    }
+
+    public boolean compareRecipe(Recipe re){
+        if(dough.getType().equals(re.getDough().getType())){
+            return true;
+        }
+
+        if(dough.getType()==re.getDough().getType()&&flavour.getType()==re.getFlavour().getType()&&mix.getType()==re.getMix().getType()&&
+                cooking.getType()==re.getCooking().getType()&& Arrays.equals(toppings, re.getToppings())){
+            return true;
+        }
+
+        return false;
     }
 
     public void setName(String name) {
@@ -41,19 +55,19 @@ public class Recipe {
     }
 
     public void setCooking(Cooking cooking) {
-        this.cooking = cooking;
+        this.cooking = new Cooking(cooking.getType());
     }
 
     public void setFlavour(Flavour flavour) {
-        this.flavour = flavour;
+        this.flavour = new Flavour(flavour.getType());
     }
 
     public void setDough(Dough dough) {
-        this.dough = dough;
+        this.dough = new Dough(dough.getType());
     }
 
     public void setMix(Mix mix) {
-        this.mix = mix;
+        this.mix = new Mix(mix.getType());
     }
 
     public void setToppings(Topping[] toppings) {

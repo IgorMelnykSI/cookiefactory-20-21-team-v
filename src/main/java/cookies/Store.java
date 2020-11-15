@@ -1,6 +1,9 @@
 package cookies;
 
+import cookies.recipe.Dough;
+import cookies.recipe.Flavour;
 import cookies.recipe.Recipe;
+import cookies.recipe.Topping;
 
 import java.util.*;
 
@@ -15,6 +18,9 @@ public class Store {
     private Recipe nationalBestOf;
     private String country;
     private boolean hasProblem = false;
+    private HashMap<Dough,Integer> cookingAvailable;
+    private HashMap<Flavour,Integer> flavourAvailable;
+    private HashMap<Topping,Integer> toppingAvailable;
 
     public Store(String name, String address, int openHour, int openMin, int closeHour, int closeMin,double tax){
         this.name = name;
@@ -164,5 +170,29 @@ public class Store {
 
     public void setHasProblem(boolean i){
         hasProblem = i;
+    }
+
+    public HashMap<Dough, Integer> getCookingAvailable() {
+        return cookingAvailable;
+    }
+
+    public HashMap<Flavour, Integer> getFlavourAvailable() {
+        return flavourAvailable;
+    }
+
+    public HashMap<Topping, Integer> getToppingAvailable() {
+        return toppingAvailable;
+    }
+
+    public void setCookingAvailable(HashMap<Dough, Integer> cookingAvailable) {
+        this.cookingAvailable = cookingAvailable;
+    }
+
+    public void setFlavourAvailable(HashMap<Flavour, Integer> flavourAvailable) {
+        this.flavourAvailable = flavourAvailable;
+    }
+
+    public void setToppingAvailable(HashMap<Topping, Integer> toppingAvailable) {
+        this.toppingAvailable = toppingAvailable;
     }
 }
