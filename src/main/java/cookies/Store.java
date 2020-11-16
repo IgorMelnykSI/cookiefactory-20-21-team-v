@@ -22,6 +22,7 @@ public class Store {
     private HashMap<Flavour,Integer> flavourAvailable;
     private HashMap<Topping,Integer> toppingAvailable;
     private double[] position = {0,0};
+    private List<Store> nearbyStore = new ArrayList<>();
 
     public Store(String name, String address, int openHour, int openMin, int closeHour, int closeMin,double tax){
         this.name = name;
@@ -179,6 +180,13 @@ public class Store {
 
     public void setHasProblem(boolean i){
         hasProblem = i;
+    }
+
+    public List<Store> returnNearbyStores(){
+        if(hasProblem){
+            return this.nearbyStore;
+        }
+        return null;
     }
 
     public HashMap<Dough, Integer> getCookingAvailable() {
