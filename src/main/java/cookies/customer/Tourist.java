@@ -2,6 +2,7 @@ package cookies.customer;
 
 import cookies.CookieItem;
 import cookies.Order;
+import cookies.Statistic;
 import cookies.Store;
 import cookies.recipe.*;
 
@@ -76,6 +77,9 @@ public class Tourist {
         myRecipe.setMix(mix);
         myRecipe.setToppings(toppings);
         myRecipe.calculatePrice();
+
+        Statistic statistic = Statistic.getInstance();
+        statistic.addPersonalRecipes(myRecipe);
 
         return myRecipe;
     }

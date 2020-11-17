@@ -12,11 +12,13 @@ public class Recipe {
     private Cooking cooking;
     private Topping[] toppings;
     private int popularity;
+    private int storePopularity;
 
     public Recipe(String name){
         this.name=name;
         toppings = new Topping[3];
         popularity = 0;
+        storePopularity = 0;
     }
 
     public boolean compareRecipe(Recipe re){
@@ -87,6 +89,18 @@ public class Recipe {
     }
 
     public int getPopularity(){return popularity;}
+
+    public void addStorePopularity(){storePopularity++;}
+
+    public void resetStorePopularity(){
+        storePopularity = 0;
+    }
+
+    public void minusStorePopularity(){
+        storePopularity--;
+    }
+
+    public int getStorePopularity(){return storePopularity;}
 
     public Cooking getCooking(){
         return cooking;
