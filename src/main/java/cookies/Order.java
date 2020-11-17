@@ -1,9 +1,9 @@
 package cookies;
 
-import java.util.Date;
+import cookies.recipe.Recipe;
+
+import java.util.*;
 import java.text.SimpleDateFormat;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Order {
      private String orderID;
@@ -15,6 +15,8 @@ public class Order {
      private String homeDelivery="homeDelivery";
      private String deliveryAddress;
      private Set<CookieItem> cookieItems = new HashSet<>();
+     private List<Recipe> personalRecipes = new ArrayList<>();
+
     public Order(){
         orderID = getGuid();
         price = 0;
@@ -95,6 +97,11 @@ public class Order {
                     || ci.getRecipeName().equals(pickUpStore.getnationalBestOf().getName()))
                 ci.changeToBestOf();
         }
+
+        if(ci.getIsPersonalized()){
+            personalRecipes.add(ci.getRecipe());
+        }
+
         cookieItems.add(ci);
 
     }
@@ -125,4 +132,5 @@ public class Order {
         this.deliveryAddress=deliveryAddress;
     }
 
+    public List<Recipe> getPersonalRecipes(){return personalRecipes;}
 }

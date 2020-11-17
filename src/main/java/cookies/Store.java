@@ -55,12 +55,13 @@ public class Store {
         //TODO check correct ingredient
         //TODO check enough ingredient
 
-        deleteExpiredOrder();
+
         saveOrder(order);
         return true;
     }
 
     public void saveOrder(Order order){
+        deleteExpiredOrder();
         historyOrders.add(order);
         calculateRecipePopularity();
     }
@@ -68,6 +69,8 @@ public class Store {
     public void deleteExpiredOrder(){
         Date today=new Date();
         List<Order> expiredOrders = new ArrayList<>();
+        List<Recipe> expiredRecipes = new ArrayList<>();
+
         if(historyOrders.size()==0){
             return;
         }
@@ -76,6 +79,8 @@ public class Store {
             int days = (int) ((today.getTime() - order.getPickUpDate().getTime()) / (1000*3600*24));
             if(days>30){
                 expiredOrders.add(order);
+                //cookieItems.addAll(order.getCookieItems());
+
             }
         }
 
@@ -85,25 +90,18 @@ public class Store {
     }
 
     public void calculateRecipePopularity(){
+        Map<Recipe, Integer> historyRecipes = new HashMap<>();
 
-        /*
         for (Order order : historyOrders) {
             for (CookieItem cookieItem : order.getCookieItems()) {
                 if (cookieItem.getIsPersonalized()) {
-                    //todo from here
-                    int number = historyRecipes.get("personal");
-                    historyRecipes.put("personal", number + order.getItems().get(cookieItem));
-                } else {
-                    if (historyRecipes.containsKey(cookieItem.getName())) {
-                        int number = historyRecipes.get(cookieItem.getName());
-                        historyRecipes.put(cookieItem.getName(), number + order.getItems().get(cookieItem));
-                    } else {
-                        historyRecipes.put(cookieItem.getName(), order.getItems().get(cookieItem));
-                    }
+//                    todo from here
+//                    int number = historyRecipes.get("personal");
+//                    historyRecipes.put("personal", number);
                 }
             }
         }
-         */
+
     }
 
     public String getName(){return name;}

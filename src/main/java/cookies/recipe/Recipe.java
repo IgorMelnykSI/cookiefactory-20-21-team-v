@@ -11,16 +11,17 @@ public class Recipe {
     private Mix mix;
     private Cooking cooking;
     private Topping[] toppings;
+    private int popularity;
 
     public Recipe(String name){
         this.name=name;
         toppings = new Topping[3];
+        popularity = 0;
     }
 
     public boolean compareRecipe(Recipe re){
-        if(dough.getType().equals(re.getDough().getType())){
-            return true;
-        }
+        if(re==null)
+            return false;
 
         if(dough.getType()==re.getDough().getType()&&flavour.getType()==re.getFlavour().getType()&&mix.getType()==re.getMix().getType()&&
                 cooking.getType()==re.getCooking().getType()&& Arrays.equals(toppings, re.getToppings())){
@@ -29,6 +30,7 @@ public class Recipe {
 
         return false;
     }
+
 
     public void setName(String name) {
         this.name = name;
@@ -77,6 +79,14 @@ public class Recipe {
     public void setToppings(Topping[] toppings) {
         this.toppings = Arrays.copyOfRange(toppings,0,3);
     }
+
+    public void addPopularity(){popularity++;}
+
+    public void minusPopularity(){
+        popularity--;
+    }
+
+    public int getPopularity(){return popularity;}
 
     public Cooking getCooking(){
         return cooking;

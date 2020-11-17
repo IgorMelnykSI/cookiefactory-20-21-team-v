@@ -2,6 +2,9 @@ package cookies;
 
 import cookies.recipe.Recipe;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CookieItem {
     private int quantity;
     private String recipeName;
@@ -32,6 +35,10 @@ public class CookieItem {
 
     public String getRecipeName() {
         return recipeName;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
     }
 
     public boolean getIsPersonalized(){
