@@ -15,7 +15,8 @@ public class CookieFactory {
     private Set<Cooking> cookingList;
     private Set<Recipe> recipesList;
     private Map<Recipe,Integer>map;
-
+    private List<Recipe> personalRecipes = new ArrayList<>();
+    private Statistic statistic;
 
     public CookieFactory() {
         storeList = new HashSet<>();
@@ -26,6 +27,7 @@ public class CookieFactory {
         cookingList = new HashSet<>();
         recipesList = new HashSet<>();
         this.map=new HashMap<>();
+        statistic = new Statistic();
         initStoreList();
         initDoughList();
         initToppingList();
@@ -155,6 +157,27 @@ public class CookieFactory {
 
        recipesList.remove(getRecipe(name));
     }
+
+    public List<Recipe> getPersonalRecipes(){
+        return personalRecipes;
+    }
+
+    public List<Recipe> addPersonalRecipes(Recipe recipe0){
+        boolean exist=false;
+        for(Recipe recipe1:personalRecipes){
+            if(recipe1.compareRecipe(recipe0)){
+                exist=true;
+                recipe1.addPopularity();
+            }
+        }
+        if(!exist){
+            personalRecipes.add(recipe0);
+            recipe0.addPopularity();
+        }
+
+        return personalRecipes;
+    }
+
 
     public void deleteFewOrderRecipe(){
         Set<Recipe>set=map.keySet();

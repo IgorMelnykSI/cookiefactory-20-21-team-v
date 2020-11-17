@@ -76,6 +76,7 @@ public class Tourist {
         myRecipe.setMix(mix);
         myRecipe.setToppings(toppings);
         myRecipe.calculatePrice();
+
         return myRecipe;
     }
 

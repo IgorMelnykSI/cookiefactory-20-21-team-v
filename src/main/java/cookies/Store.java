@@ -69,7 +69,6 @@ public class Store {
     public void deleteExpiredOrder(){
         Date today=new Date();
         List<Order> expiredOrders = new ArrayList<>();
-        List<Recipe> expiredRecipes = new ArrayList<>();
 
         if(historyOrders.size()==0){
             return;
@@ -79,8 +78,10 @@ public class Store {
             int days = (int) ((today.getTime() - order.getPickUpDate().getTime()) / (1000*3600*24));
             if(days>30){
                 expiredOrders.add(order);
-                //cookieItems.addAll(order.getCookieItems());
 
+                for(Recipe recipe:order.getPersonalRecipes()){
+                    recipe.minusPopularity();
+                }
             }
         }
 

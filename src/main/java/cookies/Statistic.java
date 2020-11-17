@@ -7,8 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Statistique {
-
+public class Statistic {
 
     public Map<String, Integer> computeRecipePopularity(List<Store> stores) {
         Map<String, Integer> historyRecipes = new HashMap<>();
