@@ -21,6 +21,18 @@ public class Recipe {
         storePopularity = 0;
     }
 
+    public Recipe(String name,Cooking cook,Dough dough,Flavour flavour,Mix mix,Topping[] toppings){
+        this.name=name;
+        popularity = 0;
+        storePopularity = 0;
+        this.cooking = new Cooking(cook.getType(),cooking.getPrice());
+        this.flavour = new Flavour(flavour.getType(),flavour.getPrice());
+        this.dough = new Dough(dough.getType(),dough.getPrice());
+        this.mix = new Mix(mix.getType(),mix.getPrice());
+        this.toppings = Arrays.copyOfRange(toppings,0,3);
+        calculatePrice();
+    }
+
     public boolean compareRecipe(Recipe re){
         if(re==null)
             return false;

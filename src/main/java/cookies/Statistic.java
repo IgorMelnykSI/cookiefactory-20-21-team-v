@@ -22,20 +22,18 @@ public class Statistic {
         return instance;
     }
 
-    public Map<String, Integer> computeRecipePopularity(List<Store> stores) {
-        Map<String, Integer> historyRecipes = new HashMap<>();
-        for (Store store : stores) {
-            for (String name : computeRecipePopularity(store).keySet()) {
-                if (historyRecipes.containsKey(name)) {
-                    int number = historyRecipes.get(name);
-                    historyRecipes.put(name, number + computeRecipePopularity(store).get(name));
-                } else {
-                    historyRecipes.put(name, computeRecipePopularity(store).get(name));
-                }
+    public Recipe nationalBestOf() {
+        if(personalRecipes.size()==0)
+            return null;
 
+        Recipe bestOf = personalRecipes.get(0);
+        for(Recipe recipe:personalRecipes){
+            if(recipe.getPopularity() > bestOf.getPopularity()){
+                bestOf = recipe;
             }
         }
-        return historyRecipes;
+
+        return bestOf;
     }
 
     public Map<String, Integer> computeRecipePopularity(Store store) {
