@@ -7,24 +7,24 @@ import java.util.*;
 
 public class CookieFactory {
 
-    private Set<Store> storeList;
-    private Set<Dough> doughList;
-    private Set<Topping> toppingList;
-    private Set<Mix> mixList;
-    private Set<Flavour> flavourList;
-    private Set<Cooking> cookingList;
-    private Set<Recipe> recipesList;
-    private Map<Recipe,Integer>map;
+    private ArrayList<Store> storeList;
+    private ArrayList<Dough> doughList;
+    private ArrayList<Topping> toppingList;
+    private ArrayList<Mix> mixList;
+    private ArrayList<Flavour> flavourList;
+    private ArrayList<Cooking> cookingList;
+    private ArrayList<Recipe> recipesList;
+    private HashMap<Recipe,Integer> map;
 
 
     public CookieFactory() {
-        storeList = new HashSet<>();
-        doughList = new HashSet<>();
-        toppingList = new HashSet<>();
-        mixList = new HashSet<>();
-        flavourList = new HashSet<>();
-        cookingList = new HashSet<>();
-        recipesList = new HashSet<>();
+        storeList = new ArrayList<>();
+        doughList = new ArrayList<>();
+        toppingList = new ArrayList<>();
+        mixList = new ArrayList<>();
+        flavourList = new ArrayList<>();
+        cookingList = new ArrayList<>();
+        recipesList = new ArrayList<>();
         this.map=new HashMap<>();
         initStoreList();
         initDoughList();
@@ -111,12 +111,11 @@ public class CookieFactory {
     }
 
     private void initStoreList() {
-        storeList = new HashSet<>();
         Store store1 = new Store("store1","Biot",8,30,18,0,0.2);
         storeList.add(store1);
     }
 
-    public Set<Recipe> getRecipesList() {
+    public ArrayList<Recipe> getRecipesList() {
         return recipesList;
     }
 
@@ -178,7 +177,7 @@ public class CookieFactory {
         storeList.remove(getStore(name));
     }
 
-    public Set<Store> getStoreList() {
+    public ArrayList<Store> getStoreList() {
         return storeList;
     }
 
@@ -208,23 +207,23 @@ public class CookieFactory {
         return nearbyStores;
     }
 
-    public Set<Cooking> getCookingList() {
+    public ArrayList<Cooking> getCookingList() {
         return cookingList;
     }
 
-    public Set<Dough> getDoughList() {
+    public ArrayList<Dough> getDoughList() {
         return doughList;
     }
 
-    public Set<Flavour> getFlavourList() {
+    public ArrayList<Flavour> getFlavourList() {
         return flavourList;
     }
 
-    public Set<Mix> getMixList() {
+    public ArrayList<Mix> getMixList() {
         return mixList;
     }
 
-    public Set<Topping> getToppingList() {
+    public ArrayList<Topping> getToppingList() {
         return toppingList;
     }
 
