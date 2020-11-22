@@ -94,19 +94,13 @@ public class MemberTest {
     public void createPrivateDiscountOrder() throws MyException{
         mp.clear();
         member1.registerLoyal();
-        Cooking crunchy=new Cooking("Crunchy",0.3);
-        Dough peabut=new Dough("Peanut butter",2.5);
-        Flavour vanilla=new Flavour("Vanilla",0.1);
-        Mix mixed=new Mix("Mixed",0.2);
-        Topping mm=new Topping("M&M’s™",0.3);
-        Topping reese=new Topping("Reese’s buttercup",0.4);
-        Topping[] tops1=new Topping[]{mm,reese};
-        Recipe myRecipe=member1.createPrivateRecipe(crunchy,peabut,vanilla,mixed,tops1);
+        member1.createPrivateRecipe("myrecipe1","Crunchy","Peanut butter","Vanilla","Mixed","M&M’s™ and Reese’s buttercup");
+        Recipe myRecipe=member1.getPrivateRecipes().get(0);
         mp.put(myRecipe,30);
         Order od = member1.createPrivateDiscountOrder(mp,way, date,store,home);
         member1.saveOrderInHistory(od);
         od.caculateDiscountPrice(member1.applyLoyaltyDiscount());
-        assertEquals(od.getPrice(),128.25,0.01);
+        assertEquals(128.25,od.getPrice(),0.01);
 
     }
 

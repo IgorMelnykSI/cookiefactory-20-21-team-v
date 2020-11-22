@@ -11,7 +11,6 @@ public class CookieItem {
     private double recipePrice;
     private double price;
     private Recipe recipe;
-    private boolean isPersonalized = false;//TODO
 
 
     public CookieItem(int quantity, Recipe recipe){
@@ -19,10 +18,7 @@ public class CookieItem {
         this.recipe=recipe;
         this.recipeName = recipe.getName();
         this.recipePrice = recipe.getPrice();
-    }
-
-    public void setIsPersonalized(){
-        this.isPersonalized=true;
+        calculatePrice();
     }
 
     public double getPrice() {
@@ -41,10 +37,6 @@ public class CookieItem {
         return recipe;
     }
 
-    public boolean getIsPersonalized(){
-        return isPersonalized;
-    }
-
     public void setPrice(double price) {
         this.price = price;
     }
@@ -59,10 +51,7 @@ public class CookieItem {
 
     public  void calculatePrice(){
         recipePrice=recipe.getPrice();
-        if(isPersonalized==false)
         this.price = quantity*recipePrice;
-        else
-            this.price=quantity*recipePrice*1.25;
     }
 
     public void changeToBestOf(){

@@ -1,22 +1,17 @@
 package cookies.customer;
 
-import cookies.CookieItem;
-import cookies.Order;
-import cookies.Statistic;
-import cookies.Store;
+import cookies.*;
 import cookies.recipe.*;
 
 
-
-import java.util.Date;
-import java.util.Map;
-import java.util.Scanner;
-
+import java.util.*;
 
 
 public class Tourist {
 
     private boolean isPrivateCookieItem=false;
+    ArrayList<Recipe> privateRecipes = new ArrayList<>();
+    CookieFactory factory = new CookieFactory();
 
     public Order creatNoDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store,String deliveryAddress) throws MyException {
         Order order = new Order();
@@ -61,28 +56,27 @@ public class Tourist {
 //
         for(Recipe recipe : mp.keySet()){
             CookieItem item=new CookieItem(mp.get(recipe),recipe);
-            item.setIsPersonalized();
-            item.calculatePrice();
             order.addCookieItem(item);
         }
         order.caculatePrice();
         return order;
     }
 
-    public Recipe createPrivateRecipe(Cooking cook,Dough dough,Flavour flavour,Mix mix,Topping[]toppings){
-        Recipe myRecipe=new Recipe("privateRecipe");
-        myRecipe.setCooking(cook);
-        myRecipe.setDough(dough);
-        myRecipe.setFlavour(flavour);
-        myRecipe.setMix(mix);
-        myRecipe.setToppings(toppings);
-        myRecipe.calculatePrice();
-
-        Statistic statistic = Statistic.getInstance();
-        statistic.addPersonalRecipes(myRecipe);
-
-        return myRecipe;
+    public void createPrivateRecipe(String name,String cookingName,String doughName,String flavourName,String mixName,String toppingNames){
+        String[] topName=toppingNames.split(" and ");
+        List<Topping> topList = new ArrayList<>();
+        for(String topping:topName){
+            topList.add(this.factory.getTopping(topping));
+        }
+        Cooking cooking = this.factory.getCooking(cookingName);
+        Dough dough = this.factory.getDough(doughName);
+        Flavour flavour = this.factory.getFlavor(flavourName);
+        Mix mix = this.factory.getMix(mixName);
+        PrivateRecipe recipe = new PrivateRecipe(name,cooking,dough,flavour,mix,topList);
+        this.privateRecipes.add(recipe);
     }
 
-
+    public ArrayList<Recipe> getPrivateRecipes() {
+        return privateRecipes;
+    }
 }

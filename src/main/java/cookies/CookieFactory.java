@@ -92,8 +92,8 @@ public class CookieFactory {
         Recipe recipe1 = new Recipe("recipe1");
         recipe1.setDough(new Dough("Plain",2.0));
         recipe1.setFlavour(new Flavour("Vanilla",0.1));
-        Topping[] toppings1 = new Topping[3];
-        toppings1[0] = new Topping("White chocolate",0.2);
+        ArrayList<Topping> toppings1 = new ArrayList<>();
+        toppings1.add(new Topping("White chocolate",0.2));
         recipe1.setToppings(toppings1);
         recipe1.setMix(new Mix("Mixed",0.2));
         recipe1.setCooking(new Cooking("Crunchy",0.3));
@@ -102,8 +102,8 @@ public class CookieFactory {
         Recipe recipe2 = new Recipe("recipe2");
         recipe2.setDough(new Dough("Chocolate",2.4));
         recipe2.setFlavour(new Flavour("Cinnamon",0.1));
-        Topping[] toppings2 = new Topping[3];
-        toppings2[0] = new Topping("Milk chocolate",0.2);
+        ArrayList<Topping> toppings2 = new ArrayList<>();
+        toppings2.add(new Topping("Milk chocolate",0.2));
         recipe2.setToppings(toppings2);
         recipe2.setMix(new Mix("Mixed",0.2));
         recipe2.setCooking(new Cooking("Chewy",0.4));

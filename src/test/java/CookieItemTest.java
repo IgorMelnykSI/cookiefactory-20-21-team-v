@@ -5,6 +5,8 @@ import cookies.recipe.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CookieItemTest {
@@ -21,8 +23,9 @@ class CookieItemTest {
         r[0].setDough(new Dough("Peanut butter",2.5));
         r[0].setMix(new Mix("Mixed",0.2));
         Topping mm=new Topping("M&M’s™",0.3);
-        Topping[] tops1=new Topping[]{mm};
-        r[0].setToppings(tops1);
+        ArrayList<Topping> toppings = new ArrayList<>();
+        toppings.add(mm);
+        r[0].setToppings(toppings);
         ck = new CookieItem[2];
         ck[0] = new CookieItem(10,r[0]);
         ck[1] = new CookieItem(5,r[1]);
@@ -76,28 +79,6 @@ class CookieItemTest {
         r[0].calculatePrice();
         ck[0].calculatePrice();
         assertEquals(34.0,ck[0].getPrice());
-        ck[0].setIsPersonalized();
-        ck[0].calculatePrice();
-        assertEquals(42.5,ck[0].getPrice());
-
     }
 
-    @Test
-    void setIsPersonalized(){
-        ck[0].setIsPersonalized();
-        assertAll(
-                () -> assertEquals(ck[0].getIsPersonalized(),true),
-                () -> assertEquals(ck[1].getIsPersonalized(),false)
-        );
-    }
-
-    @Test
-    void getIsPersonalized(){
-        assertAll(
-                () -> assertEquals(ck[0].getIsPersonalized(),false),
-                () -> assertEquals(ck[1].getIsPersonalized(),false)
-        );
-        ck[0].setIsPersonalized();
-        assertEquals(ck[0].getIsPersonalized(),true);
-    }
 }

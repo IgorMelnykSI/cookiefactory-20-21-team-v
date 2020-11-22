@@ -2,6 +2,7 @@ package cookies.recipe;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
 
 public class Recipe {
     private String name;
@@ -10,26 +11,25 @@ public class Recipe {
     private Flavour flavour;
     private Mix mix;
     private Cooking cooking;
-    private Topping[] toppings;
+    private List<Topping> toppings;
     private int popularity;
     private int storePopularity;
 
     public Recipe(String name){
         this.name=name;
-        toppings = new Topping[3];
         popularity = 0;
         storePopularity = 0;
     }
 
-    public Recipe(String name,Cooking cook,Dough dough,Flavour flavour,Mix mix,Topping[] toppings){
+    public Recipe(String name, Cooking cooking, Dough dough, Flavour flavour, Mix mix, List<Topping> toppings){
         this.name=name;
         popularity = 0;
         storePopularity = 0;
-        this.cooking = new Cooking(cook.getType(),cooking.getPrice());
-        this.flavour = new Flavour(flavour.getType(),flavour.getPrice());
-        this.dough = new Dough(dough.getType(),dough.getPrice());
-        this.mix = new Mix(mix.getType(),mix.getPrice());
-        this.toppings = Arrays.copyOfRange(toppings,0,3);
+        this.cooking = cooking;
+        this.flavour = flavour;
+        this.dough = dough;
+        this.mix = mix;
+        this.toppings = toppings;
         calculatePrice();
     }
 
@@ -38,7 +38,7 @@ public class Recipe {
             return false;
 
         if(dough.getType()==re.getDough().getType()&&flavour.getType()==re.getFlavour().getType()&&mix.getType()==re.getMix().getType()&&
-                cooking.getType()==re.getCooking().getType()&& Arrays.equals(toppings, re.getToppings())){
+                cooking.getType()==re.getCooking().getType()&& re.getToppings()==toppings){
             return true;
         }
 
@@ -90,8 +90,8 @@ public class Recipe {
         this.mix = new Mix(mix.getType(),mix.getPrice());
     }
 
-    public void setToppings(Topping[] toppings) {
-        this.toppings = Arrays.copyOfRange(toppings,0,3);
+    public void setToppings(List<Topping> toppings) {
+        this.toppings = toppings;
     }
 
     public void addPopularity(){popularity++;}
@@ -130,7 +130,7 @@ public class Recipe {
         return mix;
     }
 
-    public Topping[] getToppings(){
+    public List<Topping> getToppings(){
         return toppings;
     }
 }

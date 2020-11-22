@@ -95,11 +95,6 @@ public class Store {
 
         for (Order order : historyOrders) {
             for (CookieItem cookieItem : order.getCookieItems()) {
-                if (cookieItem.getIsPersonalized()) {
-//                    todo from here
-//                    int number = historyRecipes.get("personal");
-//                    historyRecipes.put("personal", number);
-                }
             }
         }
 

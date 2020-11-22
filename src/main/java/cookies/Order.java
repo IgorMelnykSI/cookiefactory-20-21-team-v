@@ -97,11 +97,6 @@ public class Order {
                     || ci.getRecipeName().equals(pickUpStore.getnationalBestOf().getName()))
                 ci.changeToBestOf();
         }
-
-        if(ci.getIsPersonalized()){
-            personalRecipes.add(ci.getRecipe());
-        }
-
         cookieItems.add(ci);
 
     }
