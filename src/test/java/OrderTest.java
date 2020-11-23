@@ -72,9 +72,12 @@ class OrderTest {
 
     @Test
     void chooseTheWayToPick(){
-        assertEquals("pickUp",order.chooseTheWayToPick(1));
-        assertEquals("homeDelivery",order.chooseTheWayToPick(2));
-        assertEquals(null,order.chooseTheWayToPick(3));
+        order.setTheWayToPick(1);
+        assertEquals("pickUp",order.getTheWay());
+        order.setTheWayToPick(2);
+        assertEquals("MarcelEat",order.getTheWay());
+        order.setTheWayToPick(3);
+        assertEquals(null,order.getTheWay());
     }
 
 }

@@ -12,7 +12,9 @@ public class Order {
      private int[] pickUpTime;
      private Store pickUpStore;
      private String pickUp="pickUp";
-     private String homeDelivery="homeDelivery";
+     private String homeDelivery="MarcelEat";
+     private String theWay=null;
+     private double deliveryFee=4;
      private String deliveryAddress;
      private List<CookieItem> cookieItems = new ArrayList<>();
      private List<Recipe> personalRecipes = new ArrayList<>();
@@ -59,15 +61,17 @@ public class Order {
     public Store getPickUpStore(){return pickUpStore;}
     public String getDeliveryAddress(){return deliveryAddress;}
     //选择配送方式
-    public String chooseTheWayToPick(int way){
-        switch (way){
-            case 1:
-                return pickUp;
-            case 2:
-                return homeDelivery;
-            default:
-                return null;
+    public void setTheWayToPick(int way){
+        if(way==1){
+                this.theWay=pickUp;
+        }else if (way==2){
+                this.theWay=homeDelivery;
+        }else {
+                this.theWay=null;
         }
+    }
+    public  String getTheWay(){
+        return this.theWay;
     }
 
     public int[] getPickUpTime() {
@@ -106,6 +110,9 @@ public class Order {
         for(CookieItem ci : cookieItems){
             this.price += ci.getPrice();
         }
+        //if(getTheWay().equals("MarcelEat")){
+         //   this.price=this.price+deliveryFee;
+        //}
     }
 
     public void caculateDiscountPrice(double loyalDiscount){
