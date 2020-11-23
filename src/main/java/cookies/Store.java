@@ -17,10 +17,10 @@ public class Store {
     private Recipe myBestOf ;
     private Recipe nationalBestOf;
     private String country;
+    private HashMap<Dough,Integer> doughAvailable = new HashMap<>();
     private boolean hasProblem = false, lackIngredient = false;
-    private HashMap<Dough,Integer> cookingAvailable;
-    private HashMap<Flavour,Integer> flavourAvailable;
-    private HashMap<Topping,Integer> toppingAvailable;
+    private HashMap<Flavour,Integer> flavourAvailable = new HashMap<>();
+    private HashMap<Topping,Integer> toppingAvailable =new HashMap<>();
     private double[] position = {0,0};
     private List<Store> nearbyStore = new ArrayList<>();
 
@@ -34,6 +34,7 @@ public class Store {
         this.tax = tax;
         this.myBestOf = new Recipe("");
         this.nationalBestOf = new Recipe("");
+
     }
 
     public boolean isBusy(Date date){
@@ -52,6 +53,17 @@ public class Store {
         return position;
     }
     public boolean checkOrder(Order order){
+        doughAvailable.put(new Dough("Plain",2.0),100);
+        doughAvailable.put(new Dough("Chocolate",2.4),100);
+        doughAvailable.put(new Dough("Peanut butter",2.5),100);
+        doughAvailable.put(new Dough("Oatmeal",2.6),100);
+        flavourAvailable.put(new Flavour("Vanilla",0.1),100);
+        flavourAvailable.put(new Flavour("Cinnamon",0.1),100);
+        flavourAvailable.put(new Flavour("Chili",0.1),100);
+        toppingAvailable.put(new Topping("White chocolate",0.2),500);
+        toppingAvailable.put(new Topping("Milk chocolate",0.2),500);
+        toppingAvailable.put(new Topping("M&M’s™",0.3),500);
+        toppingAvailable.put(new Topping("Reese’s buttercup",0.4),500);
         if (this.openTime[0]>order.getPickUpHour()||this.closeTime[0]<order.getPickUpMin()){
             return false;
         }
@@ -59,7 +71,44 @@ public class Store {
             return false;
         }
 
+        Set<CookieItem> cookieItems = order.getCookieItems();
+        HashSet<Dough> doughSet = new HashSet<>();
+        HashSet<Topping> toppingsSet = new HashSet<>();
+        HashSet<Flavour> flavourSet = new HashSet<>();
+        List<Topping> toppingList = new LinkedList<>();
+        for (CookieItem cookieItem:cookieItems){for (Topping topping:cookieItem.getRecipe().getToppings()){toppingList.add(topping);}}
+        for (CookieItem cookieItem:cookieItems){doughSet.add(cookieItem.getRecipe().getDough());}
+        for (CookieItem cookieItem:cookieItems){flavourSet.add(cookieItem.getRecipe().getFlavour());}
+        for (Dough dough:doughAvailable.keySet()){
+            if (doughSet.contains(dough)==false){return false;}
+        };
+        for (Topping topping:toppingAvailable.keySet()){
+            if (toppingList.contains(topping)==false){return false;}
+        };
+        for (Flavour flavour:flavourAvailable.keySet()){
+            if (flavourSet.contains(flavour)==false){return false;}
+        };
+
+
+
         //TODO check correct ingredient
+        for (Dough dough:doughAvailable.keySet()){
+            while (doughSet.contains(dough)==true){
+                if (cookieItems.size()>100)
+                    return false;}
+        };
+        for (Topping topping:toppingAvailable.keySet()){
+            while (toppingsSet.contains(topping)==true){
+                if (cookieItems.size()>100)
+                    return false;}
+        };
+        for (Flavour flavour:flavourAvailable.keySet()){
+            while (flavourSet.contains(flavour)==true){
+                if (cookieItems.size()>100)
+                    return false;}
+        };
+
+
         //TODO check enough ingredient
 
 
@@ -191,7 +240,7 @@ public class Store {
     }
 
     public HashMap<Dough, Integer> getCookingAvailable() {
-        return cookingAvailable;
+        return doughAvailable;
     }
 
     public HashMap<Flavour, Integer> getFlavourAvailable() {
@@ -202,8 +251,8 @@ public class Store {
         return toppingAvailable;
     }
 
-    public void setCookingAvailable(HashMap<Dough, Integer> cookingAvailable) {
-        this.cookingAvailable = cookingAvailable;
+    public void setCookingAvailable(HashMap<Dough, Integer> doughAvailable) {
+        this.doughAvailable = doughAvailable;
     }
 
     public void setFlavourAvailable(HashMap<Flavour, Integer> flavourAvailable) {

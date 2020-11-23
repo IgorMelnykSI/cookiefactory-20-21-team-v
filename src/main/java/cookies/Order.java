@@ -9,7 +9,7 @@ public class Order {
      private String orderID;
      private double price;
      private Date pickUpDate;
-     private int[] pickUpTime = new int[2];
+     private int[] pickUpTime;
      private Store pickUpStore;
      private String pickUp="pickUp";
      private String homeDelivery="homeDelivery";
@@ -24,6 +24,7 @@ public class Order {
         pickUpTime=null;
         pickUpStore = null;
         deliveryAddress=null;
+        pickUpTime = new int[2];
     }
 
     public static int Guid = 100;
@@ -122,6 +123,7 @@ public class Order {
     public void setPickUpStore(Store pickUpStore) {
             this.pickUpStore= pickUpStore;
     }
+    public void setPickUpTime(int hour,int min){this.pickUpTime[0]=hour;this.pickUpTime[1]= min;}
 
     public void setDeliveryAddress(String deliveryAddress){
         this.deliveryAddress=deliveryAddress;
