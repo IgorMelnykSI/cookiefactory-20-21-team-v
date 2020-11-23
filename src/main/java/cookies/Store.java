@@ -39,9 +39,11 @@ public class Store {
     public boolean isBusy(Date date){
         int num = 0;
         for(Order order: historyOrders){
-            if(order.getPickUpDate().equals(date)) num++;
+            if(Math.abs(order.getPickUpDate().getTime()-date.getTime())<900000) {
+                num++;
+            }
         }
-        return num<20?false:true;
+        return num >= 20;
     }
     public void setPosition(double X, double Y) {
         this.position[0] = X;
@@ -70,7 +72,7 @@ public class Store {
     public void saveOrder(Order order){
         deleteExpiredOrder();
         historyOrders.add(order);
-        calculateRecipePopularity();
+//        calculateRecipePopularity();
     }
 
     public void deleteExpiredOrder(){
@@ -85,7 +87,6 @@ public class Store {
             int days = (int) ((today.getTime() - order.getPickUpDate().getTime()) / (1000*3600*24));
             if(days>30){
                 expiredOrders.add(order);
-
                 for(Recipe recipe:order.getPersonalRecipes()){
                     recipe.minusPopularity();
                 }
@@ -97,15 +98,15 @@ public class Store {
         }
     }
 
-    public void calculateRecipePopularity(){
-        Map<Recipe, Integer> historyRecipes = new HashMap<>();
-
-        for (Order order : historyOrders) {
-            for (CookieItem cookieItem : order.getCookieItems()) {
-            }
-        }
-
-    }
+//    public void calculateRecipePopularity(){
+//        Map<Recipe, Integer> historyRecipes = new HashMap<>();
+//
+//        for (Order order : historyOrders) {
+//            for (CookieItem cookieItem : order.getCookieItems()) {
+//            }
+//        }
+//
+//    }
 
     public String getName(){return name;}
     public String getAddress(){return address;}

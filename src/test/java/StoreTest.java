@@ -64,27 +64,28 @@ public class StoreTest {
     }
 
     @Test
-    public void isBusy() throws ParseException {
-        SimpleDateFormat f = new SimpleDateFormat("dd-mm-yyyy");
-        String dateStringToParse = "08-08-2020";
-        String dateStringToParse1 = "09-08-2020";
+    public void isBusy(){
+        GregorianCalendar gc = new GregorianCalendar();
+        gc.set(2020,Calendar.DECEMBER, 1,18,30);
         Order[] order = new Order[30];
-        try {
-            Date date = f.parse(dateStringToParse);
-            Date date1 = f.parse(dateStringToParse1);
-            for(int i = 0; i < 30 ; i++){
-                order[i].setPickUpStore(store1);
-                order[i].setPickUpDate(date);
-            }
-            assertTrue(store1.isBusy(date));
-            assertFalse(store1.isBusy(date1));
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        Date date = gc.getTime();
+        gc.set(2020,Calendar.DECEMBER, 1,19,30);
+        Date date1 = gc.getTime();
+
+        for(int i = 0; i < 5 ; i++){
+            order[i] = new Order();
+            order[i].setPickUpStore(store1);
+            order[i].setPickUpDate(date);
+            store1.saveOrder(order[i]);
         }
-
-
-
-
+        for(int i = 5; i < 30 ; i++){
+            order[i] = new Order();
+            order[i].setPickUpStore(store1);
+            order[i].setPickUpDate(date1);
+            store1.saveOrder(order[i]);
+        }
+        assertTrue(store1.isBusy(date1));
+        assertFalse(store1.isBusy(date));
 
     }
 }
