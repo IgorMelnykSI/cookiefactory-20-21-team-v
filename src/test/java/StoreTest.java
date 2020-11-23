@@ -99,7 +99,7 @@ public class StoreTest {
         Cooking chewy = new Cooking("Chewy",0.4);
         Recipe recipe1= new Recipe("recipe1",chewy,plain,chili,topped,toppings);
         Order order1 = new Order();
-        CookieItem cookieItem1= new CookieItem(10,recipe1);
+        CookieItem cookieItem1= new CookieItem(1000,recipe1);
         order1.addCookieItem(cookieItem1);
         order1.setPickUpTime(11,0);
         assertEquals(store1.checkOrder(order1),false);
