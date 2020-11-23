@@ -245,10 +245,10 @@ public class CookieFactory {
         return null;
     }
 
-    public Flavour getFlavor(String name) {
-        for (Flavour flavor : this.flavourList) {
-            if (flavor.getType ().equals (name)) {
-                return flavor;
+    public Flavour getFlavour(String name) {
+        for (Flavour flavour : this.flavourList) {
+            if (flavour.getType ().equals (name)) {
+                return flavour;
             }
         }
         return null;
