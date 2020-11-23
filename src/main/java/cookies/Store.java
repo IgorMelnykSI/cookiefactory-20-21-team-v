@@ -118,25 +118,24 @@ public class Store {
 
     }
 
-    public boolean checkIngredients(Order order){
+    public void checkIngredients(Order order){
         List<CookieItem> cookieItems;
         cookieItems = order.getCookieItems();
         for(CookieItem cookieItem:cookieItems){
             Recipe recipe = cookieItem.getRecipe();
             if(doughAvailable.get(recipe.getDough())<20){
-                return true;
+                lackIngredient=true;
             }
             List<Topping> toppings = recipe.getToppings();
             for(Topping topping:toppings) {
                 if (toppingAvailable.get(topping) < 20) {
-                    return true;
+                    lackIngredient=true;
                 }
             }
             if(flavourAvailable.get(recipe.getFlavour())<20){
-                return true;
+                lackIngredient=true;
             }
         }
-        return false;
     }
 
     public String getName(){return name;}
