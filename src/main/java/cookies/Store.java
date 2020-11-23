@@ -34,7 +34,6 @@ public class Store {
         this.tax = tax;
         this.myBestOf = new Recipe("");
         this.nationalBestOf = new Recipe("");
-
     }
 
     public boolean isBusy(Date date){
@@ -71,44 +70,7 @@ public class Store {
             return false;
         }
 
-        Set<CookieItem> cookieItems = order.getCookieItems();
-        HashSet<Dough> doughSet = new HashSet<>();
-        HashSet<Topping> toppingsSet = new HashSet<>();
-        HashSet<Flavour> flavourSet = new HashSet<>();
-        List<Topping> toppingList = new LinkedList<>();
-        for (CookieItem cookieItem:cookieItems){for (Topping topping:cookieItem.getRecipe().getToppings()){toppingList.add(topping);}}
-        for (CookieItem cookieItem:cookieItems){doughSet.add(cookieItem.getRecipe().getDough());}
-        for (CookieItem cookieItem:cookieItems){flavourSet.add(cookieItem.getRecipe().getFlavour());}
-        for (Dough dough:doughAvailable.keySet()){
-            if (doughSet.contains(dough)==false){return false;}
-        };
-        for (Topping topping:toppingAvailable.keySet()){
-            if (toppingList.contains(topping)==false){return false;}
-        };
-        for (Flavour flavour:flavourAvailable.keySet()){
-            if (flavourSet.contains(flavour)==false){return false;}
-        };
-
-
-
         //TODO check correct ingredient
-        for (Dough dough:doughAvailable.keySet()){
-            while (doughSet.contains(dough)==true){
-                if (cookieItems.size()>100)
-                    return false;}
-        };
-        for (Topping topping:toppingAvailable.keySet()){
-            while (toppingsSet.contains(topping)==true){
-                if (cookieItems.size()>100)
-                    return false;}
-        };
-        for (Flavour flavour:flavourAvailable.keySet()){
-            while (flavourSet.contains(flavour)==true){
-                if (cookieItems.size()>100)
-                    return false;}
-        };
-
-
         //TODO check enough ingredient
 
 
@@ -154,6 +116,27 @@ public class Store {
             }
         }
 
+    }
+
+    public boolean checkIngredients(Order order){
+        List<CookieItem> cookieItems;
+        cookieItems = order.getCookieItems();
+        for(CookieItem cookieItem:cookieItems){
+            Recipe recipe = cookieItem.getRecipe();
+            if(doughAvailable.get(recipe.getDough())<20){
+                return true;
+            }
+            List<Topping> toppings = recipe.getToppings();
+            for(Topping topping:toppings) {
+                if (toppingAvailable.get(topping) < 20) {
+                    return true;
+                }
+            }
+            if(flavourAvailable.get(recipe.getFlavour())<20){
+                return true;
+            }
+        }
+        return false;
     }
 
     public String getName(){return name;}

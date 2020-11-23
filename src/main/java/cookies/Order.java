@@ -14,7 +14,7 @@ public class Order {
      private String pickUp="pickUp";
      private String homeDelivery="homeDelivery";
      private String deliveryAddress;
-     private Set<CookieItem> cookieItems = new HashSet<>();
+     private List<CookieItem> cookieItems = new ArrayList<>();
      private List<Recipe> personalRecipes = new ArrayList<>();
 
     public Order(){
@@ -50,7 +50,7 @@ public class Order {
         return time + info.substring(2, info.length()) + ran;
     }
 
-    public Set<CookieItem> getCookieItems(){
+    public List<CookieItem> getCookieItems(){
         return cookieItems;
 }
     public Date getPickUpDate() {
