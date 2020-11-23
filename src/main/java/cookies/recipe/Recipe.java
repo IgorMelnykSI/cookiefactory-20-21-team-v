@@ -40,8 +40,8 @@ public class Recipe {
         if(re==null)
             return false;
 
-        if(dough.getType()==re.getDough().getType()&&flavour.getType()==re.getFlavour().getType()&&mix.getType()==re.getMix().getType()&&
-                cooking.getType()==re.getCooking().getType()){
+        if(dough.getType().equals(re.getDough().getType()) &&flavour.getType().equals(re.getFlavour().getType())&&
+                mix.getType().equals(re.getMix().getType())&&cooking.getType().equals(re.getCooking().getType())){
             for(int i=0;i<toppings.size();i++){
                 if(toppings.get(i).getType().equals(re.getToppings().get(i).getType())){
                     flag = true;
@@ -152,4 +152,5 @@ public class Recipe {
     public List<Topping> getToppings(){
         return toppings;
     }
+
 }

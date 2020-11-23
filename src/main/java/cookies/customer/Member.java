@@ -44,7 +44,7 @@ public class Member extends Tourist{
      * Otherwise set 0 if is not suitable
      * @param cookieItems newly ordered
      */
-    private void computeLoyalDiscount(Set<CookieItem> cookieItems) {
+    private void computeLoyalDiscount(List<CookieItem> cookieItems) {
         if (!isLoyal){
             return;
         }

@@ -1,12 +1,21 @@
 package recipe;
 
 import cookies.recipe.Flavour;
+import cookies.recipe.FlavourCreator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class FlavourTest {
-    Flavour flavour=new Flavour("Cinnamon",0.1);
+    Flavour flavour;
+    FlavourCreator flavourCreator;
+
+    @BeforeEach
+    public void init() {
+        flavour=new Flavour("Cinnamon",0.1);
+        flavourCreator = new FlavourCreator();
+    }
 
     @Test
     void getType() {
@@ -15,8 +24,8 @@ class FlavourTest {
 
     @Test
     void setType() {
-        flavour.setType("Chili");
-        assertEquals("Chili",flavour.getType());
+        Flavour chili = this.flavourCreator.createIngredient("Chili", 2);
+        assertTrue("Chili".equals(chili.getType()));
     }
 
     @Test

@@ -17,10 +17,10 @@ public class Store {
     private Recipe myBestOf ;
     private Recipe nationalBestOf;
     private String country;
+    private HashMap<Dough,Integer> doughAvailable = new HashMap<>();
     private boolean hasProblem = false, lackIngredient = false;
-    private HashMap<Dough,Integer> cookingAvailable;
-    private HashMap<Flavour,Integer> flavourAvailable;
-    private HashMap<Topping,Integer> toppingAvailable;
+    private HashMap<Flavour,Integer> flavourAvailable = new HashMap<>();
+    private HashMap<Topping,Integer> toppingAvailable =new HashMap<>();
     private double[] position = {0,0};
     private List<Store> nearbyStore = new ArrayList<>();
 
@@ -54,6 +54,17 @@ public class Store {
         return position;
     }
     public boolean checkOrder(Order order){
+        doughAvailable.put(new Dough("Plain",2.0),100);
+        doughAvailable.put(new Dough("Chocolate",2.4),100);
+        doughAvailable.put(new Dough("Peanut butter",2.5),100);
+        doughAvailable.put(new Dough("Oatmeal",2.6),100);
+        flavourAvailable.put(new Flavour("Vanilla",0.1),100);
+        flavourAvailable.put(new Flavour("Cinnamon",0.1),100);
+        flavourAvailable.put(new Flavour("Chili",0.1),100);
+        toppingAvailable.put(new Topping("White chocolate",0.2),500);
+        toppingAvailable.put(new Topping("Milk chocolate",0.2),500);
+        toppingAvailable.put(new Topping("M&M’s™",0.3),500);
+        toppingAvailable.put(new Topping("Reese’s buttercup",0.4),500);
         if (this.openTime[0]>order.getPickUpHour()||this.closeTime[0]<order.getPickUpMin()){
             return false;
         }
@@ -107,6 +118,26 @@ public class Store {
 //        }
 //
 //    }
+
+    public void checkIngredients(Order order){
+        List<CookieItem> cookieItems;
+        cookieItems = order.getCookieItems();
+        for(CookieItem cookieItem:cookieItems){
+            Recipe recipe = cookieItem.getRecipe();
+            if(doughAvailable.get(recipe.getDough())<20){
+                lackIngredient=true;
+            }
+            List<Topping> toppings = recipe.getToppings();
+            for(Topping topping:toppings) {
+                if (toppingAvailable.get(topping) < 20) {
+                    lackIngredient=true;
+                }
+            }
+            if(flavourAvailable.get(recipe.getFlavour())<20){
+                lackIngredient=true;
+            }
+        }
+    }
 
     public String getName(){return name;}
     public String getAddress(){return address;}
@@ -192,7 +223,7 @@ public class Store {
     }
 
     public HashMap<Dough, Integer> getCookingAvailable() {
-        return cookingAvailable;
+        return doughAvailable;
     }
 
     public HashMap<Flavour, Integer> getFlavourAvailable() {
@@ -203,8 +234,8 @@ public class Store {
         return toppingAvailable;
     }
 
-    public void setCookingAvailable(HashMap<Dough, Integer> cookingAvailable) {
-        this.cookingAvailable = cookingAvailable;
+    public void setCookingAvailable(HashMap<Dough, Integer> doughAvailable) {
+        this.doughAvailable = doughAvailable;
     }
 
     public void setFlavourAvailable(HashMap<Flavour, Integer> flavourAvailable) {

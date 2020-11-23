@@ -1,4 +1,6 @@
+import cookies.CookieItem;
 import cookies.Store;
+import cookies.recipe.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import cookies.Order;
@@ -6,9 +8,7 @@ import cookies.Order;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -87,5 +87,22 @@ public class StoreTest {
         assertTrue(store1.isBusy(date1));
         assertFalse(store1.isBusy(date));
 
+
+    }
+    @Test
+    public void canTakeOrder(){
+        Dough plain = new Dough("Plain",2.0);
+        Flavour chili = new Flavour("chili",0.1);
+        Topping whitechoco = new Topping("White chocolate",0.2);
+        List<Topping> toppings = new LinkedList<>();
+        toppings.add(whitechoco);
+        Mix topped = new Mix("Topped",0.3);
+        Cooking chewy = new Cooking("Chewy",0.4);
+        Recipe recipe1= new Recipe("recipe1",chewy,plain,chili,topped,toppings);
+        Order order1 = new Order();
+        CookieItem cookieItem1= new CookieItem(1000,recipe1);
+        order1.addCookieItem(cookieItem1);
+        order1.setPickUpTime(11,0);
+//        assertEquals(true,store1.checkOrder(order1));
     }
 }
