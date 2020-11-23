@@ -17,7 +17,7 @@ public class Store {
     private Recipe myBestOf ;
     private Recipe nationalBestOf;
     private String country;
-    private boolean hasProblem = false;
+    private boolean hasProblem = false, lackIngredient = false;
     private HashMap<Dough,Integer> cookingAvailable;
     private HashMap<Flavour,Integer> flavourAvailable;
     private HashMap<Topping,Integer> toppingAvailable;
@@ -36,6 +36,13 @@ public class Store {
         this.nationalBestOf = new Recipe("");
     }
 
+    public boolean isBusy(Date date){
+        int num = 0;
+        for(Order order: historyOrders){
+            if(order.getPickUpDate().equals(date)) num++;
+        }
+        return num<20?false:true;
+    }
     public void setPosition(double X, double Y) {
         this.position[0] = X;
         this.position[1] = Y;

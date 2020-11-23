@@ -54,6 +54,10 @@ public class Tourist {
             throw new MyException("The store has technical problems, please choose another store\n");
         }
 //
+
+         if(store.isBusy(date)){
+             throw new MyException("The store is busy, please choose another store\n");
+         }
         for(Recipe recipe : mp.keySet()){
             CookieItem item=new CookieItem(mp.get(recipe),recipe);
             order.addCookieItem(item);

@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 import cookies.Order;
 
 
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -60,5 +61,30 @@ public class StoreTest {
         store1.setPosition(position[0],position[1]);
         assertEquals(position[0], store1.getPosition()[0], 0.0);
         assertEquals(position[1], store1.getPosition()[1], 0.0);
+    }
+
+    @Test
+    public void isBusy() throws ParseException {
+        SimpleDateFormat f = new SimpleDateFormat("dd-mm-yyyy");
+        String dateStringToParse = "08-08-2020";
+        String dateStringToParse1 = "09-08-2020";
+        Order[] order = new Order[30];
+        try {
+            Date date = f.parse(dateStringToParse);
+            Date date1 = f.parse(dateStringToParse1);
+            for(int i = 0; i < 30 ; i++){
+                order[i].setPickUpStore(store1);
+                order[i].setPickUpDate(date);
+            }
+            assertTrue(store1.isBusy(date));
+            assertFalse(store1.isBusy(date1));
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
+
+
+
     }
 }
