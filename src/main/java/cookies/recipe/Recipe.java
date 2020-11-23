@@ -1,7 +1,9 @@
 package cookies.recipe;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class Recipe {
@@ -34,15 +36,23 @@ public class Recipe {
     }
 
     public boolean compareRecipe(Recipe re){
+        boolean flag = false;
         if(re==null)
             return false;
 
         if(dough.getType()==re.getDough().getType()&&flavour.getType()==re.getFlavour().getType()&&mix.getType()==re.getMix().getType()&&
-                cooking.getType()==re.getCooking().getType()&& re.getToppings()==toppings){
-            return true;
+                cooking.getType()==re.getCooking().getType()){
+            for(int i=0;i<toppings.size();i++){
+                if(toppings.get(i).getType().equals(re.getToppings().get(i).getType())){
+                    flag = true;
+                }else {
+                    return false;
+                }
+            }
+
         }
 
-        return false;
+        return flag;
     }
 
 
@@ -91,7 +101,16 @@ public class Recipe {
     }
 
     public void setToppings(List<Topping> toppings) {
-        this.toppings = toppings;
+        this.toppings = new ArrayList<>();
+        if(toppings.size()<=3&&toppings.size()>0){
+            Iterator<Topping> it = toppings.iterator();
+            while (it.hasNext()) {
+                Topping s = it.next();
+                Topping newS = new Topping(s.getType(),s.getPrice());
+                this.toppings.add(newS);
+            }
+        }
+        //this.toppings = toppings;
     }
 
     public void addPopularity(){popularity++;}

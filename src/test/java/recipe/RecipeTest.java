@@ -130,7 +130,8 @@ class RecipeTest {
     @Test
     void setToppings() {
         recipe1.setToppings(tops1);
-        assertEquals(tops1,recipe1.getToppings());
+        assertEquals(tops1.size(),recipe1.getToppings().size());
+        assertEquals(tops1.get(0).getType(),recipe1.getToppings().get(0).getType());
         assertNotEquals(tops2,recipe1.getToppings());
     }
 }
