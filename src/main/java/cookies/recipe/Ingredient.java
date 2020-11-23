@@ -1,20 +1,16 @@
 package cookies.recipe;
 
-public abstract class Ingredients {
+public abstract class Ingredient {
 	private static int INGREDIENTIDCOUNTER = 0;
 	private int id;
 	private String type;
 	private double price;
 
-	public Ingredients(String name, double price) {
+	public Ingredient(String name, double price) {
 		this.type = name;
 		this.price = price;
 		this.id = INGREDIENTIDCOUNTER;
 		INGREDIENTIDCOUNTER++;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public double getPrice() {

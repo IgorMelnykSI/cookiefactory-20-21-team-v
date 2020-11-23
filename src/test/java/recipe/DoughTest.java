@@ -1,12 +1,22 @@
 package recipe;
 
 import cookies.recipe.Dough;
+import cookies.recipe.DoughCreator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class DoughTest {
-    Dough dough=new Dough("Plain",2.0);
+    Dough dough;
+    DoughCreator doughCreator;
+
+    @BeforeEach
+    public void init() {
+        dough=new Dough("Plain",2.0);
+        doughCreator = new DoughCreator();
+    }
+
 
     @Test
     void getType() {
@@ -15,8 +25,8 @@ class DoughTest {
 
     @Test
     void setType() {
-        dough.setType("Chocolate");
-        assertEquals("Chocolate",dough.getType());
+        Dough chocolateDough = this.doughCreator.createIngredient("Chocolate", 2);
+        assertTrue("Chocolate".equals(chocolateDough.getType()));
     }
 
     @Test

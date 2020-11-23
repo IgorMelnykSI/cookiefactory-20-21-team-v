@@ -1,5 +1,7 @@
 package recipe;
 
+import cookies.recipe.ToppingCreator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import cookies.recipe.Topping;
@@ -7,7 +9,14 @@ import cookies.recipe.Topping;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ToppingTest {
-    Topping topping=new Topping("White chocolate",0.2);
+    Topping topping;
+    ToppingCreator toppingCreator;
+
+    @BeforeEach
+    public void init() {
+        topping=new Topping("White chocolate",0.2);
+        toppingCreator = new ToppingCreator();
+    }
 
     @Test
     void getType() {
@@ -16,8 +25,8 @@ class ToppingTest {
 
     @Test
     void setType(){
-        topping.setType("Milk chocolate");
-        assertTrue(topping.getType()=="Milk chocolate");
+        Topping chocolateTopping = this.toppingCreator.createIngredient("Milk chocolate", 2);
+        assertTrue("Milk chocolate".equals(chocolateTopping.getType()));
     }
 
     @Test
