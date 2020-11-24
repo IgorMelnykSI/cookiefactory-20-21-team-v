@@ -73,6 +73,19 @@ public class Order {
     public  String getTheWay(){
         return this.theWay;
     }
+    public boolean judgeTheTime(){
+        Date date = new Date();
+        if(date.before(pickUpDate)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public void changePickToDelivery(){
+        if(theWay==pickUp&&judgeTheTime()){
+            this.theWay=homeDelivery;
+        }
+    }
 
     public int[] getPickUpTime() {
         return pickUpTime;
