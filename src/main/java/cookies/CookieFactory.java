@@ -143,6 +143,9 @@ public class CookieFactory {
     public void addRecipe(Recipe newRecipe) {
         recipesList.add(newRecipe);
         setMap();
+        for(Store s:storeList){
+            s.responseRecipeChange(recipesList);
+        }
     }
 
     public void addCount(String recipeName) {
@@ -155,8 +158,10 @@ public class CookieFactory {
     }
 
     public void deleteRecipe(String name) {
-
        recipesList.remove(getRecipe(name));
+        for(Store s:storeList){
+            s.responseRecipeChange(recipesList);
+        }
     }
 
     public void deleteFewOrderRecipe(){
