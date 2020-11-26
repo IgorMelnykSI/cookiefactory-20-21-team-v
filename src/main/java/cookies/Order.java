@@ -1,5 +1,6 @@
 package cookies;
 
+import cookies.order.State;
 import cookies.recipe.Recipe;
 
 import java.util.*;
@@ -18,6 +19,7 @@ public class Order {
      private String deliveryAddress;
      private List<CookieItem> cookieItems = new ArrayList<>();
      private List<Recipe> personalRecipes = new ArrayList<>();
+    private State state;
 
     public Order(){
         orderID = getGuid();
@@ -84,6 +86,7 @@ public class Order {
     public void changePickToDelivery(){
         if(theWay==pickUp&&judgeTheTime()){
             this.theWay=homeDelivery;
+            this.price=price+deliveryFee*0.5;
         }
     }
 
@@ -155,4 +158,11 @@ public class Order {
     }
 
     public List<Recipe> getPersonalRecipes(){return personalRecipes;}
+
+    public void setState(State s){
+        System.out.println("change state");
+        state = s;
+        state.handle();
+    }
+
 }
