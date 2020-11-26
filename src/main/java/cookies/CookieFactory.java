@@ -2,6 +2,7 @@ package cookies;
 
 import cookies.recipe.*;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 
@@ -65,6 +66,9 @@ public class CookieFactory {
         doughList.add(new Dough("Oatmeal",2.6));
     }
 
+    public void addDough(Dough dough){
+        doughList.add(dough);
+    }
     private  void initToppingList(){
         toppingList.add(new Topping("White chocolate",0.2));
         toppingList.add(new Topping("Milk chocolate",0.2));
@@ -172,9 +176,15 @@ public class CookieFactory {
 
     public void addStore(Store store) {
         storeList.add(store);
+        for(Store s: storeList){
+            s.response(getNearbyStores(s));
+        }
     }
     public void deleteStore(String name) {
         storeList.remove(getStore(name));
+        for(Store s: storeList){
+            s.response(getNearbyStores(s));
+        }
     }
 
     public ArrayList<Store> getStoreList() {
@@ -193,8 +203,8 @@ public class CookieFactory {
         getStore(name).setHasProblem(false);
     }
 
-    public Set<Store> getNearbyStores(Store store){
-        Set<Store> nearbyStores = new HashSet<>();
+    public List<Store> getNearbyStores(Store store){
+        List<Store> nearbyStores = new ArrayList<>();
         double distance = 0;
         for(Store s: storeList){
             if(s.getName().equals(store.getName())) continue;

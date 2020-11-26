@@ -45,9 +45,17 @@ public class Store {
         }
         return num >= 20;
     }
+
     public void setPosition(double X, double Y) {
         this.position[0] = X;
         this.position[1] = Y;
+    }
+
+    public void response(List<Store> nearbyStore){
+        setNearbyStore(nearbyStore);
+    }
+    public void setNearbyStore(List<Store> nearbyStore) {
+        this.nearbyStore = nearbyStore;
     }
 
     public double[] getPosition(){
@@ -109,15 +117,6 @@ public class Store {
         }
     }
 
-//    public void calculateRecipePopularity(){
-//        Map<Recipe, Integer> historyRecipes = new HashMap<>();
-//
-//        for (Order order : historyOrders) {
-//            for (CookieItem cookieItem : order.getCookieItems()) {
-//            }
-//        }
-//
-//    }
 
     public void checkIngredients(Order order){
         List<CookieItem> cookieItems;

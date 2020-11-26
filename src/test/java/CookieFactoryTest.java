@@ -3,6 +3,7 @@ import cookies.Store;
 import cookies.recipe.Recipe;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -140,7 +141,7 @@ class CookieFactoryTest {
         Store store5 = new Store("store5","address2",8,0,18,0,0.15);
         store5.setPosition(1.0,3.0);
         cook.addStore(store5);
-        Set<Store> nearbyStores = cook.getNearbyStores(store5);
+        List<Store> nearbyStores = cook.getNearbyStores(store5);
         assertTrue(nearbyStores.contains(store2));
         assertTrue(nearbyStores.contains(store3));
         assertFalse(nearbyStores.contains(store4));
