@@ -23,6 +23,7 @@ public class Store {
     private HashMap<Topping,Integer> toppingAvailable =new HashMap<>();
     private double[] position = {0,0};
     private List<Store> nearbyStore = new ArrayList<>();
+    private List<Recipe> recipes = new ArrayList<>();
 
     public Store(String name, String address, int openHour, int openMin, int closeHour, int closeMin,double tax){
         this.name = name;
@@ -34,7 +35,49 @@ public class Store {
         this.tax = tax;
         this.myBestOf = new Recipe("");
         this.nationalBestOf = new Recipe("");
+        doughAvailable.put(new Dough("Plain",2.0),100);
+        doughAvailable.put(new Dough("Chocolate",2.4),100);
+        doughAvailable.put(new Dough("Peanut butter",2.5),100);
+        doughAvailable.put(new Dough("Oatmeal",2.6),100);
+        flavourAvailable.put(new Flavour("Vanilla",0.1),100);
+        flavourAvailable.put(new Flavour("Cinnamon",0.1),100);
+        flavourAvailable.put(new Flavour("Chili",0.1),100);
+        toppingAvailable.put(new Topping("White chocolate",0.2),500);
+        toppingAvailable.put(new Topping("Milk chocolate",0.2),500);
+        toppingAvailable.put(new Topping("M&M’s™",0.3),500);
+        toppingAvailable.put(new Topping("Reese’s buttercup",0.4),500);
     }
+
+    public void setRecipes(List<Recipe> recipes){
+        this.recipes = recipes;
+    }
+
+    public void responseRecipeChange(List<Recipe> recipes){
+        setRecipes(recipes);
+    }
+    public void addDough(Dough dough, int n){
+        doughAvailable.put(dough,n);
+    }
+
+    public void removeDough(Dough dough){
+        doughAvailable.remove(dough);
+    }
+
+    public void addFlacvour(Flavour flavour, int n){
+        flavourAvailable.put(flavour,n);
+    }
+
+    public void removeFlacvour(Flavour flavour){
+        flavourAvailable.remove(flavour);
+    }
+    public void addTopping(Topping topping, int n){
+        toppingAvailable.put(topping,n);
+    }
+
+    public void removeTopping(Topping topping){
+        toppingAvailable.remove(topping);
+    }
+
 
     public boolean isBusy(Date date){
         int num = 0;
@@ -62,17 +105,29 @@ public class Store {
         return position;
     }
     public boolean checkOrder(Order order){
-        doughAvailable.put(new Dough("Plain",2.0),100);
-        doughAvailable.put(new Dough("Chocolate",2.4),100);
-        doughAvailable.put(new Dough("Peanut butter",2.5),100);
-        doughAvailable.put(new Dough("Oatmeal",2.6),100);
-        flavourAvailable.put(new Flavour("Vanilla",0.1),100);
-        flavourAvailable.put(new Flavour("Cinnamon",0.1),100);
-        flavourAvailable.put(new Flavour("Chili",0.1),100);
-        toppingAvailable.put(new Topping("White chocolate",0.2),500);
-        toppingAvailable.put(new Topping("Milk chocolate",0.2),500);
-        toppingAvailable.put(new Topping("M&M’s™",0.3),500);
-        toppingAvailable.put(new Topping("Reese’s buttercup",0.4),500);
+        for(CookieItem cookieItem:order.getCookieItems()) {
+            Dough dough = cookieItem.getRecipe().getDough();
+            Flavour flavour = cookieItem.getRecipe().getFlavour();
+            if (doughAvailable.get(dough) < cookieItem.getQuantity()) {
+                return false;
+            } else {
+                int n = doughAvailable.get(dough) - cookieItem.getQuantity();
+                doughAvailable.put(dough, n);
+            }
+            if (flavourAvailable.get(flavour) < cookieItem.getQuantity()){
+                return false;
+            }else {
+                int n = flavourAvailable.get(flavour) - cookieItem.getQuantity();
+                flavourAvailable.put(flavour,n);
+            }
+            for(Topping topping:cookieItem.getRecipe().getToppings())
+                if(toppingAvailable.get(topping) < cookieItem.getQuantity()) {
+                    return false;
+                }else{
+                    int n = toppingAvailable.get(topping) - cookieItem.getQuantity();
+                    toppingAvailable.put(topping,n);
+                }
+        }
         if (this.openTime[0]>order.getPickUpHour()||this.closeTime[0]<order.getPickUpMin()){
             return false;
         }
