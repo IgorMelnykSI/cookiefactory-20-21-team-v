@@ -123,14 +123,19 @@ public class Order {
         for(CookieItem ci : cookieItems){
             this.price += ci.getPrice();
         }
-        //if(getTheWay().equals("MarcelEat")){
-         //   this.price=this.price+deliveryFee;
-        //}
+        if(theWay.equals("MarcelEat")){
+            this.price=this.price+deliveryFee;
+        }
     }
 
     public void caculateDiscountPrice(double loyalDiscount){
         //TODO caculate all the discount here
-        this.price = price*(1-loyalDiscount);
+        if(theWay.equals("MarcelEat")){
+            this.price = (price-deliveryFee)*(1-loyalDiscount)+deliveryFee;
+        }else {
+            this.price = price*(1-loyalDiscount);
+        }
+
     }
 
 //    public void setPrice(double price) {

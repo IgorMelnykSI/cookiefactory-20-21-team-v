@@ -50,18 +50,40 @@ class OrderTest {
     void caculatePrice() {
         assertEquals(order.getPrice(),0);
         order.addCookieItem(item);
+        order.setTheWayToPick(1);
         item.setPrice(7.5);
         order.caculatePrice();
         assertEquals(order.getPrice(),7.5);
     }
 
     @Test
+    void caculatePrice2() {
+        assertEquals(order.getPrice(),0);
+        order.addCookieItem(item);
+        order.setTheWayToPick(2);
+        item.setPrice(7.5);
+        order.caculatePrice();
+        assertEquals(order.getPrice(),11.5);
+    }
+
+    @Test
     void caculateDiscountPrice() {
         order.addCookieItem(item);
+        order.setTheWayToPick(1);
         item.setPrice(10);
         order.caculatePrice();
         order.caculateDiscountPrice(0.1);
         assertEquals(order.getPrice(),9.0);
+    }
+
+    @Test
+    void caculateDiscountPrice2() {
+        order.addCookieItem(item);
+        order.setTheWayToPick(2);
+        item.setPrice(10);
+        order.caculatePrice();
+        order.caculateDiscountPrice(0.1);
+        assertEquals(order.getPrice(),13.0);
     }
 
     @Test
