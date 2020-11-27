@@ -54,6 +54,8 @@ class OrderTest {
         item.setPrice(7.5);
         order.caculatePrice();
         assertEquals(order.getPrice(),7.5);
+        order.changePickToDelivery();
+        assertEquals(order.getPrice(),13.5);
     }
 
     @Test
@@ -74,6 +76,8 @@ class OrderTest {
         order.caculatePrice();
         order.caculateDiscountPrice(0.1);
         assertEquals(order.getPrice(),9.0);
+        order.changePickToDelivery();
+        assertEquals(order.getPrice(),15.0);
     }
 
     @Test
