@@ -84,7 +84,7 @@ public class Order {
         }
     }
     public void changePickToDelivery(){
-        if(theWay==pickUp){
+        if(theWay==pickUp&&judgeTheTime()){
             this.theWay=homeDelivery;
             this.price=price+deliveryFee*(1+0.5);
         }

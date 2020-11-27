@@ -6,6 +6,9 @@ import cookies.recipe.Recipe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,14 +17,16 @@ class OrderTest {
     Recipe recipe;
     CookieItem item;
     Order order;
+    Date myDate2;
 
     @BeforeEach
-    public void init(){
+    public void init() throws ParseException {
         recipe=new Recipe("recipe1");
         item=new CookieItem(3,recipe);
         order =new Order();
         Store store1=new Store("store1","address1",8,30,19,0,0.2);
-
+        DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        myDate2 = dateFormat2.parse("2020-12-01 17:36:01");
     }
 
 
@@ -54,6 +59,7 @@ class OrderTest {
         item.setPrice(7.5);
         order.caculatePrice();
         assertEquals(order.getPrice(),7.5);
+        order.setPickUpDate(myDate2);
         order.changePickToDelivery();
         assertEquals(order.getPrice(),13.5);
     }
@@ -76,6 +82,7 @@ class OrderTest {
         order.caculatePrice();
         order.caculateDiscountPrice(0.1);
         assertEquals(order.getPrice(),9.0);
+        order.setPickUpDate(myDate2);
         order.changePickToDelivery();
         assertEquals(order.getPrice(),15.0);
     }
