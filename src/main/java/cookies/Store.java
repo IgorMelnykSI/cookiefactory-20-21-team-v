@@ -93,12 +93,12 @@ public class Store {
 //                    toppingAvailable.put(topping,n);
 //                }
 //        }
-        if (this.openTime[0]>order.getPickUpHour()||this.closeTime[0]<order.getPickUpMin()){
-            return false;
-        }
-        if (this.openTime[0]==order.getPickUpHour()&&this.openTime[1]>order.getPickUpMin()||this.closeTime[0]==order.getPickUpMin()&&this.closeTime[1]<order.getPickUpMin()){
-            return false;
-        }
+//        if (this.openTime[0]>order.getPickUpHour()||this.closeTime[0]<order.getPickUpMin()){
+//            return false;
+//        }
+//        if (this.openTime[0]==order.getPickUpHour()&&this.openTime[1]>order.getPickUpMin()||this.closeTime[0]==order.getPickUpMin()&&this.closeTime[1]<order.getPickUpMin()){
+//            return false;
+//        }
 
         saveOrder(order);
         return true;

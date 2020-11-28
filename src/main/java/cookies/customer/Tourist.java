@@ -1,6 +1,7 @@
 package cookies.customer;
 
 import cookies.*;
+import cookies.order.MyException;
 import cookies.recipe.*;
 
 
@@ -14,19 +15,7 @@ public class Tourist {
     CookieFactory factory = new CookieFactory();
 
     public Order creatNoDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store,String deliveryAddress) throws MyException {
-        Order order = new Order();
-        order.setTheWayToPick(way);
-         if (order.getTheWay()=="pickUp"){
-             order.setPickUpDate(date);
-             order.setPickUpStore(store);
-         }else if(order.getTheWay()=="MarcelEat"){
-             order.setPickUpStore(store);//这是为了确定客户选择哪家店下订单
-             order.setDeliveryAddress(deliveryAddress);
-         }else {
-             throw new MyException("非法配送方式, 请输入序号选择配送方式:" +
-                     "\n1. Pick up" +
-                     "\n2. MarcelEat");
-         }
+        Order order = new Order(way,date,store,deliveryAddress);
 
         for(Recipe recipe : mp.keySet()){
             CookieItem item=new CookieItem(mp.get(recipe),recipe);
@@ -38,26 +27,7 @@ public class Tourist {
     }
 
      public Order createPrivateOrder(Map<Recipe, Integer> mp,int way, Date date, Store store,String deliveryAddress) throws MyException {
-        Order order = new Order();
-        order.setTheWayToPick(way);
-        if (order.getTheWay()=="pickUp"){
-            order.setPickUpDate(date);
-            order.setPickUpStore(store);
-        }else if(order.getTheWay()=="MarcelEat"){
-            order.setDeliveryAddress(deliveryAddress);
-        }else {
-            throw new MyException("非法配送方式, 请输入序号选择配送方式:" +
-                    "\n1. Pick up" +
-                    "\n2. MarcelEat");
-        }
-        if(store.hasProblem()){
-            throw new MyException("The store has technical problems, please choose another store\n");
-        }
-//
-
-         if(store.isBusy(date)){
-             throw new MyException("The store is busy, please choose another store\n");
-         }
+        Order order = new Order(way,date,store,deliveryAddress);
         for(Recipe recipe : mp.keySet()){
             CookieItem item=new CookieItem(mp.get(recipe),recipe);
             order.addCookieItem(item);

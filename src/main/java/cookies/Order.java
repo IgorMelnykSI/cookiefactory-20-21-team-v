@@ -1,5 +1,6 @@
 package cookies;
 
+import cookies.order.MyException;
 import cookies.order.State;
 import cookies.recipe.Recipe;
 
@@ -10,7 +11,6 @@ public class Order {
      private String orderID;
      private double price;
      private Date pickUpDate;
-     private int[] pickUpTime;
      private Store pickUpStore;
      private String pickUp="pickUp";
      private String homeDelivery="MarcelEat";
@@ -19,16 +19,21 @@ public class Order {
      private String deliveryAddress;
      private List<CookieItem> cookieItems = new ArrayList<>();
      private List<Recipe> personalRecipes = new ArrayList<>();
-    private State state;
+     private State state;
 
     public Order(){
         orderID = getGuid();
         price = 0;
         pickUpDate = null;
-        pickUpTime=null;
         pickUpStore = null;
         deliveryAddress=null;
-        pickUpTime = new int[2];
+    }
+
+    public Order(int way,Date date, Store store,String address) throws MyException {
+        orderID = getGuid();
+        price = 0;
+        setTheWayToPick(way);
+        setInformation(date,store,address);
     }
 
     public static int Guid = 100;
@@ -72,9 +77,33 @@ public class Order {
                 this.theWay=null;
         }
     }
+
+    public void setInformation(Date date,Store store,String deliveryAddress) throws MyException {
+        if (getTheWay()=="pickUp"){
+            setPickUpDate(date);
+            setPickUpStore(store);
+        }else if(getTheWay()=="MarcelEat"){
+            setPickUpDate(date);
+            setPickUpStore(store);//这是为了确定客户选择哪家店下订单
+            setDeliveryAddress(deliveryAddress);
+        }else {
+            throw new MyException("非法配送方式, 请输入序号选择配送方式:" +
+                    "\n1. Pick up" +
+                    "\n2. MarcelEat");
+        }
+
+        if(store.hasProblem()){
+            throw new MyException("The store has technical problems, please choose another store\n");
+        }
+        if(store.isBusy(date)){
+            throw new MyException("The store is busy, please choose another store\n");
+        }
+    }
+
     public  String getTheWay(){
         return this.theWay;
     }
+
     public boolean judgeTheTime(){
         Date date = new Date();
         if(date.before(pickUpDate)){
@@ -90,16 +119,7 @@ public class Order {
         }
     }
 
-    public int[] getPickUpTime() {
-        return pickUpTime;
-    }
-    public int getPickUpHour(){
-        return pickUpTime[0];
-    }
 
-    public int getPickUpMin(){
-        return pickUpTime[1];
-    }
 
     public String getOrderID() {
         return orderID;
@@ -151,7 +171,7 @@ public class Order {
     public void setPickUpStore(Store pickUpStore) {
             this.pickUpStore= pickUpStore;
     }
-    public void setPickUpTime(int hour,int min){this.pickUpTime[0]=hour;this.pickUpTime[1]= min;}
+
 
     public void setDeliveryAddress(String deliveryAddress){
         this.deliveryAddress=deliveryAddress;
@@ -162,7 +182,7 @@ public class Order {
     public void setState(State s){
         System.out.println("change state");
         state = s;
-        state.handle();
+        state.handle(this);
     }
 
 }
