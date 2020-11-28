@@ -42,7 +42,7 @@ class CookieFactoryTest {
 
     @Test
     void getStore() {
-        Store storeTest = new Store("storeTest","address1",8,30,19,0,0.2);
+        Store storeTest = new Store("storeTest","address1","8","30","19","0",0.2);
         cook.addStore(storeTest);
         assertEquals(cook.getStore("storeTest"),storeTest);
         assertEquals(cook.getStore("storeTestNo"),null);
@@ -69,7 +69,7 @@ class CookieFactoryTest {
     @Test
     void addStore() {
         assertEquals(cook.getStore("store2"),null);
-        Store store2 = new Store("store2","address2",8,0,18,0,0.15);
+        Store store2 = new Store("store2","address2","8","0","18","0",0.15);
         cook.addStore(store2);
         assertEquals(cook.getStore("store2"),store2);
 
@@ -77,7 +77,7 @@ class CookieFactoryTest {
 
     @Test
     void deleteStore() {
-        Store store2 = new Store("store2","address2",8,0,18,0,0.15);
+        Store store2 = new Store("store2","address2","8","0","18","0",0.15);
         cook.addStore(store2);
         assertTrue(cook.getStore("store2")==store2);
         cook.deleteRecipe("store2");
@@ -129,16 +129,16 @@ class CookieFactoryTest {
     @Test
     void getNearbyStores(){
 
-        Store store2 = new Store("store2","address2",8,0,18,0,0.15);
+        Store store2 = new Store("store2","address2","8","0","18","0",0.15);
         store2.setPosition(2.0,2.0);
         cook.addStore(store2);
-        Store store3 = new Store("store3","address2",8,0,18,0,0.15);
+        Store store3 = new Store("store3","address2","8","0","18","0",0.15);
         store3.setPosition(1.5,2.5);
         cook.addStore(store3);
-        Store store4 = new Store("store4","address2",8,0,18,0,0.15);
+        Store store4 = new Store("store4","address2","8","0","18","0",0.15);
         store4.setPosition(5.0,7.3);
         cook.addStore(store4);
-        Store store5 = new Store("store5","address2",8,0,18,0,0.15);
+        Store store5 = new Store("store5","address2","8","0","18","0",0.15);
         store5.setPosition(1.0,3.0);
         cook.addStore(store5);
         List<Store> nearbyStores = cook.getNearbyStores(store5);

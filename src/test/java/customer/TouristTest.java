@@ -41,8 +41,8 @@ class TouristTest {
         way1=1;
         way2=2;
         home="polytech nice sophia";
-        store = new Store("store1","Antibes",8,0,16,0,0.15);
-        store1 = new Store("store2","Antibes",7,0,16,0,0.15);
+        store = new Store("store1","Antibes","8","0","16","0",0.15);
+        store1 = new Store("store2","Antibes","7","0","16","0",0.15);
     }
     @Test
     void creatOrder() throws MyException {

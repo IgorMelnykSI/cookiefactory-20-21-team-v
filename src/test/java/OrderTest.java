@@ -24,7 +24,7 @@ class OrderTest {
         recipe=new Recipe("recipe1");
         item=new CookieItem(3,recipe);
         order =new Order();
-        Store store1=new Store("store1","address1",8,30,19,0,0.2);
+        Store store1=new Store("store1","address1","8","30","19","0",0.2);
         DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         myDate2 = dateFormat2.parse("2020-12-01 17:36:01");
     }
@@ -39,7 +39,7 @@ class OrderTest {
 
     @Test
     void setPickUpStore() {
-        Store store=new Store("store1","address1",8,30,19,0,0.2);
+        Store store=new Store("store1","address1","8","30","19","0",0.2);
         order.setPickUpStore(store);
         assertEquals(order.getPickUpStore(),store);
     }
