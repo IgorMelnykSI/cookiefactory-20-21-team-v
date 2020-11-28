@@ -179,6 +179,14 @@ public class Order {
 
     public List<Recipe> getPersonalRecipes(){return personalRecipes;}
 
+    public Map<Recipe,Integer> getRecipes(){
+        Map<Recipe,Integer> recipes=new HashMap<>();
+        for (CookieItem ck:this.cookieItems){
+            recipes.put(ck.getRecipe(),ck.getQuantity());
+        }
+        return recipes;
+    }
+
     public void setState(State s){
         System.out.println("change state");
         state = s;
