@@ -68,35 +68,8 @@ public class Store {
     public boolean checkOrder(Order order){
         //TODO check correct ingredient
         //TODO check enough ingredient
-//        for(CookieItem cookieItem:order.getCookieItems()) {
-//            Dough dough = cookieItem.getRecipe().getDough();
-//            Flavour flavour = cookieItem.getRecipe().getFlavour();
-//            if (doughAvailable.get(dough) < cookieItem.getQuantity()) {
-//                return false;
-//            } else {
-//                int n = doughAvailable.get(dough) - cookieItem.getQuantity();
-//                doughAvailable.put(dough, n);
-//            }
-//            if (flavourAvailable.get(flavour) < cookieItem.getQuantity()){
-//                return false;
-//            }else {
-//                int n = flavourAvailable.get(flavour) - cookieItem.getQuantity();
-//                flavourAvailable.put(flavour,n);
-//            }
-//            for(Topping topping:cookieItem.getRecipe().getToppings())
-//                if(toppingAvailable.get(topping) < cookieItem.getQuantity()) {
-//                    return false;
-//                }else{
-//                    int n = toppingAvailable.get(topping) - cookieItem.getQuantity();
-//                    toppingAvailable.put(topping,n);
-//                }
-//        }
-//        if (this.openTime[0]>order.getPickUpHour()||this.closeTime[0]<order.getPickUpMin()){
-//            return false;
-//        }
-//        if (this.openTime[0]==order.getPickUpHour()&&this.openTime[1]>order.getPickUpMin()||this.closeTime[0]==order.getPickUpMin()&&this.closeTime[1]<order.getPickUpMin()){
-//            return false;
-//        }
+
+        if(!stock.areRecipesAvailable(order.getRecipes())) return false;
 
         saveOrder(order);
         return true;
