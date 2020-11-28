@@ -2,7 +2,7 @@
 cookiefactory-20-21-team-v created by GitHub Classroom
 
 ## User stories
-### User Story #1 ( MUST Sizing L )
+### User Story #1 ( MUST Sizing L ) :heavy_check_mark:
 **As** a customer, **I want** I can order the recipe **in order to** buy the product successfully.
 
 Acceptance criteria
