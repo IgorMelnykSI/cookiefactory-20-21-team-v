@@ -1,9 +1,6 @@
 package cookies;
 
-import cookies.recipe.Dough;
-import cookies.recipe.Flavour;
-import cookies.recipe.Recipe;
-import cookies.recipe.Topping;
+import cookies.recipe.*;
 
 import java.util.*;
 
@@ -17,10 +14,8 @@ public class Store {
     private Recipe myBestOf ;
     private Recipe nationalBestOf;
     private String country;
-    private HashMap<Dough,Integer> doughAvailable = new HashMap<>();
-    private boolean hasProblem = false, lackIngredient = false;
-    private HashMap<Flavour,Integer> flavourAvailable = new HashMap<>();
-    private HashMap<Topping,Integer> toppingAvailable =new HashMap<>();
+    private Inventory stock;
+    private boolean hasProblem = false;
     private double[] position = {0,0};
     private List<Store> nearbyStore = new ArrayList<>();
     private List<Recipe> recipes = new ArrayList<>();
@@ -35,17 +30,7 @@ public class Store {
         this.tax = tax;
         this.myBestOf = new Recipe("");
         this.nationalBestOf = new Recipe("");
-        doughAvailable.put(new Dough("Plain",2.0),100);
-        doughAvailable.put(new Dough("Chocolate",2.4),100);
-        doughAvailable.put(new Dough("Peanut butter",2.5),100);
-        doughAvailable.put(new Dough("Oatmeal",2.6),100);
-        flavourAvailable.put(new Flavour("Vanilla",0.1),100);
-        flavourAvailable.put(new Flavour("Cinnamon",0.1),100);
-        flavourAvailable.put(new Flavour("Chili",0.1),100);
-        toppingAvailable.put(new Topping("White chocolate",0.2),500);
-        toppingAvailable.put(new Topping("Milk chocolate",0.2),500);
-        toppingAvailable.put(new Topping("M&M’s™",0.3),500);
-        toppingAvailable.put(new Topping("Reese’s buttercup",0.4),500);
+        this.stock = new Inventory();
     }
 
     public void setRecipes(List<Recipe> recipes){
@@ -54,28 +39,6 @@ public class Store {
 
     public void responseRecipeChange(List<Recipe> recipes){
         setRecipes(recipes);
-    }
-    public void addDough(Dough dough, int n){
-        doughAvailable.put(dough,n);
-    }
-
-    public void removeDough(Dough dough){
-        doughAvailable.remove(dough);
-    }
-
-    public void addFlacvour(Flavour flavour, int n){
-        flavourAvailable.put(flavour,n);
-    }
-
-    public void removeFlacvour(Flavour flavour){
-        flavourAvailable.remove(flavour);
-    }
-    public void addTopping(Topping topping, int n){
-        toppingAvailable.put(topping,n);
-    }
-
-    public void removeTopping(Topping topping){
-        toppingAvailable.remove(topping);
     }
 
 
@@ -105,39 +68,37 @@ public class Store {
         return position;
     }
     public boolean checkOrder(Order order){
-        for(CookieItem cookieItem:order.getCookieItems()) {
-            Dough dough = cookieItem.getRecipe().getDough();
-            Flavour flavour = cookieItem.getRecipe().getFlavour();
-            if (doughAvailable.get(dough) < cookieItem.getQuantity()) {
-                return false;
-            } else {
-                int n = doughAvailable.get(dough) - cookieItem.getQuantity();
-                doughAvailable.put(dough, n);
-            }
-            if (flavourAvailable.get(flavour) < cookieItem.getQuantity()){
-                return false;
-            }else {
-                int n = flavourAvailable.get(flavour) - cookieItem.getQuantity();
-                flavourAvailable.put(flavour,n);
-            }
-            for(Topping topping:cookieItem.getRecipe().getToppings())
-                if(toppingAvailable.get(topping) < cookieItem.getQuantity()) {
-                    return false;
-                }else{
-                    int n = toppingAvailable.get(topping) - cookieItem.getQuantity();
-                    toppingAvailable.put(topping,n);
-                }
-        }
+        //TODO check correct ingredient
+        //TODO check enough ingredient
+//        for(CookieItem cookieItem:order.getCookieItems()) {
+//            Dough dough = cookieItem.getRecipe().getDough();
+//            Flavour flavour = cookieItem.getRecipe().getFlavour();
+//            if (doughAvailable.get(dough) < cookieItem.getQuantity()) {
+//                return false;
+//            } else {
+//                int n = doughAvailable.get(dough) - cookieItem.getQuantity();
+//                doughAvailable.put(dough, n);
+//            }
+//            if (flavourAvailable.get(flavour) < cookieItem.getQuantity()){
+//                return false;
+//            }else {
+//                int n = flavourAvailable.get(flavour) - cookieItem.getQuantity();
+//                flavourAvailable.put(flavour,n);
+//            }
+//            for(Topping topping:cookieItem.getRecipe().getToppings())
+//                if(toppingAvailable.get(topping) < cookieItem.getQuantity()) {
+//                    return false;
+//                }else{
+//                    int n = toppingAvailable.get(topping) - cookieItem.getQuantity();
+//                    toppingAvailable.put(topping,n);
+//                }
+//        }
         if (this.openTime[0]>order.getPickUpHour()||this.closeTime[0]<order.getPickUpMin()){
             return false;
         }
         if (this.openTime[0]==order.getPickUpHour()&&this.openTime[1]>order.getPickUpMin()||this.closeTime[0]==order.getPickUpMin()&&this.closeTime[1]<order.getPickUpMin()){
             return false;
         }
-
-        //TODO check correct ingredient
-        //TODO check enough ingredient
-
 
         saveOrder(order);
         return true;
@@ -173,24 +134,89 @@ public class Store {
     }
 
 
-    public void checkIngredients(Order order){
-        List<CookieItem> cookieItems;
-        cookieItems = order.getCookieItems();
-        for(CookieItem cookieItem:cookieItems){
-            Recipe recipe = cookieItem.getRecipe();
-            if(doughAvailable.get(recipe.getDough())<20){
-                lackIngredient=true;
-            }
-            List<Topping> toppings = recipe.getToppings();
-            for(Topping topping:toppings) {
-                if (toppingAvailable.get(topping) < 20) {
-                    lackIngredient=true;
-                }
-            }
-            if(flavourAvailable.get(recipe.getFlavour())<20){
-                lackIngredient=true;
-            }
-        }
+    /**
+     * tells if an ingredient is available with the quantity asked
+     *
+     * @param ingredient is the item to check
+     * @param quantity   is the quantity to check
+     * @return true if there is enough of the ingredient, false otherwise
+     */
+    public boolean isIngredientAvailable(Ingredient ingredient, Integer quantity) {
+        return stock.isIngredientAvailable(ingredient, quantity);
+    }
+
+    /**
+     * checks if all recipes are available in the store's stock
+     *
+     * @param recipes is a map with a Recipe as the key and an Integer as the quantity
+     * @return true if all recipes are available and false if at least one of the recipes is not available
+     */
+    public boolean areRecipesAvailable(Map<Recipe, Integer> recipes) {
+        return this.stock.areRecipesAvailable(recipes);
+    }
+
+    /**
+     * updates the old stock value to the new one
+     *
+     * @param ingredient is the item to update
+     * @param quantity   is the quantity to subtract to the old one
+     * @return the new value, if the old quantity is too small, -1 is rerturned
+     */
+    public int subtractIngredientQuantity(Ingredient ingredient, Integer quantity) {
+        return stock.subtractIngredientQuantity(ingredient, quantity);
+    }
+
+    /**
+     * sets the quantity of the ingredient int the map to the quantity entered
+     *
+     * @param ingredient is the item to update
+     * @param quantity   is the new quantity to put
+     * @return false if the item does not exist, true if the item has been successfully updated
+     */
+    public boolean modifyIngredientQuantity(Ingredient ingredient, Integer quantity) {
+        return stock.modifyIngredientQuantity(ingredient, quantity);
+    }
+
+    /**
+     * Sets every ingredients in the stock to the given quantity
+     *
+     * @param quantity amount to set
+     */
+    public void modifyAllIngredientsQuantity(int quantity) {
+        this.stock.modifyAllIngredientsQuantity(quantity);
+    }
+
+    /**
+     * updates the Inventory after using the recipes given
+     *
+     * @param recipes is the Map of Recipes (key) and quantities (value - Integer) which
+     *                are to remove from the Inventory
+     */
+    void updateAllQuantities(Map<Recipe, Integer> recipes) {
+        this.stock.updateAllQuantities(recipes);
+    }
+
+    /**
+     * Observer method to update an item no longer available in the CookieFactory
+     *
+     * @param ingredient is the ingredient to remove from the Inventory
+     */
+    public void updateRemoveIngredient(Ingredient ingredient) {
+        this.stock.updateRemoveIngredient(ingredient);
+    }
+
+    /**
+     * Observer method to update a new item now available in the CookieFactory
+     *
+     * @param ingredient is the ingredient to add to the Inventory
+     */
+
+    public void updateAddIngredient(Ingredient ingredient) {
+        this.stock.updateAddIngredient(ingredient);
+    }
+
+    public void updateAddAllIngredients(List<Dough> doughs, List<Flavour> flavours, List<Topping> toppings) {
+        stock.updateAddAllIngredients(doughs, flavours, toppings);
     }
 
     public String getName(){return name;}
@@ -276,27 +302,4 @@ public class Store {
         return null;
     }
 
-    public HashMap<Dough, Integer> getCookingAvailable() {
-        return doughAvailable;
-    }
-
-    public HashMap<Flavour, Integer> getFlavourAvailable() {
-        return flavourAvailable;
-    }
-
-    public HashMap<Topping, Integer> getToppingAvailable() {
-        return toppingAvailable;
-    }
-
-    public void setCookingAvailable(HashMap<Dough, Integer> doughAvailable) {
-        this.doughAvailable = doughAvailable;
-    }
-
-    public void setFlavourAvailable(HashMap<Flavour, Integer> flavourAvailable) {
-        this.flavourAvailable = flavourAvailable;
-    }
-
-    public void setToppingAvailable(HashMap<Topping, Integer> toppingAvailable) {
-        this.toppingAvailable = toppingAvailable;
-    }
 }

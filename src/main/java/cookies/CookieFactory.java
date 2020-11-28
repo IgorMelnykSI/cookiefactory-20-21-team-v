@@ -16,6 +16,9 @@ public class CookieFactory {
     private ArrayList<Cooking> cookingList;
     private ArrayList<Recipe> recipesList;
     private HashMap<Recipe,Integer> map;
+    private ToppingCreator toppingCreator;
+    private FlavourCreator flavourCreator;
+    private DoughCreator doughCreator;
 
 
     public CookieFactory() {
@@ -27,6 +30,9 @@ public class CookieFactory {
         cookingList = new ArrayList<>();
         recipesList = new ArrayList<>();
         this.map=new HashMap<>();
+        toppingCreator = new ToppingCreator();
+        flavourCreator = new FlavourCreator();
+        doughCreator = new DoughCreator();
         initStoreList();
         initDoughList();
         initToppingList();
@@ -34,6 +40,7 @@ public class CookieFactory {
         initFlavourList();
         initCookingList();
         initRecipeList();
+
     }
 
     public void resetFactory() {
@@ -60,20 +67,20 @@ public class CookieFactory {
     }
 
     private void initDoughList(){
-        doughList.add(new Dough("Plain",2.0));
-        doughList.add(new Dough("Chocolate",2.4));
-        doughList.add(new Dough("Peanut butter",2.5));
-        doughList.add(new Dough("Oatmeal",2.6));
+        doughList.add(this.doughCreator.createIngredient("Plain",2.0));
+        doughList.add(this.doughCreator.createIngredient("Chocolate",2.4));
+        doughList.add(this.doughCreator.createIngredient("Peanut butter",2.5));
+        doughList.add(this.doughCreator.createIngredient("Oatmeal",2.6));
     }
 
     public void addDough(Dough dough){
         doughList.add(dough);
     }
     private  void initToppingList(){
-        toppingList.add(new Topping("White chocolate",0.2));
-        toppingList.add(new Topping("Milk chocolate",0.2));
-        toppingList.add(new Topping("M&M’s™",0.3));
-        toppingList.add(new Topping("Reese’s buttercup",0.4));
+        toppingList.add(this.toppingCreator.createIngredient("White chocolate",0.2));
+        toppingList.add(this.toppingCreator.createIngredient("Milk chocolate",0.2));
+        toppingList.add(this.toppingCreator.createIngredient("M&M’s™",0.3));
+        toppingList.add(this.toppingCreator.createIngredient("Reese’s buttercup",0.4));
     }
 
     private void initMixList(){
@@ -82,9 +89,9 @@ public class CookieFactory {
     }
 
     private void initFlavourList(){
-        flavourList.add(new Flavour("Vanilla",0.1));
-        flavourList.add(new Flavour("Cinnamon",0.1));
-        flavourList.add(new Flavour("Chili",0.1));
+        flavourList.add(this.flavourCreator.createIngredient("Vanilla",0.1));
+        flavourList.add(this.flavourCreator.createIngredient("Cinnamon",0.1));
+        flavourList.add(this.flavourCreator.createIngredient("Chili",0.1));
     }
 
     private void initCookingList(){
@@ -181,6 +188,7 @@ public class CookieFactory {
 
     public void addStore(Store store) {
         storeList.add(store);
+        store.updateAddAllIngredients(doughList, flavourList, toppingList);
         for(Store s: storeList){
             s.response(getNearbyStores(s));
         }

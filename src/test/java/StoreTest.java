@@ -1,3 +1,4 @@
+import cookies.CookieFactory;
 import cookies.CookieItem;
 import cookies.Store;
 import cookies.recipe.*;
@@ -13,12 +14,14 @@ import java.util.*;
 import static org.junit.Assert.*;
 
 public class StoreTest {
+    CookieFactory cookieFactory;
     private Store store1;
     private Store store2;
     Order order;
 
     @BeforeEach
     public void init(){
+        cookieFactory = new CookieFactory();
         store1 = new Store("store1","address1",8,30,19,0,0.2);
         store2 = new Store("store2","address2",8,0,18,0,0.15);
     }
@@ -105,4 +108,61 @@ public class StoreTest {
         order1.setPickUpTime(11,0);
 //        assertEquals(true,store1.checkOrder(order1));
     }
+
+    @Test
+    public void modifyAllIngredientsQuantity(){
+        cookieFactory.addStore(store1);
+        Dough plain = new Dough("Plain",2.0);
+        Dough tmp = cookieFactory.getDoughList().get(1);
+        assertFalse(store1.isIngredientAvailable(plain,1));
+        assertFalse(store1.isIngredientAvailable(tmp,1));
+
+        store1.modifyAllIngredientsQuantity(10);
+        assertFalse(store1.isIngredientAvailable(plain,1));
+        assertTrue(store1.isIngredientAvailable(tmp,1));
+
+        store1.modifyAllIngredientsQuantity(0);
+        assertFalse(store1.isIngredientAvailable(tmp,1));
+        assertTrue(store1.isIngredientAvailable(tmp,0));
+    }
+
+    @Test
+    public void modifyIngredientQuantity(){
+        cookieFactory.addStore(store2);
+        Dough plain = new Dough("Plain",2.0);
+        Dough tmp = cookieFactory.getDoughList().get(1);
+        assertFalse(store2.isIngredientAvailable(plain,1));
+        assertFalse(store2.isIngredientAvailable(tmp,1));
+
+        assertTrue(store2.modifyIngredientQuantity(tmp,10));
+        assertTrue(store2.isIngredientAvailable(tmp,1));
+
+        assertTrue(store2.modifyIngredientQuantity(tmp,0));
+        assertFalse(store2.isIngredientAvailable(tmp,1));
+        assertTrue(store2.isIngredientAvailable(tmp,0));
+
+        assertTrue(store2.modifyIngredientQuantity(tmp,10));
+        assertEquals(0,store2.subtractIngredientQuantity(tmp,10));
+        assertEquals(-1,store2.subtractIngredientQuantity(tmp,10));
+    }
+
+    @Test
+    public void updateIngredient(){
+        cookieFactory.addStore(store1);
+        Dough plain = new Dough("Plain",2.0);
+        Dough tmp = cookieFactory.getDoughList().get(1);
+        assertFalse(store1.isIngredientAvailable(plain,1));
+        assertFalse(store1.isIngredientAvailable(tmp,1));
+
+        store1.modifyAllIngredientsQuantity(10);
+        assertFalse(store1.isIngredientAvailable(plain,1));
+        assertTrue(store1.isIngredientAvailable(tmp,1));
+
+        store1.updateAddIngredient(tmp);
+        assertFalse(store1.isIngredientAvailable(tmp,1));
+
+        store1.updateAddIngredient(plain);
+        assertTrue(store1.modifyIngredientQuantity(plain,10));
+    }
+
 }

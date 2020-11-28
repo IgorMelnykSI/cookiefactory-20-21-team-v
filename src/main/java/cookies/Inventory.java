@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Inventory {
+    // all ingredients saved by id
     private Map<Integer, Integer> ingredientsList;
 
     public Inventory(){
@@ -15,18 +16,19 @@ public class Inventory {
     }
 
     /**
-     * sets the quantity of the ingredient int the map to the quantity entered
+     * sets the quantity of the ingredient in the map as the quantity entered
      * @param ingredient is the item to update
      * @param quantity is the new quantity to put
      * @return false if the item does not exist, true if the item has been successfully updated
      */
-    public boolean modifyIngredientsQuantity(Ingredient ingredient, Integer quantity){
-        if(ingredientsList.containsKey(ingredient)) {
+    public boolean modifyIngredientQuantity(Ingredient ingredient, Integer quantity){
+        if(ingredientsList.containsKey(ingredient.getId())) {
             ingredientsList.put(ingredient.getId(), quantity);
             return true;
-        } else return false;
+        } else {
+            return false;
+        }
     }
-
 
     /**
      * Sets every ingredients in the ingredientList to the given quantity
@@ -84,7 +86,7 @@ public class Inventory {
      * @param quantity is the quantity to subtract to the old one
      * @return the new value; if the old quantity is too small, -1 is returned
      */
-    int updateItemQuantity(Ingredient ingredient, Integer quantity) {
+    int subtractIngredientQuantity(Ingredient ingredient, Integer quantity) {
         if (this.isIngredientAvailable(ingredient, quantity)){
             Integer oldQuantity = ingredientsList.get(ingredient.getId());
             ingredientsList.put(ingredient.getId(), oldQuantity-quantity);
@@ -101,10 +103,10 @@ public class Inventory {
      */
     void updateRecipeQuantity(Recipe recipe, int quantity) {
         if (isRecipeAvailable(recipe, quantity)) {
-            updateItemQuantity(recipe.getDough(), quantity);
-            updateItemQuantity(recipe.getFlavour(), quantity);
+            subtractIngredientQuantity(recipe.getDough(), quantity);
+            subtractIngredientQuantity(recipe.getFlavour(), quantity);
             for (Topping topping : recipe.getToppings())
-                updateItemQuantity(topping, quantity);
+                subtractIngredientQuantity(topping, quantity);
         }
 
     }
