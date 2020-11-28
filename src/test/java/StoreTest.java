@@ -22,8 +22,8 @@ public class StoreTest {
     @BeforeEach
     public void init(){
         cookieFactory = new CookieFactory();
-        store1 = new Store("store1","address1",8,30,19,0,0.2);
-        store2 = new Store("store2","address2",8,0,18,0,0.15);
+        store1 = new Store("store1","address1","8","30","19","0",0.2);
+        store2 = new Store("store2","address2","8","0","18","0",0.15);
     }
 
     @Test
@@ -31,16 +31,7 @@ public class StoreTest {
         store1.setTax(0.18);
         assertEquals(store1.getTax(),0.18,0.01);
     }
-    @Test
-    public void getHour(){
-        assertEquals(store1.getOpenHour(),8);
-        assertEquals(store2.getCloseHour(),18);
-    }
-    @Test
-    public void setHour(){
-        store2.setOpenTime(6,0);
-        assertEquals(store2.getOpenHour(),6);
-    }
+
 
     @Test
     public void deleteExpiredOrder(){
@@ -105,7 +96,6 @@ public class StoreTest {
         Order order1 = new Order();
         CookieItem cookieItem1= new CookieItem(1000,recipe1);
         order1.addCookieItem(cookieItem1);
-        order1.setPickUpTime(11,0);
 //        assertEquals(true,store1.checkOrder(order1));
     }
 
