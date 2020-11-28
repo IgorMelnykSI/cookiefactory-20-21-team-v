@@ -2,12 +2,11 @@ package customer;
 
 import cookies.Order;
 import cookies.Store;
-import cookies.customer.MyException;
+import cookies.order.MyException;
 import cookies.customer.Tourist;
 import cookies.recipe.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import cookies.CookieFactory;
 
 import java.util.*;
 
