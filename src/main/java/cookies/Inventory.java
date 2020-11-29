@@ -102,6 +102,13 @@ public class Inventory {
         } else return -1;
     }
 
+    void addIngredientQuantity(Ingredient ingredient, Integer quantity) {
+            if(ingredientsList.containsKey(ingredient.getType())) {
+                Integer oldQuantity = ingredientsList.get(ingredient.getType());
+                ingredientsList.put(ingredient.getType(), oldQuantity + quantity);
+            }
+    }
+
     /**
      * updates the quantity in the stocks of each ingredient used in the
      * recipe for a certain amount equal to the quantity given
@@ -117,6 +124,13 @@ public class Inventory {
                 subtractIngredientQuantity(topping, quantity);
         }
 
+    }
+
+    int getIngredientQuantity(Ingredient ingredient){
+        if(ingredientsList.containsKey(ingredient.getType())) {
+            return ingredientsList.get(ingredient.getType());
+        }else
+            return 0;
     }
 
     /**

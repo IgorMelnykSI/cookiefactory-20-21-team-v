@@ -1,10 +1,20 @@
 package cucumberTest;
 
 import cookies.CookieFactory;
+import cookies.Order;
 import cookies.Store;
+import cookies.customer.Member;
 import cookies.customer.Tourist;
 import cookies.manager.StoreManager;
+import cookies.recipe.Recipe;
+import cookies.recipe.Ingredient;
 import io.cucumber.java8.En;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -13,8 +23,11 @@ public class StoreManagerStepdefs implements En {
 
     Store store1;
     StoreManager storeManager;
-    CookieFactory factory;
+    CookieFactory factory = new CookieFactory();
     Tourist tourist;
+    Order order1;
+    Member member1;
+
 
     public StoreManagerStepdefs() { // implementation des steps dans le constructeur (aussi possible dans des méthodes)
         Given("A store of name {string} and with the address {string}, openTime {string}, closeTime {string}, tax {string}",
@@ -22,6 +35,7 @@ public class StoreManagerStepdefs implements En {
                 {
                     double taxVal = Double.valueOf(tax);
                     store1 = new Store(name,address,openTime,closeTime,taxVal);
+                    store1.initIngre(50);
                 });
         And("A store manager of name {string} who manage store1",
                 (String nameOfStoreManager)->{
@@ -64,6 +78,37 @@ public class StoreManagerStepdefs implements En {
                     assertEquals(tourist.getPrivateRecipes().get(0).getPrice(),actualPriceVal,0.01);
                     assertNotEquals(tourist.getPrivateRecipes().get(0).getPrice(),originalPriceVal,0.01);
         });
+        When("Store1 lack the ingredient {string}, only {int}",
+        (String ingredientName, Integer quantity) -> {
+            store1.modifyIngredientQuantity(factory.getIngredient(ingredientName),quantity);
+        });
+        Then("Paule adds {int} {string}",
+        (Integer quantity, String ingredientName) -> {
+            store1.addIngredientQuantity(factory.getIngredient(ingredientName),quantity);
+        });
+        Then("Check the quantity of {string} is {int}",
+        (String ingredientName, Integer quantity) -> {
+            assertEquals(store1.getIngredientQuantity(factory.getIngredient(ingredientName)),quantity);
+        });
+        When("Laura wants to order {int} cookies of {string}, He wants to pick it in {string} at {string}",
+                (Integer sum, String recipe, String store, String time) ->
+                {
+                    Recipe rp = factory.getRecipe(recipe);
+                    Map<Recipe, Integer> mp = new HashMap<>();
+                    mp.put(rp,sum);
+                    DateFormat fmt =new SimpleDateFormat("HH:mm");
+                    Date date = fmt.parse(time);
+                    store1 = factory.getStore(store);
+                    store1.initIngre(50);
+                    int way=1;
+                    String home="Polytech nice sophia";
+                    order1 = member1.creatDiscountOrder(mp,way,date,store1,home);
+                });
+        Then("check that the store can take the order {string}",
+                (String result) -> {
+                    boolean res = Boolean.valueOf(result);
+                    assertEquals(store1.checkOrder(order1), res);
+                });
     }
 
 }

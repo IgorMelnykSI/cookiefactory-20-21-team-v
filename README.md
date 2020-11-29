@@ -143,7 +143,7 @@ Acceptance test
 #### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
 #### The name of scenario: Paule changes the tax
 
-### User Story #10 ( MUST Sizing M ) 
+### User Story #10 ( MUST Sizing M ) :heavy_check_mark:
 **As** a brand manager. **I want** to delete basic recipes not ordered by many people every month **in order to** reduce loss.
 
 Acceptance criteria
@@ -261,7 +261,7 @@ Acceptance test
 - Action: I contact the MarcelEat and increase 50% price of delivery fee.
 - Expected result: The delivery fee is increase 50% and the order is delived by the MarcelEat.
 
-### User Story #19 ( MUST Sizing M ) 
+### User Story #19 ( MUST Sizing M ) :heavy_check_mark:
 **As** a store manager, **I want** to check if my store can accept the orders **in order to** make sure the store have enough ingredients to make the order.
 
 Acceptance criteria
@@ -316,7 +316,7 @@ Acceptance test
 - Action: I cancel my original choice of store and choose another one.
 - Expected result: my order was placed in the other store and I get to receive my cookies in time.
 
-### User Story #23 ( MUST Sizing M ) 
+### User Story #23 ( MUST Sizing M ) :heavy_check_mark:
 **As** a store manager, **I want** to manage ingredients **in order to**  add lack ingredients in time.
 
 Acceptance criteria

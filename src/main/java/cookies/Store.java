@@ -185,6 +185,14 @@ public class Store {
      * @param ingredient is the ingredient to add to the Inventory
      */
 
+    public void addIngredientQuantity(Ingredient ingredient, int quantity){
+        this.stock.addIngredientQuantity(ingredient,quantity);
+    }
+
+    public int getIngredientQuantity(Ingredient ingredient){
+        return this.stock.getIngredientQuantity(ingredient);
+    }
+
     public void updateAddIngredient(Ingredient ingredient) {
         this.stock.updateAddIngredient(ingredient);
     }
