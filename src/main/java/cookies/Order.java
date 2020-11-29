@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.util.*;
 import java.text.SimpleDateFormat;
 
-public class Order {
+public class Order implements Subject {
      private String orderID;
      private double price;
      private Date pickUpDate;
@@ -216,6 +216,13 @@ public class Order {
         state = s;
         String instruction=state.handle(this);
         System.out.println("The State of the order : "+instruction);
+    }
+
+    @Override
+    public void pickTheOrder(Order order) {
+
+        System.out.println("pick the order");
+
     }
 
 }

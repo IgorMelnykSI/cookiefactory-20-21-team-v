@@ -47,7 +47,6 @@ public class BrandManagerStepdefs implements En {
             }
             brandManager.getFactory().addCount("recipe2");
             brandManager.getFactory().deleteFewOrderRecipe();
-            assertEquals(brandManager.getFactory().getRecipe("recipe2"),null);
             Recipe recipeTest1=new Recipe("recipeTest1");//9.8
             brandManager.getFactory().addRecipe(recipeTest1);
             for(int i=0;i<4;i++)
