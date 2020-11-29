@@ -14,7 +14,7 @@ I am a customer, and I want to order the recipe.
 Acceptance test
 - Initialisation: I am a customer.
 - Action: I don't have an account, and I order the recipe.
-- Expected result: I successfully ordered.
+- Expected result: My order is confirmed.
 
 #### feature: 
 #### Scenario:
