@@ -319,7 +319,7 @@ Acceptance test
 - Action: I cancel my original choice of store and choose another one.
 - Expected result: my order was placed in the other store and I get to receive my cookies in time.
 
-### User Story #23 ( MUST Sizing M ) 
+### User Story #23 ( MUST Sizing M ) :heavy_check_mark:
 **As** a store manager, **I want** to manage ingredients **in order to**  add lack ingredients in time.
 
 Acceptance criteria
