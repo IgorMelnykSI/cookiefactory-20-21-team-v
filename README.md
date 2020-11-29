@@ -271,7 +271,7 @@ Acceptance test
 - Action: I check the store have enough ingredients to make the order.
 - Expected result: The order is confirmed as achievable.
 
-### User Story #20 ( MUST Sizing S ) 
+### User Story #20 ( MUST Sizing S ) :heavy_check_mark:
 **As** a store manager, **I want** to increase the price of the personnel recipe by 25% **in order to** get a reasonable profit.
 
 Acceptance criteria
@@ -283,6 +283,9 @@ Acceptance test
 - Initialization: The customer create his personnel recipe.
 - Action: I inrease the price by 25%.
 - Expected result: The price have been increased by 25%.
+
+#### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
+#### The name of scenario: Laura ordered her personnel recipe, the price is increased 25%
 
 ### User Story #21 ( MUST Sizing M )
 **As** a customer, **I want** to choose another store for my cookies when there are many orders chosen at the same time **in order to** get my order in time. 
