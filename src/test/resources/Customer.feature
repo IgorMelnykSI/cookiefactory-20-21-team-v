@@ -12,8 +12,8 @@ Feature: Customer
     Then "Bob" has a member account
 
   Scenario: Sam wants to make an order of a basic recipe
-    When Sam wants to make an order of a basic recipe
-    Then Sam made an order of a basic recipe
+    When Sam wants to make an order of a basic recipe "recipe1"
+    Then Sam made an order of a basic recipe "recipe1"
 
   Scenario: Peter wants to make his first order
     When Peter wants to order 5 cookies of "recipe1", He wants to pick it in "store1" at "16:30"
