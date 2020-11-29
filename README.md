@@ -274,9 +274,6 @@ Acceptance test
 - Action: I check the store have enough ingredients to make the order.
 - Expected result: The order is confirmed as achievable.
 
-#### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
-#### The name of scenario: Laura ordered, the store check that it can take this order.
-
 ### User Story #20 ( MUST Sizing S ) :heavy_check_mark:
 **As** a store manager, **I want** to increase the price of the personnel recipe by 25% **in order to** get a reasonable profit.
 
