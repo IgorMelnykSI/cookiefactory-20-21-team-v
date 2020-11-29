@@ -86,7 +86,7 @@ public class Order {
             setPickUpStore(store);//这是为了确定客户选择哪家店下订单
             setDeliveryAddress(deliveryAddress);
         }else {
-            throw new MyException("非法配送方式, 请输入序号选择配送方式:" +
+            throw new MyException("Illegal entry data, please enter a number to choose the delivery method:" +
                     "\n1. Pick up" +
                     "\n2. MarcelEat");
         }
