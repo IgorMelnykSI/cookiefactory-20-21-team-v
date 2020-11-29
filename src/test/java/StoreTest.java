@@ -1,6 +1,7 @@
 import cookies.CookieFactory;
 import cookies.CookieItem;
 import cookies.Store;
+import cookies.order.MyException;
 import cookies.recipe.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -153,6 +154,15 @@ public class StoreTest {
 
         store1.updateAddIngredient(plain);
         assertTrue(store1.modifyIngredientQuantity(plain,10));
+    }
+
+    @Test
+    public void checkOrder() throws MyException {
+        GregorianCalendar gc = new GregorianCalendar();
+        gc.set(2020,Calendar.DECEMBER, 1,18,30);
+        Date date = gc.getTime();
+        order = new Order(1,date,store1,"Polytech Nice Sophia");
+        assertTrue(store1.checkOrder(order));
     }
 
 }
