@@ -99,8 +99,8 @@ public class Order {
             setState(new FailState());
             throw new MyException("The store is busy, please choose another store\n");
         }
-        if(store.checkOrder(this)){
-            //setState(new FailState());
+        if(!store.checkOrder(this)){
+            setState(new FailState());
             throw new MyException("There is not enough ingredients");
         }
 
