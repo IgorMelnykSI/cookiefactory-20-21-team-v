@@ -62,9 +62,9 @@ public class CustomerStepdefs implements En {
                     Member tmp = (Member)tourist1;
                     assertTrue(name.equals(tmp.getName()));
                 });
-        When("Sam wants to make an order of a basic recipe",
-                ()->{
-                    Recipe recipe = factory.getRecipesList().get(0);
+        When("Sam wants to make an order of a basic recipe {string}",
+                (String r)->{
+                    Recipe recipe = factory.getRecipe(r);;
                     Map<Recipe,Integer> mp = new HashMap<>();
                     date = new Date();
                     GregorianCalendar gc = new GregorianCalendar();
@@ -79,11 +79,11 @@ public class CustomerStepdefs implements En {
                     mp.put(recipe,10);
                     order4 = tourist2.creatNoDiscountOrder(mp,way,date,store,home);
                 });
-        Then("Sam made an order of a basic recipe",
-                () -> {
+        Then("Sam made an order of a basic recipe {string}",
+                (String r) -> {
                     Map<Recipe,Integer> recipes=new HashMap<>();
                     recipes = order4.getRecipes();
-                    assertTrue(factory.getRecipesList().get(0).compareRecipe((Recipe) recipes.keySet().toArray()[0]));
+                    assertTrue(factory.getRecipe(r).compareRecipe((Recipe) recipes.keySet().toArray()[0]));
                 });
         When("Peter wants to order {int} cookies of {string}, He wants to pick it in {string} at {string}",
                 (Integer sum, String recipe, String store, String time) ->
