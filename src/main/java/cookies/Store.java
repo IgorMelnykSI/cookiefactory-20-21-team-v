@@ -31,6 +31,7 @@ public class Store {
         this.stock = new Inventory();
     }
 
+    public Inventory getStock(){return stock;}
     public void setRecipes(List<Recipe> recipes){
         this.recipes = recipes;
     }
@@ -69,13 +70,16 @@ public class Store {
         return position;
     }
     public boolean checkOrder(Order order){
-        //TODO check correct ingredient
-        //TODO check enough ingredient
 
         if(!stock.areRecipesAvailable(order.getRecipes())) return false;
 
         saveOrder(order);
         return true;
+    }
+
+    public boolean checkRecipes(Map<Recipe,Integer> mp){
+
+        return stock.areRecipesAvailable(mp);
     }
 
     public void saveOrder(Order order){
@@ -275,5 +279,6 @@ public class Store {
         }
         return null;
     }
+
 
 }

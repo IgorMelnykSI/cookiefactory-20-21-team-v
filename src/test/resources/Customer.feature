@@ -57,5 +57,7 @@ Feature: Customer
       When the "store" has many orders chosen at the same time , Peter choose the "polytechStore"
       Then the pickUpStore has been changed to "polytechStore"
 
-
+    Scenario: Peter wants to choose another store
+      When the "store" that he has chosen lacks ingredients , Peter choose the "polytechStore"
+      Then the pickUpStore has been changed to "polytechStore"
 

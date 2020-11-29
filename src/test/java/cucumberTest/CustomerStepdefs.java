@@ -184,6 +184,7 @@ public class CustomerStepdefs implements En {
                 ( String store1) -> {
                     assertEquals("polytechStore",order1.getPickUpStore().getName());
                 });
+
         When("^the \"([^\"]*)\" has many orders chosen at the same time , Peter choose the \"([^\"]*)\"$",
                 (String store, String store1) -> {
 
@@ -214,6 +215,33 @@ public class CustomerStepdefs implements En {
                     }
 
                     if(this.store.isBusy(date)){
+                        order1 = tourist2.creatNoDiscountOrder(mp,way,date,this.store1,home);
+                    }
+        });
+
+        When("^the \"([^\"]*)\" that he has chosen lacks ingredients , Peter choose the \"([^\"]*)\"$",
+                (String store, String store1) -> {
+                    this.store = new Store(store,"Antibes","8:00","16:00",0.15);
+                    this.store.initIngre(5);
+                    this.store.setPosition(11.0,3.0);
+                    this.store1 = new Store(store1,"Antibes","8:00","16:00",0.15);
+                    this.store1.initIngre(50);
+                    this.store1.setPosition(11.0,2.0);
+                    factory.addStore(this.store);
+                    factory.addStore(this.store1);
+
+                    Recipe recipe = factory.getRecipe("recipe1");;
+                    Map<Recipe,Integer> mp = new HashMap<>();
+                    date = new Date();
+                    GregorianCalendar gc = new GregorianCalendar();
+                    gc.set(Calendar.YEAR,2020);
+                    gc.set(Calendar.MONTH, 11);
+                    gc.set(Calendar.DAY_OF_MONTH, 2);
+                    date = gc.getTime();
+                    way=1;
+                    home="polytech nice sophia";
+                    mp.put(recipe,10);
+                    if(!this.store.checkRecipes(mp)){
                         order1 = tourist2.creatNoDiscountOrder(mp,way,date,this.store1,home);
                     }
         });
