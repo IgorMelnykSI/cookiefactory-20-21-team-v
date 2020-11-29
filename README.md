@@ -261,7 +261,7 @@ Acceptance test
 - Action: I contact the MarcelEat and increase 50% price of delivery fee.
 - Expected result: The delivery fee is increase 50% and the order is delived by the MarcelEat.
 
-### User Story #19 ( MUST Sizing M ) :heavy_check_mark:
+### User Story #19 ( MUST Sizing M ) 
 **As** a store manager, **I want** to check if my store can accept the orders **in order to** make sure the store have enough ingredients to make the order.
 
 Acceptance criteria
