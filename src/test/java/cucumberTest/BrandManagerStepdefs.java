@@ -39,5 +39,25 @@ public class BrandManagerStepdefs implements En {
                     assertEquals(brandManager.getFactory().getRecipesList().size(),3);
                 });
 
+        When("^Jason wants to delete  a recipe not ordered by many people$", () -> {
+            brandManager.getFactory().resetFactory();
+            brandManager.getFactory().setMap();
+            for(int i=0;i<10;i++) {
+                brandManager.getFactory().addCount("recipe1");
+            }
+            brandManager.getFactory().addCount("recipe2");
+            brandManager.getFactory().deleteFewOrderRecipe();
+            assertEquals(brandManager.getFactory().getRecipe("recipe2"),null);
+            Recipe recipeTest1=new Recipe("recipeTest1");//9.8
+            brandManager.getFactory().addRecipe(recipeTest1);
+            for(int i=0;i<4;i++)
+                brandManager.getFactory().addCount("recipeTest1");
+            brandManager.getFactory().deleteFewOrderRecipe();
+
+        });
+        Then("^check the recipe has been deleted$", () -> {
+            assertEquals(brandManager.getFactory().getRecipe("recipeTest1"),null);
+        });
+
     }
 }
