@@ -1,7 +1,6 @@
 package cookies.order;
 
 import cookies.Order;
-import cookies.order.State;
 
 public class ConfirmState implements State {
     @Override
