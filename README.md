@@ -2,7 +2,7 @@
 cookiefactory-20-21-team-v created by GitHub Classroom
 
 ## User stories
-### User Story #1 ( MUST Sizing L ) 
+### User Story #1 ( MUST Sizing L ) ✔️
 **As** a customer, **I want** to order the basic recipe **in order to** buy the cookies.
 
 Acceptance criteria
@@ -19,7 +19,7 @@ Acceptance test
 #### feature: 
 #### Scenario:
 
-### User Story #2 ( MUST Sizing M ) 
+### User Story #2 ( MUST Sizing M ) ✔️
 **As** a customer non-registered, **I want** to register an account **in order to** save my information. 
 
 Acceptance criteria

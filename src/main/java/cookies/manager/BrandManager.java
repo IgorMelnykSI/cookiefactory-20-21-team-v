@@ -3,6 +3,7 @@ package cookies.manager;
 import cookies.CookieFactory;
 
 
+
 public class BrandManager {
     private String name;
     private CookieFactory factory;
@@ -18,8 +19,5 @@ public class BrandManager {
     public CookieFactory getFactory() {
         return factory;
     }
-
-
-
 
 }
