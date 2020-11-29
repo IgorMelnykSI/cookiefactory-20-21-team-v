@@ -111,7 +111,7 @@ Acceptance test
 #### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
 #### The name of scenario: Peter use discount 10% after an order of 30 cookies
 
-### User Story #8 ( MUST Sizing M ) 
+### User Story #8 ( MUST Sizing M ) :heavy_check_mark:
 **As** a brand manager. **I want** to add new basic recipes to the list every month **in order to** draw more customers. 
 
 Acceptance criteria
@@ -123,6 +123,9 @@ Acceptance test
 - Initialization: I am a brand manager.
 - Action: I change the basic recipe list by adding the new basic recipe.
 - Expected result: The new basic recipe is successfully added.
+
+#### The name of *feature* Cucumber file: BrandManager.feature ( ../test/resources/BrandManager.feature )
+#### The name of scenario: Jason wants to add a new recipe
 
 ### User Story #9 ( MUST Sizing S ) :heavy_check_mark:
 **As** a store manager. **I want** to change the tax **in order to** obey the law or get customers
