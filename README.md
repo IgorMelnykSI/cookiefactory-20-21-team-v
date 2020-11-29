@@ -2,7 +2,7 @@
 cookiefactory-20-21-team-v created by GitHub Classroom
 
 ## User stories
-### User Story #1 ( MUST Sizing L ) :heavy_check_mark:
+### User Story #1 ( MUST Sizing L ) 
 **As** a customer, **I want** to order the basic recipe **in order to** buy the cookies.
 
 Acceptance criteria
@@ -46,7 +46,7 @@ Acceptance test
 - Action: I join the “Loyalty program”.
 - Expected result: I successfully joined.
 
-### User Story #4 ( MUST Sizing S ) 
+### User Story #4 ( MUST Sizing S ) :heavy_check_mark:
 **As** a store manager, **I want** to change the opening hours **in order to** match customer flow.
 
 Acceptance criteria
@@ -59,6 +59,9 @@ Acceptance test
 - Initialisation: I am a store manager and I enter the store setting.
 - Action: I change the opening hours.
 - Expected result: The opening hours changed.
+
+#### The name of *feature* Cucumber file: StoreManager.feature (../test/resources/StoreManager.feature)
+#### The name of scenario: Paule change the opening hours
 
 ### User Story #5 ( MUST Sizing M ) 
 **As** a customer, **I want** to pick my order **in order to** get my cookies.
