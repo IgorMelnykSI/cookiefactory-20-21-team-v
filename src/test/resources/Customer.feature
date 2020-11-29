@@ -4,6 +4,16 @@ Feature: Customer
     Given init the factory
     And A customer name "Peter" who join the "Loyalty program"
     And A customer name "Laura" with an account
+    And A customer Bob with no account
+    And A customer Sam with no account
+
+  Scenario: Bob wants to register
+    When "Bob" wants to register a member account
+    Then "Bob" has a member account
+
+  Scenario: Sam wants to make an order of a basic recipe
+    When Sam wants to make an order of a basic recipe
+    Then Sam made an order of a basic recipe
 
   Scenario: Peter wants to make his first order
     When Peter wants to order 5 cookies of "recipe1", He wants to pick it in "store1" at "16:30"
