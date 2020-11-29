@@ -3,18 +3,26 @@ package cookies;
 
 import cookies.recipe.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Inventory {
     // all ingredients saved by id
-    private Map<Integer, Integer> ingredientsList;
+    private Map<String, Integer> ingredientsList;
 
     public Inventory(){
         ingredientsList = new HashMap<>();
     }
 
+    public void initIngredientQuantity(Integer quantity){
+        CookieFactory factory = new CookieFactory();
+        ArrayList<Ingredient> ingredients = factory.getIngredientList();
+        for (Ingredient ingredient:ingredients) {
+            this.ingredientsList.put(ingredient.getType(),quantity);
+        }
+    }
     /**
      * sets the quantity of the ingredient in the map as the quantity entered
      * @param ingredient is the item to update
@@ -22,8 +30,8 @@ public class Inventory {
      * @return false if the item does not exist, true if the item has been successfully updated
      */
     public boolean modifyIngredientQuantity(Ingredient ingredient, Integer quantity){
-        if(ingredientsList.containsKey(ingredient.getId())) {
-            ingredientsList.put(ingredient.getId(), quantity);
+        if(ingredientsList.containsKey(ingredient.getType())) {
+            ingredientsList.put(ingredient.getType(), quantity);
             return true;
         } else {
             return false;
@@ -35,7 +43,7 @@ public class Inventory {
      * @param quantity amount to set
      */
     void modifyAllIngredientsQuantity(int quantity) {
-        for (Map.Entry<Integer,Integer> entry : this.ingredientsList.entrySet()) {
+        for (Map.Entry<String,Integer> entry : this.ingredientsList.entrySet()) {
             this.ingredientsList.put(entry.getKey(), quantity);
         }
     }
@@ -46,8 +54,8 @@ public class Inventory {
      * @param quantity is the quantity to check
      * @return true if there is enough of the ingredient, false otherwise
      */
-    boolean isIngredientAvailable(Ingredient ingredient, Integer quantity){
-        return ingredientsList.containsKey(ingredient.getId()) && (quantity <= ingredientsList.get(ingredient.getId()));
+    public boolean isIngredientAvailable(Ingredient ingredient, Integer quantity){
+        return ingredientsList.containsKey(ingredient.getType()) && (quantity <= ingredientsList.get(ingredient.getType()));
     }
 
     /**
@@ -88,9 +96,9 @@ public class Inventory {
      */
     int subtractIngredientQuantity(Ingredient ingredient, Integer quantity) {
         if (this.isIngredientAvailable(ingredient, quantity)){
-            Integer oldQuantity = ingredientsList.get(ingredient.getId());
-            ingredientsList.put(ingredient.getId(), oldQuantity-quantity);
-            return ingredientsList.get(ingredient.getId());
+            Integer oldQuantity = ingredientsList.get(ingredient.getType());
+            ingredientsList.put(ingredient.getType(), oldQuantity-quantity);
+            return ingredientsList.get(ingredient.getType());
         } else return -1;
     }
 
@@ -130,7 +138,7 @@ public class Inventory {
      * @param ingredient is the ingredient to remove
      */
     public void updateRemoveIngredient(Ingredient ingredient) {
-        ingredientsList.remove(ingredient.getId());
+        ingredientsList.remove(ingredient.getType());
     }
 
     /**
@@ -139,19 +147,19 @@ public class Inventory {
      * @param ingredient is the ingredient to add
      */
     public void updateAddIngredient(Ingredient ingredient) {
-        ingredientsList.put(ingredient.getId(),0);
+        ingredientsList.put(ingredient.getType(),0);
     }
 
 
     public void updateAddAllIngredients(List<Dough> doughs, List<Flavour> flavours, List<Topping> toppings) {
         for(Dough dough : doughs) {
-            ingredientsList.put(dough.getId(), 0);
+            ingredientsList.put(dough.getType(), 0);
         }
         for(Flavour flavour : flavours) {
-            ingredientsList.put(flavour.getId(), 0);
+            ingredientsList.put(flavour.getType(), 0);
         }
         for(Topping topping : toppings) {
-            ingredientsList.put(topping.getId(), 0);
+            ingredientsList.put(topping.getType(), 0);
         }
     }
 }

@@ -19,7 +19,7 @@ public class CookieFactory {
     private ToppingCreator toppingCreator;
     private FlavourCreator flavourCreator;
     private DoughCreator doughCreator;
-
+    private ArrayList<Ingredient> ingredientList;
 
     public CookieFactory() {
         storeList = new ArrayList<>();
@@ -29,6 +29,7 @@ public class CookieFactory {
         flavourList = new ArrayList<>();
         cookingList = new ArrayList<>();
         recipesList = new ArrayList<>();
+        ingredientList = new ArrayList<>();
         this.map=new HashMap<>();
         toppingCreator = new ToppingCreator();
         flavourCreator = new FlavourCreator();
@@ -40,7 +41,7 @@ public class CookieFactory {
         initFlavourList();
         initCookingList();
         initRecipeList();
-
+        initIngredientList();
     }
 
     public void resetFactory() {
@@ -58,12 +59,27 @@ public class CookieFactory {
         initFlavourList();
         initCookingList();
         initRecipeList();
+        initIngredientList();
+    }
+
+    private void initIngredientList(){
+        for(Dough dough:doughList){
+            ingredientList.add(dough);
+        }
+        for(Flavour flavour:flavourList){
+            ingredientList.add(flavour);
+        }
+        for(Topping topping:toppingList){
+            ingredientList.add(topping);
+        }
+
     }
 
     public void setMap(){
         for(Recipe recipe:recipesList)
             if(!map.containsKey(recipe))
                 map.put(recipe,0);
+            
     }
 
     private void initDoughList(){
@@ -286,6 +302,7 @@ public class CookieFactory {
         return null;
     }
 
+
     public Topping getTopping(String name) {
         for(Topping topping:this.toppingList){
             if(topping.getType().equals(name)){
@@ -293,6 +310,10 @@ public class CookieFactory {
             }
         }
         return null;
+    }
+
+    public ArrayList<Ingredient> getIngredientList() {
+        return ingredientList;
     }
 }
 

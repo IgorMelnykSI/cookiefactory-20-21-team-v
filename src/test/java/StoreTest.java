@@ -109,7 +109,7 @@ public class StoreTest {
         assertFalse(store1.isIngredientAvailable(tmp,1));
 
         store1.modifyAllIngredientsQuantity(10);
-        assertFalse(store1.isIngredientAvailable(plain,1));
+        assertFalse(store1.isIngredientAvailable(plain,11));
         assertTrue(store1.isIngredientAvailable(tmp,1));
 
         store1.modifyAllIngredientsQuantity(0);
@@ -146,7 +146,7 @@ public class StoreTest {
         assertFalse(store1.isIngredientAvailable(tmp,1));
 
         store1.modifyAllIngredientsQuantity(10);
-        assertFalse(store1.isIngredientAvailable(plain,1));
+        assertFalse(store1.isIngredientAvailable(plain,11));
         assertTrue(store1.isIngredientAvailable(tmp,1));
 
         store1.updateAddIngredient(tmp);

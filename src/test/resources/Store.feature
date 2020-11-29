@@ -1,5 +1,5 @@
 # Created by zhaoyuqiao at 26/11/2020
-Feature: # Enter feature name here
+Feature: Store
   # Enter feature description here
 
   Scenario: # Enter scenario name here
