@@ -43,6 +43,8 @@ public class CustomerStepdefs implements En {
                     DateFormat fmt =new SimpleDateFormat("HH:mm");
                     Date date = fmt.parse(time);
                     Store s = factory.getStore(store);
+                    s.initIngre(50);
+                    s.initIngre(50);
                     int way=1;
                     String home="Polytech nice sophia";
                     order1 = member1.creatDiscountOrder(mp,way,date,s,home);
@@ -61,6 +63,7 @@ public class CustomerStepdefs implements En {
                     DateFormat fmt =new SimpleDateFormat("HH:mm");
                     Date date = fmt.parse(time);
                     Store s = factory.getStore(store);
+                    s.initIngre(50);
                     int way=1;
                     String home="Polytech nice sophia";
                     order2 = member1.creatDiscountOrder(mp,way,date,s,home);
@@ -74,6 +77,7 @@ public class CustomerStepdefs implements En {
                     DateFormat fmt =new SimpleDateFormat("HH:mm");
                     Date date = fmt.parse(time);
                     Store s = factory.getStore(store);
+                    s.initIngre(50);
                     int way=1;
                     String home="Polytech nice sophia";
                     order3 = member1.creatDiscountOrder(mp,way,date,s,home);
