@@ -2,7 +2,7 @@
 cookiefactory-20-21-team-v created by GitHub Classroom
 
 ## User stories
-### User Story #1 ( MUST Sizing L ) ✔️
+### User Story #1 ( MUST Sizing L ) 
 **As** a customer, **I want** to order the basic recipe **in order to** buy the cookies.
 
 Acceptance criteria
@@ -19,7 +19,7 @@ Acceptance test
 #### feature: 
 #### Scenario:
 
-### User Story #2 ( MUST Sizing M ) ✔️
+### User Story #2 ( MUST Sizing M ) 
 **As** a customer non-registered, **I want** to register an account **in order to** save my information. 
 
 Acceptance criteria
@@ -169,7 +169,7 @@ Acceptance test
 - Action: I create my order and I choose MarcelEat to send my order.
 - Expected result: My order is delivered by MarcelEat to my home.
 
-### User Story #12 ( MUST Sizing S ) 
+### User Story #12 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to choose another store when the original store has a technical problem **in order to** still buy my cookies. 
 
 Acceptance criteria
@@ -261,7 +261,7 @@ Acceptance test
 - Action: I contact the MarcelEat and increase 50% price of delivery fee.
 - Expected result: The delivery fee is increase 50% and the order is delived by the MarcelEat.
 
-### User Story #19 ( MUST Sizing M ) :heavy_check_mark:
+### User Story #19 ( MUST Sizing M ) 
 **As** a store manager, **I want** to check if my store can accept the orders **in order to** make sure the store have enough ingredients to make the order.
 
 Acceptance criteria
@@ -327,3 +327,6 @@ Acceptance test
 - Initialization:I am a store manager, the store lack a kind of ingredients.
 - Action: I add the lack ingredient.
 - Expected result: The ingredient is added.
+
+#### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
+#### The name of scenario: Paule adds a kind of ingredients
