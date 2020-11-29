@@ -39,6 +39,9 @@ public class Store {
         setRecipes(recipes);
     }
 
+    public void initIngre(Integer quantity){
+        this.stock.initIngredientQuantity(quantity);
+    }
 
     public boolean isBusy(Date date){
         int num = 0;

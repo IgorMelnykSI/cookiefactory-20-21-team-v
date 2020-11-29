@@ -15,23 +15,13 @@ public class Tourist {
     CookieFactory factory = new CookieFactory();
 
     public Order creatNoDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store,String deliveryAddress) throws MyException {
-        Order order = new Order(way,date,store,deliveryAddress);
-
-        for(Recipe recipe : mp.keySet()){
-            CookieItem item=new CookieItem(mp.get(recipe),recipe);
-            item.calculatePrice();
-            order.addCookieItem(item);
-        }
+        Order order = new Order(mp,way,date,store,deliveryAddress);
         order.caculatePrice();
         return order;
     }
 
      public Order createPrivateOrder(Map<Recipe, Integer> mp,int way, Date date, Store store,String deliveryAddress) throws MyException {
-        Order order = new Order(way,date,store,deliveryAddress);
-        for(Recipe recipe : mp.keySet()){
-            CookieItem item=new CookieItem(mp.get(recipe),recipe);
-            order.addCookieItem(item);
-        }
+        Order order = new Order(mp,way,date,store,deliveryAddress);
         order.caculatePrice();
         return order;
     }

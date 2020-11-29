@@ -22,16 +22,35 @@ public class MemberTest {
     private Date date;
     private int way;
     private String home;
+    Cooking cook1=new Cooking("cook1",1);
+    Cooking cook2=new Cooking("cook2",2);
+    Dough dough1=new Dough("dough1",1);
+    Dough dough2=new Dough("dough2",2);
+    Flavour flavour1=new Flavour("flavour1",1);
+    Flavour flavour2=new Flavour("flavour2",2);
+    Mix mix1=new Mix("mix1",1);
+    Mix mix2=new Mix("mix2",2);
+    Topping top1=new Topping("top1",1);
+    Topping top2=new Topping("top2",2);
+    Topping top3=new Topping("top3",3);
+    List<Topping> toppings1=new ArrayList<>();
+    List<Topping> toppings2=new ArrayList<>();
 
     @BeforeEach
     public void init(){
+        toppings1.add(top1);
+        toppings1.add(top2);
+        toppings2.add(top1);
+        toppings2.add(top3);
         member1 = new Member("testLu");
         member2 = new Member("trialYao");
         Recipe[] r = new Recipe[2];
-        r[0] = new Recipe("cookie1");//1.5
-        r[0].setPrice(3.0);
-        r[1] = new Recipe("cookie2");//2
-        r[1].setPrice(2.5);
+        //r[0] = new Recipe("cookie1");//1.5
+        //r[0].setPrice(3.0);
+        r[0] = new Recipe("cookie1",cook1,dough1,flavour1,mix1,toppings1);//7
+        //r[1] = new Recipe("cookie2");//2
+        //r[1].setPrice(2.5);
+        r[1] = new Recipe("cookie2",cook2,dough2,flavour2,mix2,toppings2);//12
         mp = new HashMap<>();
         mp.put(r[0],10);
         mp.put(r[1],20);
@@ -44,6 +63,7 @@ public class MemberTest {
         way=1;
         home="polytech nice sophia";
         store = new Store("store1","Antibes","8","0","16","0",0.15);
+        store.initIngre(15);
     }
 
     @Test
@@ -77,11 +97,11 @@ public class MemberTest {
     public void creatDiscountOrder() throws MyException {
         member1.registerLoyal();
         Order order1 = member1.creatDiscountOrder(mp,way,date,store,home);
-        assertEquals(order1.getPrice(),80,0.01);
+        assertEquals(order1.getPrice(),310,0.01);
 
         Order order2 = member1.creatDiscountOrder(mp,way,date,store,home);
         assertEquals(member1.applyLoyaltyDiscount(),0.1,0.01);
-        assertEquals(order2.getPrice(),72,0.01);
+        assertEquals(order2.getPrice(),279,0.01);
     }
 
     @Test

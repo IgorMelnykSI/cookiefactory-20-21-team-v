@@ -28,11 +28,10 @@ public class Order {
         deliveryAddress=null;
     }
 
-    public Order(int way,Date date, Store store,String address) throws MyException {
+    public Order(Map<Recipe, Integer> mp,int way,Date date, Store store,String address) throws MyException {
         orderID = getGuid();
-        price = 0;
         setTheWayToPick(way);
-        setInformation(date,store,address);
+        setInformation(mp,date,store,address);
     }
 
     public static int Guid = 100;
@@ -77,7 +76,8 @@ public class Order {
         }
     }
 
-    public void setInformation(Date date,Store store,String deliveryAddress) throws MyException {
+    public void setInformation(Map<Recipe, Integer> mp,Date date,Store store,String deliveryAddress) throws MyException {
+        getAllCookieItems(mp);
         if (getTheWay()=="pickUp"){
             setPickUpDate(date);
             setPickUpStore(store);
@@ -99,10 +99,10 @@ public class Order {
             setState(new FailState());
             throw new MyException("The store is busy, please choose another store\n");
         }
-        //if(store.checkOrder(this)){
+        if(store.checkOrder(this)){
             //setState(new FailState());
-        //    throw new MyException("There is not enough ingredients");
-        //}
+            throw new MyException("There is not enough ingredients");
+        }
 
         setState(new WaitPayState());
     }
@@ -146,7 +146,13 @@ public class Order {
                 ci.changeToBestOf();
         }
         cookieItems.add(ci);
-
+    }
+    public void getAllCookieItems(Map<Recipe, Integer> mp){
+        for(Recipe recipe : mp.keySet()){
+            CookieItem item=new CookieItem(mp.get(recipe),recipe);
+            item.calculatePrice();
+            addCookieItem(item);
+        }
     }
 
     public void caculatePrice(){

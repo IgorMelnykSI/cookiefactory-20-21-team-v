@@ -19,12 +19,40 @@ public class StoreTest {
     private Store store1;
     private Store store2;
     Order order;
+    Map<Recipe,Integer> mp;
+    Cooking cook1=new Cooking("cook1",1);
+    Cooking cook2=new Cooking("cook2",2);
+    Dough dough1=new Dough("dough1",1);
+    Dough dough2=new Dough("dough2",2);
+    Flavour flavour1=new Flavour("flavour1",1);
+    Flavour flavour2=new Flavour("flavour2",2);
+    Mix mix1=new Mix("mix1",1);
+    Mix mix2=new Mix("mix2",2);
+    Topping top1=new Topping("top1",1);
+    Topping top2=new Topping("top2",2);
+    Topping top3=new Topping("top3",3);
+    List<Topping> toppings1=new ArrayList<>();
+    List<Topping> toppings2=new ArrayList<>();
 
     @BeforeEach
     public void init(){
+        toppings1.add(top1);
+        toppings1.add(top2);
+        toppings2.add(top1);
+        toppings2.add(top3);
         cookieFactory = new CookieFactory();
         store1 = new Store("store1","address1","8","30","19","0",0.2);
         store2 = new Store("store2","address2","8","0","18","0",0.15);
+        Recipe[] r = new Recipe[2];
+        //r[0] = new Recipe("cookie1");//1
+        //r[0].setPrice(3.0);
+        //r[1] = new Recipe("cookie2");//2
+        //r[1].setPrice(2.5);
+        r[0] = new Recipe("cookie1",cook1,dough1,flavour1,mix1,toppings1);//7
+        r[1] = new Recipe("cookie2",cook2,dough2,flavour2,mix2,toppings2);//12
+        mp = new HashMap<>();
+        mp.put(r[0],10);
+        mp.put(r[1],15);
     }
 
     @Test
@@ -161,7 +189,8 @@ public class StoreTest {
         GregorianCalendar gc = new GregorianCalendar();
         gc.set(2020,Calendar.DECEMBER, 1,18,30);
         Date date = gc.getTime();
-        order = new Order(1,date,store1,"Polytech Nice Sophia");
+        store1.initIngre(50);
+        order = new Order(mp,1,date,store1,"Polytech Nice Sophia");
         assertTrue(store1.checkOrder(order));
     }
 
