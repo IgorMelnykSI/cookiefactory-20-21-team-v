@@ -60,7 +60,7 @@ Acceptance test
 - Action: I change the opening hours.
 - Expected result: The opening hours changed.
 
-#### The name of *feature* Cucumber file: StoreManager.feature (../test/resources/StoreManager.feature)
+#### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
 #### The name of scenario: Paule changes the opening hours
 
 ### User Story #5 ( MUST Sizing M ) 
@@ -118,7 +118,7 @@ Acceptance test
 - Action: I change the basic recipe list by adding the new basic recipe.
 - Expected result: The new basic recipe is successfully added.
 
-### User Story #9 ( MUST Sizing S ) 
+### User Story #9 ( MUST Sizing S ) :heavy_check_mark:
 **As** a store manager. **I want** to change the tax **in order to** obey the law or get customers
 
 Acceptance criteria
@@ -130,6 +130,9 @@ Acceptance test
 - Initialization: I am a store manager, the store location has changed the tax.
 - Action: I change the store tax.
 - Expected result: The store tax is successfully changed.
+
+#### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
+#### The name of scenario: Paule changes the tax
 
 ### User Story #10 ( MUST Sizing M ) 
 **As** a brand manager. **I want** to delete basic recipes not ordered by many people every month **in order to** reduce loss.
