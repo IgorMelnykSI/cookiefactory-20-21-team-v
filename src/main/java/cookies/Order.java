@@ -1,9 +1,6 @@
 package cookies;
 
-import cookies.order.ConfirmState;
-import cookies.order.FailState;
-import cookies.order.MyException;
-import cookies.order.State;
+import cookies.order.*;
 import cookies.recipe.Recipe;
 
 import java.util.*;
@@ -95,11 +92,11 @@ public class Order {
         }
 
         if(store.hasProblem()){
-            //setState(new FailState());
+            setState(new FailState());
             throw new MyException("The store has technical problems, please choose another store\n");
         }
         if(store.isBusy(date)){
-            //setState(new FailState());
+            setState(new FailState());
             throw new MyException("The store is busy, please choose another store\n");
         }
         //if(store.checkOrder(this)){
@@ -107,7 +104,7 @@ public class Order {
         //    throw new MyException("There is not enough ingredients");
         //}
 
-        //setState(new ConfirmState());
+        setState(new WaitPayState());
     }
 
     public  String getTheWay(){
