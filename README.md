@@ -6,6 +6,7 @@ cookiefactory-20-21-team-v created by GitHub Classroom
 **As** a customer, **I want** to order the basic recipe **in order to** buy the cookies.
 
 Acceptance criteria
+
 I am a customer, and I want to order the recipe.
 - If I don’t have an account, I can directly make order.
 - If I have an account, I will log in first and then make order.
@@ -22,6 +23,7 @@ Acceptance test
 **As** a customer non-registered, **I want** to register an account **in order to** save my information. 
 
 Acceptance criteria
+
 I am a customer, and I want to register an account.
 - If I don't have an account, I register an account.
 
@@ -34,6 +36,7 @@ Acceptance test
 **As** a customer registered, **I want** to join “Loyalty program” **in order to** profit further discounts.
 
 Acceptance criteria
+
 I am a customer, I want to join the “Loyalty program”.
 - If I have an account without “Loyalty program”, I can join the “Loyalty program”.
 - If I have joined the “Loyalty program”, I can’t join it again.
@@ -47,6 +50,7 @@ Acceptance test
 **As** a store manager, **I want** to change the opening hours **in order to** match customer flow.
 
 Acceptance criteria
+
 I am a store manager, I want to change the opening hours.
 - If the customer flow is very low for a certain period of time, I change the opening hours.
 - If there are special situations, I will change the opening hours according to the situations.
@@ -60,6 +64,7 @@ Acceptance test
 **As** a customer, **I want** to pick my order **in order to** get my cookies.
 
 Acceptance criteria
+
 I am a customer, I want to pick my order.
 - If it has not reached the time of the order I selected, I can't get my order.
 - If it reached the time of the order I selected, I can get my order.
@@ -74,6 +79,7 @@ Acceptance test
 **As** a customer, **I want** to pay my order by credit card **in order to** make order successfully.
 
 Acceptance criteria
+
 I am a customer, I want to pay my order by credit card.
 - If I pay my order by credit card, I make my order successfully.
 
@@ -86,6 +92,7 @@ Acceptance test
 **As** a customer who joined “Loyalty program”, **I want** to make order with 10% discount **in order to** pay less.
 
 Acceptance criteria
+
 I am a customer who joined “Loyalty program”, I hope I can order with discount.
 - If I have ordered 30 cookies before, I can use the 10% discount.
 - If I have not ordered 30 cookies before, I can't use the 10% discount.
@@ -99,6 +106,7 @@ Acceptance test
 **As** a brand manager. **I want** to add new basic recipes to the list every month **in order to** draw more customers. 
 
 Acceptance criteria
+
 I am a brand manager.
 - If we develop a new menu, I add the new basic recipes to the list.
 
@@ -111,6 +119,7 @@ Acceptance test
 **As** a store manager. **I want** to change the tax **in order to** obey the law or get customers
 
 Acceptance criteria
+
 I am a store manager, I want to change the tax.
 - If the store location has changed the tax, I change the tax of my store.
 
@@ -123,6 +132,7 @@ Acceptance test
 **As** a brand manager. **I want** to delete basic recipes not ordered by many people every month **in order to** reduce loss.
 
 Acceptance criteria
+
 I am a brand manager.
 - If a basic recipe is not ordered by many people, I delete it from the list.
 
@@ -135,6 +145,7 @@ Acceptance test
 **As** a customer, **I want** the store to send the order to my home through the service MarcelEat **in order to** save my time.
 
 Acceptance criteria
+
 I am a customer.
 - If I don't have time to pick my order, I decided to use MarcelEat to send the order to my home.
 
@@ -147,6 +158,7 @@ Acceptance test
 **As** a customer, **I want** to choose another store when the original store has a technical problem **in order to** still buy my cookies. 
 
 Acceptance criteria
+
 I am a customer, I want to choose another store when the original store has a technical problem.
 - If the store which I have chosen has a technical problem, the store returns to the list of nearby stores for me to change the selected store.
 
@@ -159,6 +171,7 @@ Acceptance test
 **As** a store manager, **I want** the store can automatically calculate the most popular recipe over the last 30 days **in order to** make it as the BestOf cookie.
 
 Acceptance criteria
+
 I am a store manager. I want the store can automatically calculate the most popular recipe over the last 30 days.
 - If a recipe is the most popular recipe over the last 30 days, I make it as the BestOf cookie.
 
@@ -171,6 +184,7 @@ Acceptance test
 **As** a customer, **I want** to order the BestOf cookie **in order to** pay 10% less.
 
 Acceptance criteria
+
 I am a customer, I want to order the BestOf cookie.
 - If I order the BestOf cookie, the price is reduced 10%.
 
@@ -183,6 +197,7 @@ Acceptance test
 **As** a customer, **I want** to order the personnel recipe created by myself **in order to** better suit my taste.
 
 Acceptance criteria
+
 I am a customer, and I want to order the personnel recipe.
 - If the basic recipe doesn’t suit my taste, I create my own recipe and order it.
 
@@ -195,6 +210,7 @@ Acceptance test
 **As** a customer, **I want** to change the basic recipe as the personnel recipe **in order to** better suit my taste.
 
 Acceptance criteria
+
 I am a customer, and I want to change the basic recipe as the personnel recipe.
 - If the basic recipe doesn’t suit my taste, I change the basic recipe by adding or removing ingredients, or even by adding double or triple doses, then I order it.
 
@@ -207,6 +223,7 @@ Acceptance test
 **As** a customer, **I want** to change the way from picking up at the store to home delivery **in order to** get my order.
 
 Acceptance criteria
+
 I am a customer.
 - If I’ve already chosen to pick the order but suddenly can’t go to the store, I choose MarcelEat to deliver the order 
 
@@ -220,6 +237,7 @@ Acceptance test
 **As** a store manager, I receive a request that the customer want to change the way from picking up to a delivery , **I want** to contact the MarcelEat and increase 50% price of delivery fee **in order to** complete the order and get a reasonable profit.
 
 Acceptance criteria
+
 I am a store manager.
 - If I receive a request that the customer want to change the way from picking up to a delivery, I will contact the MarcelEat and increase 50% price of delivery fee.
 
@@ -232,6 +250,7 @@ Acceptance test
 **As** a store manager, **I want** to check if my store can accept the orders **in order to** make sure the store have enough ingredients to make the order.
 
 Acceptance criteria
+
 I am a store manager, I want to check if my store can accept the orders.
 - If the store recive the order, I check if the store have enough ingredients to make the order.
 
@@ -244,6 +263,7 @@ Acceptance test
 **As** a store manager, **I want** to increase the price of the personnel recipe by 25% **in order to** get a reasonable profit.
 
 Acceptance criteria
+
 I am a store manager.
 - If the customer create his personnel recipe, I inrease the price by 25%.
 
@@ -256,11 +276,12 @@ Acceptance test
 **As** a customer, **I want** to choose another store for my cookies when there are many orders chosen at the same time **in order to** get my order in time. 
 
 Acceptance criteria
+
 I am a customer, I want to choose another store when the store I’ve chosen is too busy.
 - If there are many orders chosen at the same time, the store returns to the list of nearby stores for me to change the selected store.
 
 Acceptance test
-- Initialization:I am a customer, the store I’ve chosen is too busy that I should wait for a period of time.
+- Initialization: I am a customer, the store I’ve chosen is too busy that I should wait for a period of time.
 - Action: I cancel my original choice of store and choose another one.
 - Expected result: my order was placed in the other store and I get to receive my cookies in time.
 
@@ -268,11 +289,12 @@ Acceptance test
 **As** a customer, **I want** to choose another store for my cookies when the store that I’ve chosen lacks ingredients **in order to** make sure i can get my order.
 
 Acceptance criteria
+
 I am a customer, I want to choose another store for my cookies when the store that I’ve chosen lacks ingredients.
 - If the store that I’ve chosen lacks ingredients, the store returns to the list of nearby stores for me to change the selected store.
 
 Acceptance test
-- Initialization:I am a customer , the store i’ve chosen lacks ingredients for my order.
+- Initialization: I am a customer , the store i’ve chosen lacks ingredients for my order.
 - Action: I cancel my original choice of store and choose another one.
 - Expected result: my order was placed in the other store and I get to receive my cookies in time.
 
