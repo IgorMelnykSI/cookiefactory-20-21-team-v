@@ -107,6 +107,10 @@ public class Order {
         setState(new WaitPayState());
     }
 
+    public void pay(){
+        setState(new ConfirmState());
+    }
+
     public  String getTheWay(){
         return this.theWay;
     }
@@ -204,7 +208,8 @@ public class Order {
     public void setState(State s){
         System.out.println("change state");
         state = s;
-        state.handle(this);
+        String instruction=state.handle(this);
+        System.out.println("The State of the order : "+instruction);
     }
 
 }
