@@ -169,7 +169,7 @@ Acceptance test
 - Action: I create my order and I choose MarcelEat to send my order.
 - Expected result: My order is delivered by MarcelEat to my home.
 
-### User Story #12 ( MUST Sizing S ) 
+### User Story #12 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to choose another store when the original store has a technical problem **in order to** still buy my cookies. 
 
 Acceptance criteria
