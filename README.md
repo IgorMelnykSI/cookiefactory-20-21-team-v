@@ -32,7 +32,7 @@ Acceptance test
 - Action: I register an account.
 - Expected result: I successfully register an account.
 
-### User Story #3 ( MUST Sizing S ) 
+### User Story #3 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer registered, **I want** to join “Loyalty program” **in order to** profit further discounts.
 
 Acceptance criteria
@@ -45,6 +45,9 @@ Acceptance test
 - Initialisation: I am a customer and I have registered an account.
 - Action: I join the “Loyalty program”.
 - Expected result: I successfully joined.
+
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: Laura join the "Loyalty program"
 
 ### User Story #4 ( MUST Sizing S ) :heavy_check_mark:
 **As** a store manager, **I want** to change the opening hours **in order to** match customer flow.
@@ -91,7 +94,7 @@ Acceptance test
 - Action: I pay my order by credit card.
 - Expected result: I make my order successfully.
 
-### User Story #7 ( MUST Sizing S ) 
+### User Story #7 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer who joined “Loyalty program”, **I want** to make order with 10% discount **in order to** pay less.
 
 Acceptance criteria
@@ -104,6 +107,9 @@ Acceptance test
 - Initialisation: I am a customer and I have ordered 30 cookies before.
 - Action: I use the 10% discount in this order.
 - Expected result: Le prix réduit de 10%.
+
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: Peter use discount 10% after an order of 30 cookies
 
 ### User Story #8 ( MUST Sizing M ) 
 **As** a brand manager. **I want** to add new basic recipes to the list every month **in order to** draw more customers. 
