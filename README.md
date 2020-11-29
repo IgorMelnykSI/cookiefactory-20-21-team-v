@@ -18,7 +18,7 @@ Acceptance test
 #### feature: 
 #### Scenario:
 
-### User Story #2 ( MUST Sizing S ) :heavy_check_mark:
+### User Story #2 ( MUST Sizing M ) 
 **As** a customer non-registered, **I want** to register an account **in order to** save my information. 
 
 Acceptance criteria
@@ -30,7 +30,7 @@ Acceptance test
 - Action: I register an account.
 - Expected result: I successfully register an account.
 
-### User Story #3 ( MUST Sizing S ) :heavy_check_mark:
+### User Story #3 ( MUST Sizing S ) 
 **As** a customer registered, **I want** to join “Loyalty program” **in order to** profit further discounts.
 
 Acceptance criteria
@@ -43,7 +43,7 @@ Acceptance test
 - Action: I join the “Loyalty program”.
 - Expected result: I successfully joined.
 
-### User Story #4 ( MUST Sizing S ) :heavy_check_mark:
+### User Story #4 ( MUST Sizing S ) 
 **As** a store manager, **I want** to change the opening hours **in order to** match customer flow.
 
 Acceptance criteria
@@ -56,7 +56,7 @@ Acceptance test
 - Action: I change the opening hours.
 - Expected result: The opening hours changed.
 
-### User Story #5 ( MUST Sizing L ) :heavy_check_mark:
+### User Story #5 ( MUST Sizing M ) 
 **As** a customer, **I want** to pick my order **in order to** get my cookies.
 
 Acceptance criteria
@@ -70,7 +70,7 @@ Acceptance test
 - Action: It reached the time of the order I selected .
 - Expected result: I get my order.
 
-### User Story #6 ( MUST Sizing S ) :heavy_check_mark:
+### User Story #6 ( MUST Sizing S ) 
 **As** a customer, **I want** to pay my order by credit card **in order to** make order successfully.
 
 Acceptance criteria
@@ -82,7 +82,7 @@ Acceptance test
 - Action: I pay my order by credit card.
 - Expected result: I make my order successfully.
 
-### User Story #7 ( MUST Sizing S ) :heavy_check_mark:
+### User Story #7 ( MUST Sizing S ) 
 **As** a customer who joined “Loyalty program”, **I want** to make order with 10% discount **in order to** pay less.
 
 Acceptance criteria
@@ -95,7 +95,7 @@ Acceptance test
 - Action: I use the 10% discount in this order.
 - Expected result: Le prix réduit de 10%.
 
-### User Story #8 ( MUST Sizing S ) :heavy_check_mark:
+### User Story #8 ( MUST Sizing M ) 
 **As** a brand manager. **I want** to add new basic recipes to the list every month **in order to** draw more customers. 
 
 Acceptance criteria
@@ -107,7 +107,7 @@ Acceptance test
 - Action: I change the basic recipe list by adding the new basic recipe.
 - Expected result: The new basic recipe is successfully added.
 
-### User Story #9 ( MUST Sizing S ) :heavy_check_mark:
+### User Story #9 ( MUST Sizing S ) 
 **As** a store manager. **I want** to change the tax **in order to** obey the law or get customers
 
 Acceptance criteria
@@ -119,7 +119,7 @@ Acceptance test
 - Action: I change the store tax.
 - Expected result: The store tax is successfully changed.
 
-### User Story #10 ( MUST Sizing M ) :heavy_check_mark:
+### User Story #10 ( MUST Sizing M ) 
 **As** a brand manager. **I want** to delete basic recipes not ordered by many people every month **in order to** reduce loss.
 
 Acceptance criteria
@@ -131,7 +131,7 @@ Acceptance test
 - Action: I change the basic recipe list by deleting a basic recipe.
 - Expected result: The basic recipe is successfully deleted.
 
-### User Story #11 ( MUST Sizing M ) :heavy_check_mark:
+### User Story #11 ( MUST Sizing M ) 
 **As** a customer, **I want** the store to send the order to my home through the service MarcelEat **in order to** save my time.
 
 Acceptance criteria
@@ -143,7 +143,7 @@ Acceptance test
 - Action: I create my order and I choose MarcelEat to send my order.
 - Expected result: My order is delivered by MarcelEat to my home.
 
-### User Story #12 ( MUST Sizing S ) :heavy_check_mark:
+### User Story #12 ( MUST Sizing S ) 
 **As** a customer, **I want** to choose another store when the original store has a technical problem **in order to** still buy my cookies. 
 
 Acceptance criteria
@@ -155,7 +155,7 @@ Acceptance test
 - Action: The store returns to the list of nearby stores for me and I choose one of them.
 - Expected result: I changed the store.
 
-### User Story #13 ( MUST Sizing L ) :heavy_check_mark:
+### User Story #13 ( MUST Sizing L ) 
 **As** a store manager, **I want** the store can automatically calculate the most popular recipe over the last 30 days **in order to** make it as the BestOf cookie.
 
 Acceptance criteria
@@ -167,7 +167,7 @@ Acceptance test
 - Action: The store automatically calculate the most popular recipe over the last 30 days
 - Expected result: The recipe is made as the BestOf cookie.
 
-### User Story #14 ( MUST Sizing L ) :heavy_check_mark:
+### User Story #14 ( MUST Sizing S ) 
 **As** a customer, **I want** to order the BestOf cookie **in order to** pay 10% less.
 
 Acceptance criteria
@@ -179,7 +179,7 @@ Acceptance test
 - Action: I order the BestOf cookie.
 - Expected result: The price is reduced 10%.
 
-### User Story #15 ( MUST Sizing L ) :heavy_check_mark:
+### User Story #15 ( MUST Sizing M ) 
 **As** a customer, **I want** to order the personnel recipe created by myself **in order to** better suit my taste.
 
 Acceptance criteria
@@ -191,7 +191,7 @@ Acceptance test
 - Action: I create my own recipe and order it.
 - Expected result: I successfully ordered.
 
-### User Story #16 ( MUST Sizing L ) :heavy_check_mark:
+### User Story #16 ( MUST Sizing M ) 
 **As** a customer, **I want** to change the basic recipe as the personnel recipe **in order to** better suit my taste.
 
 Acceptance criteria
@@ -203,7 +203,7 @@ Acceptance test
 - Action: I change the basic recipe by adding ingredients and order it.
 - Expected result: I successfully ordered.
 
-### User Story #17 ( MUST Sizing L ) :heavy_check_mark:
+### User Story #17 ( MUST Sizing S ) 
 **As** a customer, **I want** to change the way from picking up at the store to home delivery **in order to** get my order.
 
 Acceptance criteria
@@ -216,7 +216,7 @@ Acceptance test
 - Expected result: My order is delivered by MarcelEat to my home.
 
 
-### User Story #18 ( MUST Sizing L ) :heavy_check_mark:
+### User Story #18 ( MUST Sizing M ) 
 **As** a store manager, I receive a request that the customer want to change the way from picking up to a delivery , **I want** to contact the MarcelEat and increase 50% price of delivery fee **in order to** complete the order and get a reasonable profit.
 
 Acceptance criteria
@@ -228,7 +228,7 @@ Acceptance test
 - Action: I contact the MarcelEat and increase 50% price of delivery fee.
 - Expected result: The delivery fee is increase 50% and the order is delived by the MarcelEat.
 
-### User Story #19 ( MUST Sizing M ) :heavy_check_mark:
+### User Story #19 ( MUST Sizing M ) 
 **As** a store manager, **I want** to check if my store can accept the orders **in order to** make sure the store have enough ingredients to make the order.
 
 Acceptance criteria
@@ -240,8 +240,8 @@ Acceptance test
 - Action: I check the store have enough ingredients to make the order.
 - Expected result: The order is confirmed as achievable.
 
-### User Story #20 ( MUST Sizing S ) :heavy_check_mark:
-**As** a store manager, I want to increase the price of the personnel recipe by 25% **in order to** get a reasonable profit.
+### User Story #20 ( MUST Sizing S ) 
+**As** a store manager, **I want** to increase the price of the personnel recipe by 25% **in order to** get a reasonable profit.
 
 Acceptance criteria
 I am a store manager.
@@ -252,7 +252,7 @@ Acceptance test
 - Action: I inrease the price by 25%.
 - Expected result: The price have been increased by 25%.
 
-### User Story #21 ( MUST Sizing M ):heavy_check_mark:
+### User Story #21 ( MUST Sizing M )
 **As** a customer, **I want** to choose another store for my cookies when there are many orders chosen at the same time **in order to** get my order in time. 
 
 Acceptance criteria
@@ -264,7 +264,7 @@ Acceptance test
 - Action: I cancel my original choice of store and choose another one.
 - Expected result: my order was placed in the other store and I get to receive my cookies in time.
 
-### User Story #22 ( MUST Sizing M ):heavy_check_mark:
+### User Story #22 ( MUST Sizing M )
 **As** a customer, **I want** to choose another store for my cookies when the store that I’ve chosen lacks ingredients **in order to** make sure i can get my order.
 
 Acceptance criteria
@@ -276,7 +276,7 @@ Acceptance test
 - Action: I cancel my original choice of store and choose another one.
 - Expected result: my order was placed in the other store and I get to receive my cookies in time.
 
-### User Story #23 ( MUST Sizing M ) :heavy_check_mark:
+### User Story #23 ( MUST Sizing M ) 
 **As** a store manager, **I want** to manage ingredients **in order to**  add lack ingredients in time.
 
 Acceptance criteria
