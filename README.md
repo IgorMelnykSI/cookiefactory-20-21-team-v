@@ -143,7 +143,7 @@ Acceptance test
 #### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
 #### The name of scenario: Paule changes the tax
 
-### User Story #10 ( MUST Sizing M ) 
+### User Story #10 ( MUST Sizing M ) :heavy_check_mark:
 **As** a brand manager. **I want** to delete basic recipes not ordered by many people every month **in order to** reduce loss.
 
 Acceptance criteria
