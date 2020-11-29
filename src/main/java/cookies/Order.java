@@ -3,6 +3,8 @@ package cookies;
 import cookies.order.*;
 import cookies.recipe.Recipe;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.*;
 import java.text.SimpleDateFormat;
 
@@ -26,6 +28,7 @@ public class Order {
         pickUpDate = null;
         pickUpStore = null;
         deliveryAddress=null;
+        state=null;
     }
 
     public Order(Map<Recipe, Integer> mp,int way,Date date, Store store,String address) throws MyException {
@@ -115,16 +118,19 @@ public class Order {
         return this.theWay;
     }
 
-    public boolean judgeTheTime(){
+    public boolean judgeTheTime(String time) throws ParseException {
         Date date = new Date();
+        DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        date = dateFormat2.parse(time);
+
         if(date.before(pickUpDate)){
             return true;
         }else {
             return false;
         }
     }
-    public void changePickToDelivery(){
-        if(theWay==pickUp&&judgeTheTime()){
+    public void changePickToDelivery(String time) throws ParseException {
+        if(theWay==pickUp&&judgeTheTime(time)){
             this.theWay=homeDelivery;
             this.price=price+deliveryFee*(1+0.5);
         }

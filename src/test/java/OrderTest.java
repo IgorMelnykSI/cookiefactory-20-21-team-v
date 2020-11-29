@@ -26,7 +26,7 @@ class OrderTest {
         order =new Order();
         Store store1=new Store("store1","address1","8","30","19","0",0.2);
         DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        myDate2 = dateFormat2.parse("2020-12-01 17:36:01");
+        myDate2 = dateFormat2.parse("2021-12-01 17:36:01");
     }
 
 
@@ -52,7 +52,7 @@ class OrderTest {
     }
 
     @Test
-    void caculatePrice() {
+    void caculatePrice() throws ParseException {
         assertEquals(order.getPrice(),0);
         order.addCookieItem(item);
         order.setTheWayToPick(1);
@@ -60,7 +60,7 @@ class OrderTest {
         order.caculatePrice();
         assertEquals(order.getPrice(),7.5);
         order.setPickUpDate(myDate2);
-        order.changePickToDelivery();
+        order.changePickToDelivery("2019-12-01 17:36:01");
         assertEquals(order.getPrice(),13.5);
     }
 
@@ -75,7 +75,7 @@ class OrderTest {
     }
 
     @Test
-    void caculateDiscountPrice() {
+    void caculateDiscountPrice() throws ParseException {
         order.addCookieItem(item);
         order.setTheWayToPick(1);
         item.setPrice(10);
@@ -83,7 +83,7 @@ class OrderTest {
         order.caculateDiscountPrice(0.1);
         assertEquals(order.getPrice(),9.0);
         order.setPickUpDate(myDate2);
-        order.changePickToDelivery();
+        order.changePickToDelivery("2019-12-01 17:36:01");
         assertEquals(order.getPrice(),15.0);
     }
 
