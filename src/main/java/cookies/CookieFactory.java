@@ -315,6 +315,15 @@ public class CookieFactory {
         return null;
     }
 
+    public Ingredient getIngredient(String name){
+        for(Ingredient ingredient:this.ingredientList){
+            if(ingredient.getType().equals(name)){
+                return ingredient;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Ingredient> getIngredientList() {
         return ingredientList;
     }

@@ -16,3 +16,8 @@ Feature: Store Manager
   Scenario: Laura ordered her personnel recipe, the price is increased 25%
     When Laura ordered her personnel recipe named "myRecipe1"(dough:"Plain", flavour: "Vanilla", topping: "White chocolate and Milk chocolate", mix: "Mixed", cooking: "Crunchy")
     Then Check the actual price is "3.75", isn't "3.00"
+
+  Scenario: Paule adds a kind of ingredients
+    When Store1 lack the ingredient "White chocolate", only 10
+    Then Paule adds 100 "White chocolate"
+    Then Check the quantity of "White chocolate" is 110

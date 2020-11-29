@@ -7,6 +7,7 @@ import cookies.customer.Member;
 import cookies.customer.Tourist;
 import cookies.manager.StoreManager;
 import cookies.recipe.Recipe;
+import cookies.recipe.Ingredient;
 import io.cucumber.java8.En;
 
 import java.text.DateFormat;
@@ -22,7 +23,7 @@ public class StoreManagerStepdefs implements En {
 
     Store store1;
     StoreManager storeManager;
-    CookieFactory factory;
+    CookieFactory factory = new CookieFactory();
     Tourist tourist;
     Order order1;
     Member member1;
@@ -34,6 +35,7 @@ public class StoreManagerStepdefs implements En {
                 {
                     double taxVal = Double.valueOf(tax);
                     store1 = new Store(name,address,openTime,closeTime,taxVal);
+                    store1.initIngre(50);
                 });
         And("A store manager of name {string} who manage store1",
                 (String nameOfStoreManager)->{
@@ -75,6 +77,18 @@ public class StoreManagerStepdefs implements En {
                     double originalPriceVal = Double.valueOf(originalPrice);
                     assertEquals(tourist.getPrivateRecipes().get(0).getPrice(),actualPriceVal,0.01);
                     assertNotEquals(tourist.getPrivateRecipes().get(0).getPrice(),originalPriceVal,0.01);
+        });
+        When("Store1 lack the ingredient {string}, only {int}",
+        (String ingredientName, Integer quantity) -> {
+            store1.modifyIngredientQuantity(factory.getIngredient(ingredientName),quantity);
+        });
+        Then("Paule adds {int} {string}",
+        (Integer quantity, String ingredientName) -> {
+            store1.addIngredientQuantity(factory.getIngredient(ingredientName),quantity);
+        });
+        Then("Check the quantity of {string} is {int}",
+        (String ingredientName, Integer quantity) -> {
+            assertEquals(store1.getIngredientQuantity(factory.getIngredient(ingredientName)),quantity);
         });
         When("Laura wants to order {int} cookies of {string}, He wants to pick it in {string} at {string}",
                 (Integer sum, String recipe, String store, String time) ->
