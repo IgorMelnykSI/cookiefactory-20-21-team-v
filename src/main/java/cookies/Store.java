@@ -7,8 +7,8 @@ import java.util.*;
 public class Store {
     private String name;
     private String address;
-    protected String openTime;
-    protected String closeTime;
+    private String openTime;
+    private String closeTime;
     private double tax;
     private List<Order> historyOrders = new ArrayList<>();
     private Recipe myBestOf ;
@@ -20,11 +20,11 @@ public class Store {
     private List<Store> nearbyStore = new ArrayList<>();
     private List<Recipe> recipes = new ArrayList<>();
 
-    public Store(String name, String address, String openHour, String openMin, String closeHour, String closeMin,double tax){
+    public Store(String name, String address, String openTime,String closeTime,double tax){
         this.name = name;
         this.address = address;
-        this.openTime = openHour+':'+openMin;
-        this.closeTime = closeHour+':'+closeMin;
+        this.openTime = openTime;
+        this.closeTime = closeTime;
         this.tax = tax;
         this.myBestOf = new Recipe("");
         this.nationalBestOf = new Recipe("");
@@ -196,15 +196,6 @@ public class Store {
     public String getName(){return name;}
     public String getAddress(){return address;}
 
-    public String getCloseTime() {
-        return closeTime;
-    }
-
-    public String getOpenTime() {
-        return openTime;
-    }
-
-
     public double getTax(){return tax;}
 
     public void setName(String name) {
@@ -215,12 +206,20 @@ public class Store {
         this.address = address;
     }
 
-    public void setOpenTime(String openHour,String openMin) {
-        this.openTime = openHour+':'+openMin;
+    public void setCloseTime(String closeTime) {
+        this.closeTime = closeTime;
     }
 
-    public void setCloseTime(String closeHour,String closeMin) {
-        this.closeTime = closeHour+':'+closeMin;
+    public void setOpenTime(String openTime) {
+        this.openTime = openTime;
+    }
+
+    public String getOpenTime() {
+        return openTime;
+    }
+
+    public String getCloseTime() {
+        return closeTime;
     }
 
     public void setTax(double tax) {

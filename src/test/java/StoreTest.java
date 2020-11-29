@@ -30,8 +30,8 @@ public class StoreTest {
         toppings1.add(cookieFactory.getToppingList().get(1));
         toppings2.add(cookieFactory.getToppingList().get(0));
         toppings2.add(cookieFactory.getToppingList().get(2));
-        store1 = new Store("store1","address1","8","30","19","0",0.2);
-        store2 = new Store("store2","address2","8","0","18","0",0.15);
+        store1 = new Store("store1","address1","8:30","19:00",0.2);
+        store2 = new Store("store2","address2","8:00","18:00",0.15);
         Recipe[] r = new Recipe[2];
         //r[0] = new Recipe("cookie1");//1
         //r[0].setPrice(3.0);
