@@ -95,19 +95,19 @@ public class Order {
         }
 
         if(store.hasProblem()){
-            setState(new FailState());
+            //setState(new FailState());
             throw new MyException("The store has technical problems, please choose another store\n");
         }
         if(store.isBusy(date)){
-            setState(new FailState());
+            //setState(new FailState());
             throw new MyException("The store is busy, please choose another store\n");
         }
-        if(store.checkOrder(this)){
-            setState(new FailState());
-            throw new MyException("There is not enough ingredients");
-        }
+        //if(store.checkOrder(this)){
+            //setState(new FailState());
+        //    throw new MyException("There is not enough ingredients");
+        //}
 
-        setState(new ConfirmState());
+        //setState(new ConfirmState());
     }
 
     public  String getTheWay(){
