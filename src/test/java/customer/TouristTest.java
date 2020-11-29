@@ -50,8 +50,8 @@ class TouristTest {
         way1=1;
         way2=2;
         home="polytech nice sophia";
-        store = new Store("store1","Antibes","8","0","16","0",0.15);
-        store1 = new Store("store2","Antibes","7","0","16","0",0.15);
+        store = new Store("store1","Antibes","8:00","16:00",0.15);
+        store1 = new Store("store2","Antibes","7:00","16:00",0.15);
         store.initIngre(30);
         store1.initIngre(30);
     }
