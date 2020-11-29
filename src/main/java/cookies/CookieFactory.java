@@ -207,7 +207,6 @@ public class CookieFactory {
 
     public void addStore(Store store) {
         storeList.add(store);
-        store.updateAddAllIngredients(doughList, flavourList, toppingList);
         for(Store s: storeList){
             s.response(getNearbyStores(s));
         }

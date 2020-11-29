@@ -27,3 +27,35 @@ Feature: Customer
   Scenario: Laura join the "Loyalty program"
     When Laura wants to join the "Loyalty program"
     Then check Laura has joined the "Loyalty program"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Scenario: Peter wants to choose another store
+    When the "store" has a technical problem, Peter choose the "polytechStore"
+    Then the pickUpStore has been changed to "polytechStore"
+
+
+    Scenario: Peter wants to choose another store
+      When the "store" has many orders chosen at the same time , Peter choose the "polytechStore"
+      Then the pickUpStore has been changed to "polytechStore"
+
+
+

@@ -12,8 +12,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomerStepdefs implements En {
 
@@ -27,6 +28,7 @@ public class CustomerStepdefs implements En {
     Order order3;
     Order order4;
     private Store store;
+    private Store store1;
     private Date date;
     private int way;
     private String home;
@@ -147,6 +149,75 @@ public class CustomerStepdefs implements En {
                 () -> {
                     assertEquals(member2.isLoyal(), true);
                 });
+        When("^the \"([^\"]*)\" has a technical problem, Peter choose the \"([^\"]*)\"$",
+                (String store, String store1) ->
+                {
+                    this.store = new Store(store,"Antibes","8:00","16:00",0.15);
+                    this.store.setHasProblem(true);
+                    this.store.initIngre(50);
+                    this.store.setPosition(11.0,3.0);
+                    this.store1 = new Store(store1,"Antibes","8:00","16:00",0.15);
+                    this.store1.initIngre(50);
+                    this.store1.setPosition(11.0,2.0);
+                    factory.addStore(this.store);
+                    factory.addStore(this.store1);
+
+                    Recipe recipe = factory.getRecipe("recipe1");;
+                    Map<Recipe,Integer> mp = new HashMap<>();
+                    date = new Date();
+                    GregorianCalendar gc = new GregorianCalendar();
+                    gc.set(Calendar.YEAR,2020);
+                    gc.set(Calendar.MONTH, 11);
+                    gc.set(Calendar.DAY_OF_MONTH, 2);
+                    date = gc.getTime();
+                    way=1;
+                    home="polytech nice sophia";
+                    mp.put(recipe,10);
+
+                    if(this.store.hasProblem()){
+                        order1 = tourist2.creatNoDiscountOrder(mp,way,date,this.store1,home);
+                    }
+
+
+                });
+        Then("^the pickUpStore has been changed to \"([^\"]*)\"$",
+                ( String store1) -> {
+                    assertEquals("polytechStore",order1.getPickUpStore().getName());
+                });
+        When("^the \"([^\"]*)\" has many orders chosen at the same time , Peter choose the \"([^\"]*)\"$",
+                (String store, String store1) -> {
+
+                    Recipe recipe = factory.getRecipe("recipe1");;
+                    Map<Recipe,Integer> mp = new HashMap<>();
+                    date = new Date();
+                    GregorianCalendar gc = new GregorianCalendar();
+                    mp.put(recipe,10);
+                    gc.set(2020,Calendar.DECEMBER, 1,18,30);
+                    Order[] order = new Order[30];
+                    date = gc.getTime();
+                    way=1;
+                    home="polytech nice sophia";
+                    this.store = new Store(store,"Antibes","8:00","16:00",0.15);
+                    this.store.initIngre(50);
+                    this.store.setPosition(11.0,3.0);
+                    this.store1 = new Store(store1,"Antibes","8:00","16:00",0.15);
+                    this.store1.initIngre(50);
+                    this.store1.setPosition(11.0,2.0);
+                    factory.addStore(this.store);
+                    factory.addStore(this.store1);
+
+                    for(int i = 0; i < 30 ; i++){
+                        order[i] = new Order();
+                        order[i].setPickUpStore(this.store);
+                        order[i].setPickUpDate(date);
+                        this.store.saveOrder(order[i]);
+                    }
+
+                    if(this.store.isBusy(date)){
+                        order1 = tourist2.creatNoDiscountOrder(mp,way,date,this.store1,home);
+                    }
+        });
+
     }
 
 }
