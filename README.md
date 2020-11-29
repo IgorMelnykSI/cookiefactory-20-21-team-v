@@ -61,7 +61,7 @@ Acceptance test
 - Expected result: The opening hours changed.
 
 #### The name of *feature* Cucumber file: StoreManager.feature (../test/resources/StoreManager.feature)
-#### The name of scenario: Paule change the opening hours
+#### The name of scenario: Paule changes the opening hours
 
 ### User Story #5 ( MUST Sizing M ) 
 **As** a customer, **I want** to pick my order **in order to** get my cookies.
