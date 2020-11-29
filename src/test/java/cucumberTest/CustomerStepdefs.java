@@ -44,7 +44,6 @@ public class CustomerStepdefs implements En {
                     Date date = fmt.parse(time);
                     Store s = factory.getStore(store);
                     s.initIngre(50);
-                    s.initIngre(50);
                     int way=1;
                     String home="Polytech nice sophia";
                     order1 = member1.creatDiscountOrder(mp,way,date,s,home);
@@ -81,6 +80,7 @@ public class CustomerStepdefs implements En {
                     int way=1;
                     String home="Polytech nice sophia";
                     order3 = member1.creatDiscountOrder(mp,way,date,s,home);
+
                 });
         Then("check the price of the second order by using discount is {string}",
                 (String price) -> {

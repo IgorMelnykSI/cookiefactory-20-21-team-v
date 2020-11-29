@@ -124,7 +124,9 @@ public class CookieFactory {
         recipe1.setToppings(toppings1);
         recipe1.setMix(new Mix("Mixed",0.2));
         recipe1.setCooking(new Cooking("Crunchy",0.3));
+        recipe1.calculatePrice();
         recipesList.add(recipe1);
+
 
         Recipe recipe2 = new Recipe("recipe2");
         recipe2.setDough(new Dough("Chocolate",2.4));
@@ -134,6 +136,7 @@ public class CookieFactory {
         recipe2.setToppings(toppings2);
         recipe2.setMix(new Mix("Mixed",0.2));
         recipe2.setCooking(new Cooking("Chewy",0.4));
+        recipe2.calculatePrice();
         recipesList.add(recipe2);
     }
 

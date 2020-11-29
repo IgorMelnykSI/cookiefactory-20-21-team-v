@@ -172,6 +172,7 @@ public class Order {
             this.price = price*(1-loyalDiscount);
         }
 
+
     }
 
 //    public void setPrice(double price) {
