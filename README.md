@@ -84,7 +84,7 @@ Acceptance test
 - Action: It reached the time of the order I selected .
 - Expected result: I get my order.
 
-### User Story #6 ( MUST Sizing S ) 
+### User Story #6 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to pay my order by credit card **in order to** make order successfully.
 
 Acceptance criteria
@@ -96,6 +96,9 @@ Acceptance test
 - Initialisation: I am a customer and I choose my cookies.
 - Action: I pay my order by credit card.
 - Expected result: I make my order successfully.
+
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: Bob pays his order
 
 ### User Story #7 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer who joined “Loyalty program”, **I want** to make order with 10% discount **in order to** pay less.
@@ -240,7 +243,7 @@ Acceptance test
 - Action: I change the basic recipe by adding ingredients and order it.
 - Expected result: I successfully ordered.
 
-### User Story #17 ( MUST Sizing S ) 
+### User Story #17 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to change the way from picking up at the store to home delivery **in order to** get my order.
 
 Acceptance criteria
@@ -253,8 +256,10 @@ Acceptance test
 - Action: I change the way from picking up to home delivery.
 - Expected result: My order is delivered by MarcelEat to my home.
 
+#### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
+#### The name of scenario: Peter wants to change the way from picking up to a delivery
 
-### User Story #18 ( MUST Sizing M ) 
+### User Story #18 ( MUST Sizing M ) :heavy_check_mark:
 **As** a store manager, I receive a request that the customer want to change the way from picking up to a delivery , **I want** to contact the MarcelEat and increase 50% price of delivery fee **in order to** complete the order and get a reasonable profit.
 
 Acceptance criteria
@@ -266,6 +271,9 @@ Acceptance test
 - Initialization: I receive a request that the customer want to change the way from picking up to a delivery.
 - Action: I contact the MarcelEat and increase 50% price of delivery fee.
 - Expected result: The delivery fee is increase 50% and the order is delived by the MarcelEat.
+
+#### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
+#### The name of scenario: Paule has received request that the customer want to change the way from picking up to a delivery
 
 ### User Story #19 ( MUST Sizing M ) :heavy_check_mark:
 **As** a store manager, **I want** to check if my store can accept the orders **in order to** make sure the store have enough ingredients to make the order.
