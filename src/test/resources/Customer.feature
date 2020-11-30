@@ -50,6 +50,19 @@ Feature: Customer
      When Bob reached the store at "2020-12-01 17:36:01"
      Then Bob picked up his order successfully
 
+    Scenario: Peter wants to use MarcelEat to deliver the order to himself
+      When Peter chooses the way of MarcelEat
+      Then The way of the Order is MarcelEat
+
+  Scenario: Laura ordered her personnel recipe
+    When Laura ordered 5 her personnel recipe named "myRecipe1"(dough:"Plain", flavour: "Vanilla", topping: "White chocolate and Milk chocolate", mix: "Mixed", cooking: "Crunchy")
+    Then check the order is successful
+
+  Scenario: Laura double the ingredient
+    When Laura ordered 5 cookies of "recipe1", and she doubled the flavour
+    Then Check the actual price is "14.50", isn't "14.00", and she successfully ordered
+
+
 
 
 

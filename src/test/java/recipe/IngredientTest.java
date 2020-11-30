@@ -22,14 +22,4 @@ public class IngredientTest {
         doughCreator = new DoughCreator();
     }
 
-    @Test
-    void checkId() {
-        Dough chocolatDough = this.doughCreator.createIngredient("chocolat", 2);
-
-        Flavour chocolatFlavour = this.flavourCreator.createIngredient("chocolat", 3);
-        assertEquals(chocolatDough.getId()+1, chocolatFlavour.getId());
-
-        Dough chocolatDough2 = this.doughCreator.createIngredient("chocolat", 2);
-        assertEquals(chocolatDough.getId()+2, chocolatDough2.getId());
-    }
 }

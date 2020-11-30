@@ -132,7 +132,7 @@ public class CustomerStepdefs implements En {
                 () -> {
                     assertEquals(member2.isLoyal(), true);
                 });
-        
+
         When("^Bob reached the store at \"([^\"]*)\"$", (String arg0) -> {
             Recipe rp = factory.getRecipesList().get(0);
             Map<Recipe, Integer> mp = new HashMap<>();
@@ -273,6 +273,78 @@ public class CustomerStepdefs implements En {
             assertEquals(6,order1.getPrice()-2.8*5);
             assertEquals("Finished",order1.getState().handle(order1));
         });
+
+
+        When("^Peter chooses the way of MarcelEat$", () -> {
+            Recipe rp = factory.getRecipesList().get(0);
+            Map<Recipe, Integer> mp = new HashMap<>();
+            mp.put(rp,5);
+            DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = fmt.parse("2021-12-01 17:36:01");
+            store1 = new Store("store1","address1","8:30","19:00",0.2);
+            store1.initIngre(50);
+            int way=2;
+            String home="Polytech nice sophia";
+            order1 = new Order(mp,way,date,store1,home);
+            order1.caculatePrice();
+        });
+        Then("^The way of the Order is MarcelEat$", () -> {
+            assertEquals("MarcelEat",order1.getTheWay());
+        });
+
+
+        When("Laura ordered {int} her personnel recipe named {string}\\(dough:{string}, flavour: {string}, topping: {string}, mix: {string}, cooking: {string})",
+                (Integer sum,String name,String dough, String flavour, String topping, String mix, String cooking) -> {
+                    member2.createPrivateRecipe(name,cooking,dough,flavour,mix,topping);
+                    Map<Recipe,Integer> mp = new HashMap<>();
+                    date = new Date();
+                    GregorianCalendar gc = new GregorianCalendar();
+                    gc.set(Calendar.YEAR,2020);
+                    gc.set(Calendar.MONTH, 11);
+                    gc.set(Calendar.DAY_OF_MONTH, 2);
+                    date = gc.getTime();
+                    way=1;
+                    home="polytech nice sophia";
+                    mp.put(member2.getPrivateRecipes().get(0),10);
+                    this.store1 = new Store("store1","Antibes","8:00","16:00",0.15);
+                    this.store1.initIngre(50);
+                    order1 = member2.creatNoDiscountOrder(mp,way,date,this.store1,home);
+                    order1.pay();
+        });
+
+        Then("check the order is successful",
+                ()->{
+                    assertEquals(order1.getState().handle(order1),"Confirmed");
+                });
+        When("Laura ordered {int} cookies of {string}, and she doubled the flavour",
+                (Integer sum, String recipeName) ->
+                {
+                    Recipe recipe = factory.getRecipe(recipeName);
+                    recipe.changeFlavourDuplicate(2);
+                    Map<Recipe,Integer> mp = new HashMap<>();
+                    mp.put(recipe,sum);
+                    date = new Date();
+                    GregorianCalendar gc = new GregorianCalendar();
+                    gc.set(Calendar.YEAR,2020);
+                    gc.set(Calendar.MONTH, 11);
+                    gc.set(Calendar.DAY_OF_MONTH, 2);
+                    date = gc.getTime();
+                    way=1;
+                    home="polytech nice sophia";
+                    store = new Store("store1","Antibes","8:00","16:00",0.15);
+                    store.initIngre(30);
+                    order1 = member2.creatNoDiscountOrder(mp,way,date,store,home);
+                    order1.pay();
+                });
+        Then("Check the actual price is {string}, isn't {string}, and she successfully ordered",
+                (String actualPrice, String originalPrice) -> {
+                    double actualPriceVal = Double.valueOf(actualPrice);
+                    double originalPriceVal = Double.valueOf(originalPrice);
+                    assertEquals(order1.getPrice(),actualPriceVal,0.01);
+                    assertNotEquals(order1.getPrice(),originalPriceVal,0.01);
+                    assertEquals(order1.getState().handle(order1),"Confirmed");
+                });
+
 
     }
 
