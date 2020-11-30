@@ -165,7 +165,7 @@ Acceptance test
 - Action: I change the basic recipe list by deleting a basic recipe.
 - Expected result: The basic recipe is successfully deleted.
 
-### User Story #11 ( MUST Sizing M ) 
+### User Story #11 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer, **I want** the store to send the order to my home through the service MarcelEat **in order to** save my time.
 
 Acceptance criteria
@@ -177,6 +177,9 @@ Acceptance test
 - Initialization: I want to use MarcelEat to deliver my orders due to I don't have enough time.
 - Action: I create my order and I choose MarcelEat to send my order.
 - Expected result: My order is delivered by MarcelEat to my home.
+
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: Peter wants to use MarcelEat to deliver the order to himself
 
 ### User Story #12 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to choose another store when the original store has a technical problem **in order to** still buy my cookies. 
@@ -246,8 +249,11 @@ I am a customer, and I want to change the basic recipe as the personnel recipe.
 
 Acceptance test
 - Initialisation: I am a customer.
-- Action: I change the basic recipe by adding ingredients and order it.
+- Action: I change the basic recipe by doubling ingredients and order it.
 - Expected result: I successfully ordered.
+
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: Laura double the ingredient
 
 ### User Story #17 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to change the way from picking up at the store to home delivery **in order to** get my order.
