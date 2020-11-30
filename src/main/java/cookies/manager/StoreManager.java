@@ -3,13 +3,14 @@ package cookies.manager;
 import cookies.MarcelEat;
 import cookies.Order;
 import cookies.Store;
+import cookies.Subject;
 import cookies.order.FinishState;
 
 public class StoreManager{
 
     private Store store;
     private String name;
-    private MarcelEat marcelEat;
+    private Subject marcelEat;
 
     public StoreManager(String name,Store store){
         this.name = name;
