@@ -44,7 +44,7 @@ Feature: Customer
 
     Scenario: Peter wants to change the way from picking up to a delivery
       When Peter changes the way from picking up to a delivery
-      Then Check the delivery fee is 6,and the order is finished
+      Then  The order is finished and check the delivery fee is 6
 
     Scenario: Bob wants to pick his order in store.
      When Bob reached the time of order he selected
