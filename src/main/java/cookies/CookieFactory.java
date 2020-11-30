@@ -116,28 +116,12 @@ public class CookieFactory {
     }
 
     private void initRecipeList() {
-        Recipe recipe1 = new Recipe("recipe1");
-        recipe1.setDough(new Dough("Plain",2.0));
-        recipe1.setFlavour(new Flavour("Vanilla",0.1));
-        ArrayList<Topping> toppings1 = new ArrayList<>();
-        toppings1.add(new Topping("White chocolate",0.2));
-        recipe1.setToppings(toppings1);
-        recipe1.setMix(new Mix("Mixed",0.2));
-        recipe1.setCooking(new Cooking("Crunchy",0.3));
-        recipe1.calculatePrice();
-        recipesList.add(recipe1);
-
-
-        Recipe recipe2 = new Recipe("recipe2");
-        recipe2.setDough(new Dough("Chocolate",2.4));
-        recipe2.setFlavour(new Flavour("Cinnamon",0.1));
-        ArrayList<Topping> toppings2 = new ArrayList<>();
-        toppings2.add(new Topping("Milk chocolate",0.2));
-        recipe2.setToppings(toppings2);
-        recipe2.setMix(new Mix("Mixed",0.2));
-        recipe2.setCooking(new Cooking("Chewy",0.4));
-        recipe2.calculatePrice();
-        recipesList.add(recipe2);
+        BasicRecipe1 basicRecipe1 = new BasicRecipe1();
+        BasicRecipe2 basicRecipe2 = new BasicRecipe2();
+        BasicRecipeCreator basicRecipeCreator1 = new BasicRecipeCreator(this,basicRecipe1);
+        BasicRecipeCreator basicRecipeCreator2 = new BasicRecipeCreator(this,basicRecipe2);
+        recipesList.add(basicRecipeCreator1.build());
+        recipesList.add(basicRecipeCreator2.build());
     }
 
     private void initStoreList() {
@@ -326,5 +310,6 @@ public class CookieFactory {
     public ArrayList<Ingredient> getIngredientList() {
         return ingredientList;
     }
+
 }
 
