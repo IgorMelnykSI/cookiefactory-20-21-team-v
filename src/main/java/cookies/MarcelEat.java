@@ -1,13 +1,12 @@
 package cookies;
 
 public class MarcelEat implements Subject{
-    private Order order;
     @Override
-    public void pickTheOrder(Order order) {
+    public void pickTheOrder(Order order1) {
 
-        this.order=order;
+        Order order=order1;
         goToStore();
-        this.order.pickTheOrder(order);
+        order.pickTheOrder(order);
         goToCustomer();
 
     }
