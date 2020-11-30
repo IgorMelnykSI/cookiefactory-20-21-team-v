@@ -9,6 +9,7 @@ public class StoreManager{
 
     private Store store;
     private String name;
+    private MarcelEat marcelEat;
 
     public StoreManager(String name,Store store){
         this.name = name;
@@ -34,7 +35,7 @@ public class StoreManager{
     public void contactMarcelEat(Order or){
         Order order=or;
         if(order.getTheWay()=="MarcelEat"){
-            MarcelEat marcelEat=new MarcelEat();
+            marcelEat=new MarcelEat();
             marcelEat.pickTheOrder(order);
             order.setState(new FinishState());
         }

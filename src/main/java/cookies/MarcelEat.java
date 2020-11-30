@@ -1,7 +1,7 @@
 package cookies;
 
 public class MarcelEat implements Subject{
-    Order order;
+    private Order order;
     @Override
     public void pickTheOrder(Order order) {
 
