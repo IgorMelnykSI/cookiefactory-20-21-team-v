@@ -157,7 +157,7 @@ public class StoreTest {
         store1.initIngre(0);
         Dough plain = new Dough("Plain",2.0);
         Dough tmp = cookieFactory.getDoughList().get(1);
-        assertFalse(store1.isIngredientAvailable(plain,1));
+        assertFalse(store1.isIngredientAvailable(tmp,1));
         assertFalse(store1.isIngredientAvailable(tmp,1));
 
         store1.modifyAllIngredientsQuantity(10);

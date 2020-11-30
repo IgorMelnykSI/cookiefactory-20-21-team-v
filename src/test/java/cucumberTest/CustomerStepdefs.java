@@ -276,11 +276,12 @@ public class CustomerStepdefs implements En {
             StoreManager storeManager=new StoreManager("Paile",store1);
             storeManager.contactMarcelEat(order1);
         });
-        Then("^Check the delivery fee is (\\d+),and the order is finished$", (Integer arg0) -> {
+
+
+        Then("^The order is finished and check the delivery fee is (\\d+)$", (Integer arg0) -> {
             assertEquals(6,order1.getPrice()-2.8*5);
             assertEquals("Finished",order1.getState().handle(order1));
         });
-
 
     }
 
