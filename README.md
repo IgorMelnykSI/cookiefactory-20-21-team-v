@@ -69,7 +69,7 @@ Acceptance test
 #### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
 #### The name of scenario: Paule changes the opening hours
 
-### User Story #5 ( MUST Sizing M ) 
+### User Story #5 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer, **I want** to pick my order **in order to** get my cookies.
 
 Acceptance criteria
@@ -83,6 +83,9 @@ Acceptance test
 - Initialisation: I am a customer and I enter the store.
 - Action: It reached the time of the order I selected .
 - Expected result: I get my order.
+
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: Bob wants to pick his order in store.
 
 ### User Story #6 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to pay my order by credit card **in order to** make order successfully.
@@ -217,7 +220,7 @@ Acceptance test
 - Action: I order the BestOf cookie.
 - Expected result: The price is reduced 10%.
 
-### User Story #15 ( MUST Sizing M ) 
+### User Story #15 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer, **I want** to order the personnel recipe created by myself **in order to** better suit my taste.
 
 Acceptance criteria
@@ -230,7 +233,10 @@ Acceptance test
 - Action: I create my own recipe and order it.
 - Expected result: I successfully ordered.
 
-### User Story #16 ( MUST Sizing M ) 
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: Laura order her personnel recipe
+
+### User Story #16 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer, **I want** to change the basic recipe as the personnel recipe **in order to** better suit my taste.
 
 Acceptance criteria
