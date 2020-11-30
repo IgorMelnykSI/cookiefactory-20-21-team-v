@@ -6,7 +6,7 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 
-public class CookieFactory {
+public class CookieFactory implements Observed_Subject{
 
     private ArrayList<Store> storeList;
     private ArrayList<Dough> doughList;

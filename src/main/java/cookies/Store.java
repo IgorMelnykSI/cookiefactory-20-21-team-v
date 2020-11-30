@@ -7,7 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Store {
+public class Store implements Observer{
     private String name;
     private String address;
     private String openTime;
