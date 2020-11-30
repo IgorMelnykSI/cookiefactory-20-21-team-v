@@ -21,8 +21,7 @@ public class CustomerStepdefs implements En {
     CookieFactory factory;
     Member member1;
     Member member2;
-    Tourist tourist1;
-    Tourist tourist2;
+    Tourist tourist;
     Order order1;
     Order order2;
     Order order3;
@@ -49,25 +48,21 @@ public class CustomerStepdefs implements En {
                 });
         And("A customer Bob with no account",
                 ()->{
-                    tourist1 = new Tourist();
+                    tourist = new Tourist();
                 });
-        And("A customer Sam with no account",
-                ()->{
-                    tourist2 = new Tourist();
-                });
-        When("{string} wants to register a member account",
+        When("{string} register an account",
                 (String name)->{
-                    tourist1 = new Member(name);
+                    tourist = new Member(name);
                 });
-        Then("{string} has a member account",
-                (String name) -> {
-                    Member tmp = (Member)tourist1;
-                    assertTrue(name.equals(tmp.getName()));
+        Then("Bob has an account",
+                () -> {
+                    assertTrue(tourist instanceof Member);
                 });
-        When("Sam wants to make an order of a basic recipe {string}",
-                (String r)->{
+        When("Bob ordered {int} basic recipes named {string}",
+                (Integer sum, String r)->{
                     Recipe recipe = factory.getRecipe(r);;
                     Map<Recipe,Integer> mp = new HashMap<>();
+                    mp.put(recipe,sum);
                     date = new Date();
                     GregorianCalendar gc = new GregorianCalendar();
                     gc.set(Calendar.YEAR,2020);
@@ -78,14 +73,11 @@ public class CustomerStepdefs implements En {
                     home="polytech nice sophia";
                     store = new Store("store1","Antibes","8:00","16:00",0.15);
                     store.initIngre(30);
-                    mp.put(recipe,10);
-                    order4 = tourist2.creatNoDiscountOrder(mp,way,date,store,home);
+                    order4 = tourist.creatNoDiscountOrder(mp,way,date,store,home);
                 });
-        Then("Sam made an order of a basic recipe {string}",
-                (String r) -> {
-                    Map<Recipe,Integer> recipes=new HashMap<>();
-                    recipes = order4.getRecipes();
-                    assertTrue(factory.getRecipe(r).compareRecipe((Recipe) recipes.keySet().toArray()[0]));
+        Then("The order is confirmed",
+                () -> {
+                    assertTrue(store.checkOrder(order4));
                 });
         When("Peter wants to order {int} cookies of {string}, He wants to pick it in {string} at {string}",
                 (Integer sum, String recipe, String store, String time) ->
@@ -175,7 +167,7 @@ public class CustomerStepdefs implements En {
                     mp.put(recipe,10);
 
                     if(this.store.hasProblem()){
-                        order1 = tourist2.creatNoDiscountOrder(mp,way,date,this.store1,home);
+                        order1 = member1.creatNoDiscountOrder(mp,way,date,this.store1,home);
                     }
 
 
@@ -184,6 +176,7 @@ public class CustomerStepdefs implements En {
                 ( String store1) -> {
                     assertEquals("polytechStore",order1.getPickUpStore().getName());
                 });
+
         When("^the \"([^\"]*)\" has many orders chosen at the same time , Peter choose the \"([^\"]*)\"$",
                 (String store, String store1) -> {
 
@@ -214,9 +207,37 @@ public class CustomerStepdefs implements En {
                     }
 
                     if(this.store.isBusy(date)){
-                        order1 = tourist2.creatNoDiscountOrder(mp,way,date,this.store1,home);
+                        order1 = member1.creatNoDiscountOrder(mp,way,date,this.store1,home);
                     }
         });
+
+        When("^the \"([^\"]*)\" that he has chosen lacks ingredients , Peter choose the \"([^\"]*)\"$",
+                (String store, String store1) -> {
+                    this.store = new Store(store,"Antibes","8:00","16:00",0.15);
+                    this.store.initIngre(5);
+                    this.store.setPosition(11.0,3.0);
+                    this.store1 = new Store(store1,"Antibes","8:00","16:00",0.15);
+                    this.store1.initIngre(50);
+                    this.store1.setPosition(11.0,2.0);
+                    factory.addStore(this.store);
+                    factory.addStore(this.store1);
+
+                    Recipe recipe = factory.getRecipe("recipe1");;
+                    Map<Recipe,Integer> mp = new HashMap<>();
+                    date = new Date();
+                    GregorianCalendar gc = new GregorianCalendar();
+                    gc.set(Calendar.YEAR,2020);
+                    gc.set(Calendar.MONTH, 11);
+                    gc.set(Calendar.DAY_OF_MONTH, 2);
+                    date = gc.getTime();
+                    way=1;
+                    home="polytech nice sophia";
+                    mp.put(recipe,10);
+                    if(!this.store.checkRecipes(mp)){
+                        order1 = member1.creatNoDiscountOrder(mp,way,date,this.store1,home);
+                    }
+        });
+
 
     }
 

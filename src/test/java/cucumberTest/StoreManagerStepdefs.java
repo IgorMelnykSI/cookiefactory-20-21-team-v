@@ -18,8 +18,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StoreManagerStepdefs implements En {
 
@@ -28,7 +27,6 @@ public class StoreManagerStepdefs implements En {
     CookieFactory factory = new CookieFactory();
     Tourist tourist;
     Order order1;
-    Member member1;
 
 
     public StoreManagerStepdefs() { // implementation des steps dans le constructeur (aussi possible dans des méthodes)
@@ -92,25 +90,23 @@ public class StoreManagerStepdefs implements En {
         (String ingredientName, Integer quantity) -> {
             assertEquals(store1.getIngredientQuantity(factory.getIngredient(ingredientName)),quantity);
         });
-        When("Laura wants to order {int} cookies of {string}, He wants to pick it in {string} at {string}",
-                (Integer sum, String recipe, String store, String time) ->
+        When("Laura order {int} cookies of {string}, she want to pick it in store1 at {string}",
+                (Integer sum, String recipe, String time) ->
                 {
                     Recipe rp = factory.getRecipe(recipe);
                     Map<Recipe, Integer> mp = new HashMap<>();
                     mp.put(rp,sum);
                     DateFormat fmt =new SimpleDateFormat("HH:mm");
                     Date date = fmt.parse(time);
-                    store1 = factory.getStore(store);
-                    store1.initIngre(50);
                     int way=1;
                     String home="Polytech nice sophia";
-                    order1 = member1.creatDiscountOrder(mp,way,date,store1,home);
+                    order1 = tourist.creatNoDiscountOrder(mp,way,date,store1,home);
                 });
-        Then("check that the store can take the order {string}",
-                (String result) -> {
-                    boolean res = Boolean.valueOf(result);
-                    assertEquals(store1.checkOrder(order1), res);
+        Then("Paule confirm the order as achievable",
+                () -> {
+                    assertTrue(store1.checkOrder(order1));
                 });
+
         When("^Laura changes the way from picking up to a delivery$", () -> {
             Recipe rp = factory.getRecipesList().get(0);
             Map<Recipe, Integer> mp = new HashMap<>();
@@ -133,6 +129,11 @@ public class StoreManagerStepdefs implements En {
             assertEquals(6,order1.getPrice()-2.8*5);
             assertEquals("Finished",order1.getState().handle(order1));
         });
+
+
+
+
+
     }
 
 }
