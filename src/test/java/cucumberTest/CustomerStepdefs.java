@@ -314,7 +314,35 @@ public class CustomerStepdefs implements En {
 
         Then("check the order is successful",
                 ()->{
-                    assertEquals(order1.getState().handle(order4),"Confirmed");
+                    assertEquals(order1.getState().handle(order1),"Confirmed");
+                });
+        When("Laura ordered {int} cookies of {string}, and she doubled the flavour",
+                (Integer sum, String recipeName) ->
+                {
+                    Recipe recipe = factory.getRecipe(recipeName);
+                    recipe.changeFlavourDuplicate(2);
+                    Map<Recipe,Integer> mp = new HashMap<>();
+                    mp.put(recipe,sum);
+                    date = new Date();
+                    GregorianCalendar gc = new GregorianCalendar();
+                    gc.set(Calendar.YEAR,2020);
+                    gc.set(Calendar.MONTH, 11);
+                    gc.set(Calendar.DAY_OF_MONTH, 2);
+                    date = gc.getTime();
+                    way=1;
+                    home="polytech nice sophia";
+                    store = new Store("store1","Antibes","8:00","16:00",0.15);
+                    store.initIngre(30);
+                    order1 = member2.creatNoDiscountOrder(mp,way,date,store,home);
+                    order1.pay();
+                });
+        Then("Check the actual price is {string}, isn't {string}, and she successfully ordered",
+                (String actualPrice, String originalPrice) -> {
+                    double actualPriceVal = Double.valueOf(actualPrice);
+                    double originalPriceVal = Double.valueOf(originalPrice);
+                    assertEquals(order1.getPrice(),actualPriceVal,0.01);
+                    assertNotEquals(order1.getPrice(),originalPriceVal,0.01);
+                    assertEquals(order1.getState().handle(order1),"Confirmed");
                 });
 
 

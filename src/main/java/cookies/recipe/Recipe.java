@@ -153,4 +153,21 @@ public class Recipe {
         return toppings;
     }
 
+    public void changeDoughDuplicate(int duplicate){
+        this.dough.changeDuplicate(duplicate);
+        this.price += dough.getPrice()*(duplicate - 1);
+    }
+
+    public void changeFlavourDuplicate(int duplicate){
+        this.flavour.changeDuplicate(duplicate);
+        this.price += flavour.getPrice()*(duplicate - 1);
+    }
+
+    public void changeToppingDuplicate(int duplicate){
+        for (Topping topping: this.toppings) {
+            topping.changeDuplicate(duplicate);
+            this.price += topping.getPrice()*(duplicate - 1);
+        }
+    }
+
 }
