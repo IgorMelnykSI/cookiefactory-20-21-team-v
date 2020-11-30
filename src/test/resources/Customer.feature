@@ -50,5 +50,8 @@ Feature: Customer
      When Bob reached the store at "2020-12-01 17:36:01"
      Then Bob picked up his order successfully
 
+    Scenario: Peter wants to use MarcelEat to deliver the order to himself
+      When Peter chooses the way of MarcelEat
+      Then The way of the Order is MarcelEat
 
 

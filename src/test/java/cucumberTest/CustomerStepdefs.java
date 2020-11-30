@@ -132,7 +132,7 @@ public class CustomerStepdefs implements En {
                 () -> {
                     assertEquals(member2.isLoyal(), true);
                 });
-        
+
         When("^Bob reached the store at \"([^\"]*)\"$", (String arg0) -> {
             Recipe rp = factory.getRecipesList().get(0);
             Map<Recipe, Integer> mp = new HashMap<>();
@@ -272,6 +272,23 @@ public class CustomerStepdefs implements En {
         Then("^The order is finished and check the delivery fee is (\\d+)$", (Integer arg0) -> {
             assertEquals(6,order1.getPrice()-2.8*5);
             assertEquals("Finished",order1.getState().handle(order1));
+        });
+
+        When("^Peter chooses the way of MarcelEat$", () -> {
+            Recipe rp = factory.getRecipesList().get(0);
+            Map<Recipe, Integer> mp = new HashMap<>();
+            mp.put(rp,5);
+            DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = fmt.parse("2021-12-01 17:36:01");
+            store1 = new Store("store1","address1","8:30","19:00",0.2);
+            store1.initIngre(50);
+            int way=2;
+            String home="Polytech nice sophia";
+            order1 = new Order(mp,way,date,store1,home);
+            order1.caculatePrice();
+        });
+        Then("^The way of the Order is MarcelEat$", () -> {
+            assertEquals("MarcelEat",order1.getTheWay());
         });
 
     }
