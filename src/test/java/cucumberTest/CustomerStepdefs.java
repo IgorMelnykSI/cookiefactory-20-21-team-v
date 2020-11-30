@@ -145,7 +145,20 @@ public class CustomerStepdefs implements En {
                 () -> {
                     assertEquals(order1.judgeTheTime("2020-11-25 11:30:05"),false);
                 });
-
+        When("Bob reached the store before the time he selected",
+                () ->
+                {
+                    String dateStr1 = "2020-11-25 10:20:15";
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date pickUpDate = dateFormat.parse(dateStr1);
+                    String reachTime = "2020-11-25 19:10:46";
+                    order1 =new Order();
+                    order1.setPickUpDate(pickUpDate);
+                });
+        Then("Bob cannot pick up his order",
+                () -> {
+                    assertEquals(order1.judgeTheTime("2020-11-25 10:10:46"),true);
+                });
 
 
 

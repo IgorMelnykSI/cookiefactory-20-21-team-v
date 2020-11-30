@@ -50,3 +50,7 @@ Feature: Customer
      When Bob reached the time of order he selected
      Then Bob picked up his order successfully
 
+    Scenario: Bob wants to pick his order in store.
+    When Bob reached the store before the time he selected
+    Then Bob cannot pick up his order
+
