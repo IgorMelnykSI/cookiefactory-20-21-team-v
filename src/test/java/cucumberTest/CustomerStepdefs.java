@@ -6,6 +6,7 @@ import cookies.Store;
 import cookies.customer.Member;
 import cookies.customer.Tourist;
 import cookies.manager.StoreManager;
+import cookies.order.ReadyState;
 import cookies.recipe.Recipe;
 import io.cucumber.java8.En;
 
@@ -131,26 +132,28 @@ public class CustomerStepdefs implements En {
                 () -> {
                     assertEquals(member2.isLoyal(), true);
                 });
-        When("Bob reached the time of order he selected",
-                () ->
-                {
-                    String dateStr1 = "2020-11-25 10:20:15";
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    Date pickUpDate = dateFormat.parse(dateStr1);
-                    String reachTime = "2020-11-25 11:30:05";
-                    order1 =new Order();
-                    order1.setPickUpDate(pickUpDate);
-                });
-        Then("Bob picked up his order successfully",
-                () -> {
-                    assertEquals(order1.judgeTheTime("2020-11-25 11:30:05"),false);
-                });
 
+        When("^Bob reached the store at \"([^\"]*)\"$", (String arg0) -> {
+            Recipe rp = factory.getRecipesList().get(0);
+            Map<Recipe, Integer> mp = new HashMap<>();
+            mp.put(rp,5);
+            DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = fmt.parse("2020-12-01 17:36:01");
+            store1 = new Store("store1","address1","8:30","19:00",0.2);
+            store1.initIngre(50);
+            int way=1;
+            String home="Polytech nice sophia";
+            order1 = new Order(mp,way,date,store1,home);
+            order1.caculatePrice();
+            if(!order1.judgeTheTime(arg0)){
+                order1.setState(new ReadyState());
+            }
+        });
+        Then("^Bob picked up his order successfully$", () -> {
+            assertEquals("Ready for pick up",order1.getState().handle(order1));
+        });
 
-
-
-
-
+        
 
         When("^the \"([^\"]*)\" has a technical problem, Peter choose the \"([^\"]*)\"$",
                 (String store, String store1) ->
@@ -265,7 +268,6 @@ public class CustomerStepdefs implements En {
             StoreManager storeManager=new StoreManager("Paile",store1);
             storeManager.contactMarcelEat(order1);
         });
-
 
         Then("^The order is finished and check the delivery fee is (\\d+)$", (Integer arg0) -> {
             assertEquals(6,order1.getPrice()-2.8*5);

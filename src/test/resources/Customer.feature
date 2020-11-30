@@ -47,6 +47,6 @@ Feature: Customer
       Then  The order is finished and check the delivery fee is 6
 
     Scenario: Bob wants to pick his order in store.
-     When Bob reached the time of order he selected
+     When Bob reached the store at "2020-12-01 17:36:01"
      Then Bob picked up his order successfully
 
