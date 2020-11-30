@@ -1,6 +1,9 @@
 package cookies.manager;
 
+import cookies.MarcelEat;
+import cookies.Order;
 import cookies.Store;
+import cookies.order.FinishState;
 
 public class StoreManager{
 
@@ -28,4 +31,12 @@ public class StoreManager{
         store.setHasProblem(i);
     }
 
+    public void contactMarcelEat(Order or){
+        Order order=or;
+        if(order.getTheWay()=="MarcelEat"){
+            MarcelEat marcelEat=new MarcelEat();
+            marcelEat.pickTheOrder(order);
+            order.setState(new FinishState());
+        }
+    }
 }

@@ -19,7 +19,6 @@ public class Member extends Tourist{
     private double loyalDiscount;
     private List<Order> historyOrders;
     private String name;
-    private Order newOrder;
 
     public Member(String name){
         this.name = name;
@@ -75,7 +74,7 @@ public class Member extends Tourist{
     // Member can use this function to use loyal discount
     // Otherwise he can use creatNoDiscountOrder() to make order without loyal discount
     public Order creatDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store, String address) throws MyException {
-        newOrder = creatNoDiscountOrder(mp, way , date, store,address);
+        Order newOrder = creatNoDiscountOrder(mp, way , date, store,address);
         newOrder.caculateDiscountPrice(applyLoyaltyDiscount());
         saveOrderInHistory(newOrder);
         return newOrder;
@@ -83,7 +82,7 @@ public class Member extends Tourist{
 
 
     public Order createPrivateDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store, String address) throws MyException {
-        newOrder = createPrivateOrder(mp, way , date, store,address);
+        Order newOrder = createPrivateOrder(mp, way , date, store,address);
 //        System.out.println(newOrder.getPrice());
         newOrder.caculateDiscountPrice(applyLoyaltyDiscount());
         saveOrderInHistory(newOrder);
@@ -110,14 +109,5 @@ public class Member extends Tourist{
         return numCookiesOrdered;
     }
 
-    public void pickup(){
-        if(this.newOrder.getTheWay()=="MarcelEat"){
-            MarcelEat marcelEat=new MarcelEat();
-            marcelEat.pickTheOrder(this.newOrder);
-            this.newOrder.setState(new FinishState());
-        }else {
-            this.newOrder.pickTheOrder(this.newOrder);
-            this.newOrder.setState(new FinishState());
-        }
-    }
+
 }
