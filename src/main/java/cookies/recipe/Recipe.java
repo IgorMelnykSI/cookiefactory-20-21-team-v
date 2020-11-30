@@ -17,6 +17,7 @@ public class Recipe {
     private int popularity;
     private int storePopularity;
 
+    public Recipe(){ }
     public Recipe(String name){
         this.name=name;
         popularity = 0;
