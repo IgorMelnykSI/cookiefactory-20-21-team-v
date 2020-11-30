@@ -132,7 +132,7 @@ public class CustomerStepdefs implements En {
                 () -> {
                     assertEquals(member2.isLoyal(), true);
                 });
-
+        
         When("^Bob reached the store at \"([^\"]*)\"$", (String arg0) -> {
             Recipe rp = factory.getRecipesList().get(0);
             Map<Recipe, Integer> mp = new HashMap<>();
