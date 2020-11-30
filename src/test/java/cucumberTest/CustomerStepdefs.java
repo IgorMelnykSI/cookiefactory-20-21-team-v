@@ -80,24 +80,13 @@ public class CustomerStepdefs implements En {
                 () -> {
                     assertTrue(store.checkOrder(order4));
                 });
-        When("Peter wants to order {int} cookies of {string}, He wants to pick it in {string} at {string}",
-                (Integer sum, String recipe, String store, String time) ->
-                {
-                    Recipe rp = factory.getRecipe(recipe);
-                    Map<Recipe, Integer> mp = new HashMap<>();
-                    mp.put(rp,sum);
-                    DateFormat fmt =new SimpleDateFormat("HH:mm");
-                    Date date = fmt.parse(time);
-                    Store s = factory.getStore(store);
-                    s.initIngre(50);
-                    int way=1;
-                    String home="Polytech nice sophia";
-                    order1 = member1.creatDiscountOrder(mp,way,date,s,home);
+        Then("Bob pays his order",
+                () ->{
+                    order4.pay();
                 });
-        Then("check the price of the order is {string}",
-                (String price) -> {
-                    double val = Double.valueOf(price);
-                    assertEquals(order1.getPrice(), val);
+        Then("check the order has been paid",
+                () ->{
+                    assertEquals(order4.getState().handle(order4),"Confirmed");
                 });
         When("Peter ordered {int} cookies of {string}, picked it in {string} at {string}",
                 (Integer sum, String recipe, String store, String time) ->

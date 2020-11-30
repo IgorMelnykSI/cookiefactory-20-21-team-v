@@ -14,10 +14,6 @@ Feature: Customer
     When Bob ordered 5 basic recipes named "recipe1"
     Then The order is confirmed
 
-  Scenario: Peter wants to make his first order
-    When Peter wants to order 5 cookies of "recipe1", He wants to pick it in "store1" at "16:30"
-    Then check the price of the order is "14"
-
   Scenario: Peter use discount 10% after an order of 30 cookies
     When Peter ordered 30 cookies of "recipe1", picked it in "store1" at "8:30"
     And  he ordered again 5 cookies of "recipe1", pick it in "store1" at "16:30"
@@ -27,19 +23,23 @@ Feature: Customer
     When Laura wants to join the "Loyalty program"
     Then check Laura has joined the "Loyalty program"
 
+  Scenario: Bob pays his order
+    When Bob ordered 5 basic recipes named "recipe1"
+    Then Bob pays his order
+    Then check the order has been paid
 
-    Scenario: Peter wants to choose another store
+  Scenario: The store has a technical problem, so Peter chooses another store
     When the "store" has a technical problem, Peter choose the "polytechStore"
     Then the pickUpStore has been changed to "polytechStore"
 
 
-    Scenario: Peter wants to choose another store
-      When the "store" has many orders chosen at the same time , Peter choose the "polytechStore"
-      Then the pickUpStore has been changed to "polytechStore"
+  Scenario: The store has many orders chosen at the same time, so Peter chooses another store
+    When the "store" has many orders chosen at the same time , Peter choose the "polytechStore"
+    Then the pickUpStore has been changed to "polytechStore"
 
-    Scenario: Peter wants to choose another store
-      When the "store" that he has chosen lacks ingredients , Peter choose the "polytechStore"
-      Then the pickUpStore has been changed to "polytechStore"
+  Scenario: The store lacks ingredients, so Peter chooses another store
+    When the "store" that he has chosen lacks ingredients , Peter choose the "polytechStore"
+    Then the pickUpStore has been changed to "polytechStore"
 
 
     Scenario: Peter wants to change the way from picking up to a delivery
