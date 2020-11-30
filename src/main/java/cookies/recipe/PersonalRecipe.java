@@ -2,7 +2,7 @@ package cookies.recipe;
 
 import java.util.List;
 
-public class PrivateRecipe extends Recipe {
+public class PersonalRecipe extends Recipe {
 
     private double price;
     private List<Dough> doughs;
@@ -11,11 +11,11 @@ public class PrivateRecipe extends Recipe {
     private List<Cooking> cookings;
     private List<Topping> toppings;
 
-    public PrivateRecipe(String name, Cooking cook, Dough dough, Flavour flavour, Mix mix, List<Topping> toppings) {
+    public PersonalRecipe(String name, Cooking cook, Dough dough, Flavour flavour, Mix mix, List<Topping> toppings) {
         super(name, cook, dough, flavour, mix, toppings);
     }
 
-    public PrivateRecipe(String name, List<Cooking> cookings, List<Dough> doughs, List<Flavour> flavours, List<Mix> mixes, List<Topping> toppings) {
+    public PersonalRecipe(String name, List<Cooking> cookings, List<Dough> doughs, List<Flavour> flavours, List<Mix> mixes, List<Topping> toppings) {
         super(name);
         this.cookings = cookings;
         this.doughs = doughs;

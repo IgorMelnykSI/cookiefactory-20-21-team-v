@@ -37,7 +37,7 @@ public class Tourist{
         Dough dough = this.factory.getDough(doughName);
         Flavour flavour = this.factory.getFlavour(flavourName);
         Mix mix = this.factory.getMix(mixName);
-        PrivateRecipe recipe = new PrivateRecipe(name,cooking,dough,flavour,mix,topList);
+        PersonalRecipe recipe = new PersonalRecipe(name,cooking,dough,flavour,mix,topList);
         this.privateRecipes.add(recipe);
     }
 
