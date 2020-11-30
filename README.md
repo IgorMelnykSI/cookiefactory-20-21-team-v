@@ -182,6 +182,9 @@ Acceptance test
 - Action: The store returns to the list of nearby stores for me and I choose one of them.
 - Expected result: I changed the store.
 
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: The store has a technical problem, so Peter chooses another store
+
 ### User Story #13 ( MUST Sizing L ) 
 **As** a store manager, **I want** the store can automatically calculate the most popular recipe over the last 30 days **in order to** make it as the BestOf cookie.
 
@@ -290,7 +293,7 @@ Acceptance test
 #### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
 #### The name of scenario: Laura ordered her personnel recipe, the price is increased 25%
 
-### User Story #21 ( MUST Sizing M )
+### User Story #21 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer, **I want** to choose another store for my cookies when there are many orders chosen at the same time **in order to** get my order in time. 
 
 Acceptance criteria
@@ -303,7 +306,10 @@ Acceptance test
 - Action: I cancel my original choice of store and choose another one.
 - Expected result: my order was placed in the other store and I get to receive my cookies in time.
 
-### User Story #22 ( MUST Sizing M )
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: The store has many orders chosen at the same time, so Peter chooses another store
+
+### User Story #22 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer, **I want** to choose another store for my cookies when the store that I’ve chosen lacks ingredients **in order to** make sure i can get my order.
 
 Acceptance criteria
@@ -315,6 +321,9 @@ Acceptance test
 - Initialization: I am a customer , the store i’ve chosen lacks ingredients for my order.
 - Action: I cancel my original choice of store and choose another one.
 - Expected result: my order was placed in the other store and I get to receive my cookies in time.
+
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: The store lacks ingredients, so Peter chooses another store
 
 ### User Story #23 ( MUST Sizing M ) :heavy_check_mark:
 **As** a store manager, **I want** to manage ingredients **in order to**  add lack ingredients in time.
