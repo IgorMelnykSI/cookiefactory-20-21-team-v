@@ -197,7 +197,7 @@ Acceptance test
 #### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
 #### The name of scenario: The store has a technical problem, so Peter chooses another store
 
-### User Story #13 ( MUST Sizing L ) 
+### User Story #13 ( MUST Sizing L ) :heavy_check_mark:
 **As** a store manager, **I want** the store can automatically calculate the most popular recipe over the last 30 days **in order to** make it as the BestOf cookie.
 
 Acceptance criteria
@@ -210,7 +210,10 @@ Acceptance test
 - Action: The store automatically calculate the most popular recipe over the last 30 days
 - Expected result: The recipe is made as the BestOf cookie.
 
-### User Story #14 ( MUST Sizing S ) 
+#### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
+#### The name of scenario: Paule wants the store automatically to calculate the most popular recipe over the last 30 days
+
+### User Story #14 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to order the BestOf cookie **in order to** pay 10% less.
 
 Acceptance criteria
@@ -222,6 +225,9 @@ Acceptance test
 - Initialisation: I am a customer.
 - Action: I order the BestOf cookie.
 - Expected result: The price is reduced 10%.
+
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: Peter wants to buy the most popular recipe
 
 ### User Story #15 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer, **I want** to order the personnel recipe created by myself **in order to** better suit my taste.
