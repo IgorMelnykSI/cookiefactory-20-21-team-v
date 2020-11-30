@@ -274,6 +274,7 @@ public class CustomerStepdefs implements En {
             assertEquals("Finished",order1.getState().handle(order1));
         });
 
+
         When("^Peter chooses the way of MarcelEat$", () -> {
             Recipe rp = factory.getRecipesList().get(0);
             Map<Recipe, Integer> mp = new HashMap<>();
@@ -290,6 +291,32 @@ public class CustomerStepdefs implements En {
         Then("^The way of the Order is MarcelEat$", () -> {
             assertEquals("MarcelEat",order1.getTheWay());
         });
+
+
+        When("Laura ordered {int} her personnel recipe named {string}\\(dough:{string}, flavour: {string}, topping: {string}, mix: {string}, cooking: {string})",
+                (Integer sum,String name,String dough, String flavour, String topping, String mix, String cooking) -> {
+                    member2.createPrivateRecipe(name,cooking,dough,flavour,mix,topping);
+                    Map<Recipe,Integer> mp = new HashMap<>();
+                    date = new Date();
+                    GregorianCalendar gc = new GregorianCalendar();
+                    gc.set(Calendar.YEAR,2020);
+                    gc.set(Calendar.MONTH, 11);
+                    gc.set(Calendar.DAY_OF_MONTH, 2);
+                    date = gc.getTime();
+                    way=1;
+                    home="polytech nice sophia";
+                    mp.put(member2.getPrivateRecipes().get(0),10);
+                    this.store1 = new Store("store1","Antibes","8:00","16:00",0.15);
+                    this.store1.initIngre(50);
+                    order1 = member2.creatNoDiscountOrder(mp,way,date,this.store1,home);
+                    order1.pay();
+        });
+
+        Then("check the order is successful",
+                ()->{
+                    assertEquals(order1.getState().handle(order4),"Confirmed");
+                });
+
 
     }
 
