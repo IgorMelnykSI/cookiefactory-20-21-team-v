@@ -8,6 +8,7 @@ import cookies.order.FinishState;
 import cookies.order.MyException;
 import cookies.recipe.Recipe;
 
+import java.text.ParseException;
 import java.util.*;
 
 public class Member extends Tourist{
@@ -73,7 +74,7 @@ public class Member extends Tourist{
 
     // Member can use this function to use loyal discount
     // Otherwise he can use creatNoDiscountOrder() to make order without loyal discount
-    public Order creatDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store, String address) throws MyException {
+    public Order creatDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store, String address) throws MyException, ParseException {
         Order newOrder = creatNoDiscountOrder(mp, way , date, store,address);
         newOrder.caculateDiscountPrice(applyLoyaltyDiscount());
         saveOrderInHistory(newOrder);
@@ -81,7 +82,7 @@ public class Member extends Tourist{
     }
 
 
-    public Order createPrivateDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store, String address) throws MyException {
+    public Order createPrivateDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store, String address) throws MyException, ParseException {
         Order newOrder = createPrivateOrder(mp, way , date, store,address);
 //        System.out.println(newOrder.getPrice());
         newOrder.caculateDiscountPrice(applyLoyaltyDiscount());

@@ -6,6 +6,7 @@ import cookies.order.MyException;
 import cookies.recipe.*;
 
 
+import java.text.ParseException;
 import java.util.*;
 
 
@@ -15,13 +16,13 @@ public class Tourist{
     ArrayList<Recipe> privateRecipes = new ArrayList<>();
     CookieFactory factory = new CookieFactory();
 
-    public Order creatNoDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store,String deliveryAddress) throws MyException {
+    public Order creatNoDiscountOrder(Map<Recipe, Integer> mp,int way, Date date, Store store,String deliveryAddress) throws MyException, ParseException {
         Order order = new Order(mp,way,date,store,deliveryAddress);
         order.caculatePrice();
         return order;
     }
 
-     public Order createPrivateOrder(Map<Recipe, Integer> mp,int way, Date date, Store store,String deliveryAddress) throws MyException {
+     public Order createPrivateOrder(Map<Recipe, Integer> mp,int way, Date date, Store store,String deliveryAddress) throws MyException, ParseException {
         Order order = new Order(mp,way,date,store,deliveryAddress);
         order.caculatePrice();
         return order;

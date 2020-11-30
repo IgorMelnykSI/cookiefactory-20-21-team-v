@@ -31,7 +31,7 @@ public class Order implements Subject {
         state=null;
     }
 
-    public Order(Map<Recipe, Integer> mp,int way,Date date, Store store,String address) throws MyException {
+    public Order(Map<Recipe, Integer> mp,int way,Date date, Store store,String address) throws MyException, ParseException {
         orderID = getGuid();
         setTheWayToPick(way);
         setInformation(mp,date,store,address);
@@ -79,7 +79,7 @@ public class Order implements Subject {
         }
     }
 
-    public void setInformation(Map<Recipe, Integer> mp,Date date,Store store,String deliveryAddress) throws MyException {
+    public void setInformation(Map<Recipe, Integer> mp,Date date,Store store,String deliveryAddress) throws MyException, ParseException {
         getAllCookieItems(mp);
         if (getTheWay()=="pickUp"){
             setPickUpDate(date);

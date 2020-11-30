@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import cookies.Order;
 
 
+import java.text.ParseException;
 import java.util.*;
 
 import static org.junit.Assert.*;
@@ -52,7 +53,7 @@ public class StoreTest {
 
 
     @Test
-    public void deleteExpiredOrder(){
+    public void deleteExpiredOrder() throws ParseException {
         order = new Order();
         GregorianCalendar gc = new GregorianCalendar();
         gc.set(Calendar.YEAR,2020);
@@ -76,7 +77,7 @@ public class StoreTest {
     }
 
     @Test
-    public void isBusy(){
+    public void isBusy() throws ParseException {
         GregorianCalendar gc = new GregorianCalendar();
         gc.set(2020,Calendar.DECEMBER, 1,18,30);
         Order[] order = new Order[30];
@@ -172,7 +173,7 @@ public class StoreTest {
     }
 
     @Test
-    public void checkOrder() throws MyException {
+    public void checkOrder() throws MyException, ParseException {
         GregorianCalendar gc = new GregorianCalendar();
         gc.set(2020,Calendar.DECEMBER, 1,18,30);
         Date date = gc.getTime();

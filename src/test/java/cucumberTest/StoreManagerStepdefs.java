@@ -27,7 +27,7 @@ public class StoreManagerStepdefs implements En {
     CookieFactory factory = new CookieFactory();
     Tourist tourist;
     Order order1;
-
+    Order[] orders = new Order[30];
 
     public StoreManagerStepdefs() { // implementation des steps dans le constructeur (aussi possible dans des méthodes)
         Given("A store of name {string} and with the address {string}, openTime {string}, closeTime {string}, tax {string}",
@@ -130,8 +130,27 @@ public class StoreManagerStepdefs implements En {
             assertEquals("Finished",order1.getState().handle(order1));
         });
 
+        When("^The \"([^\"]*)\" was ordered the most times over (\\d+) days$", (String recipe, Integer arg1) -> {
+            Recipe rp = factory.getRecipe(recipe);
+            Map<Recipe, Integer> mp = new HashMap<>();
+            mp.put(rp,5);
+            DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date1 = fmt.parse("2020-11-10 17:36:00");
+            Date date2 = fmt.parse("2020-11-11 17:36:00");
+            Date date3 = fmt.parse("2020-11-12 17:36:00");
+            int way=1;
+            String home="Polytech nice sophia";
+            for(int i = 0; i < 9; i++)
+                orders[i]= tourist.creatNoDiscountOrder(mp,way,date1,store1,home);
+            for(int i = 9; i < 22; i++)
+                orders[i]= tourist.creatNoDiscountOrder(mp,way,date2,store1,home);
+            for(int i = 22; i < 30; i++)
+                orders[i]= tourist.creatNoDiscountOrder(mp,way,date3,store1,home);
 
-
+        });
+        Then("^Check the \"([^\"]*)\" is the bestof$", (String arg0) -> {
+            assertEquals("recipe1",store1.getMyBestOf().getName());
+        });
 
 
     }

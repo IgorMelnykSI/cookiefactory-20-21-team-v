@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import cookies.Order;
 import cookies.customer.Member;
 
+import java.text.ParseException;
 import java.util.*;
 
 import static org.junit.Assert.*;
@@ -68,7 +69,7 @@ public class MemberTest {
     }
 
     @Test
-    void saveOrderInHistory() throws MyException {
+    void saveOrderInHistory() throws MyException, ParseException {
         member1.registerLoyal();
         Order order = member1.creatNoDiscountOrder(mp,way,date,store,home);
 
@@ -79,7 +80,7 @@ public class MemberTest {
     }
 
     @Test
-    public void applyLoyaltyDiscount() throws MyException {
+    public void applyLoyaltyDiscount() throws MyException, ParseException {
         member1.registerLoyal();
         member1.creatDiscountOrder(mp,way,date,store,home);
         assertEquals(member1.applyLoyaltyDiscount(),0.1,0.01);
@@ -87,7 +88,7 @@ public class MemberTest {
     }
 
     @Test
-    public void creatDiscountOrder() throws MyException {
+    public void creatDiscountOrder() throws MyException, ParseException {
         member1.registerLoyal();
         Order order1 = member1.creatDiscountOrder(mp,way,date,store,home);
         assertEquals(order1.getPrice(),94,0.01);
@@ -104,7 +105,7 @@ public class MemberTest {
     }
 
     @Test
-    public void createPrivateDiscountOrder() throws MyException{
+    public void createPrivateDiscountOrder() throws MyException, ParseException {
         mp.clear();
         member1.registerLoyal();
         member1.createPrivateRecipe("myrecipe1","Crunchy","Peanut butter","Vanilla","Mixed","M&M’s™ and Reese’s buttercup");

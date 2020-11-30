@@ -32,7 +32,9 @@ Feature: Store Manager
     Then Check the delivery fee is 6,and the order is finished
 
 
-
+  Scenario: Paule wants the store automatically to calculate the most popular recipe over the last 30 days
+    When The "recipe1" was ordered the most times over 30 days
+    Then Check the "recipe1" is the bestof
 
 
 

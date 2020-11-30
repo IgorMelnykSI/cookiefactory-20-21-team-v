@@ -2,6 +2,9 @@ package cookies;
 
 import cookies.recipe.*;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Store {
@@ -69,7 +72,7 @@ public class Store {
     public double[] getPosition(){
         return position;
     }
-    public boolean checkOrder(Order order){
+    public boolean checkOrder(Order order) throws ParseException {
 
         if(!stock.areRecipesAvailable(order.getRecipes())) return false;
 
@@ -82,10 +85,46 @@ public class Store {
         return stock.areRecipesAvailable(mp);
     }
 
-    public void saveOrder(Order order){
+    public void saveOrder(Order order) throws ParseException {
         deleteExpiredOrder();
         historyOrders.add(order);
+        setMyBestOf();
 //        calculateRecipePopularity();
+    }
+
+    public void setMyBestOf() throws ParseException {
+        DateFormat sdf = new SimpleDateFormat( "yyyy-MM-dd" );
+        Date today = new Date();
+        //获取三十天前日期
+        Calendar theCa = Calendar. getInstance ();
+        theCa.setTime( today );
+        theCa.add( theCa.DATE , -30); //最后一个数字30可改，30天的意思
+        Date start = theCa.getTime();
+        Map<Recipe,Integer> recipes = new HashMap<>();
+        for(Order or : historyOrders){
+            if(or.getPickUpDate().after(start)){
+                for(Recipe r:or.getRecipes().keySet()){
+                    recipes.put(r,0);
+                }
+            }
+        }
+
+        for(Order or : historyOrders) {
+            if (or.getPickUpDate().after(start)) {
+                for (Recipe r : or.getRecipes().keySet()) {
+                    recipes.put(r,recipes.get(r)+or.getRecipes().get(r));
+                }
+            }
+        }
+        int c = 0;
+        for(Recipe r:recipes.keySet()){
+            if(c<recipes.get(r)){
+                c = recipes.get(r);
+                myBestOf = r;
+            }
+
+        }
+
     }
 
     public void deleteExpiredOrder(){
@@ -250,9 +289,7 @@ public class Store {
         this.nationalBestOf = BestOf;
     }
 
-    public void setMyBestOf(Recipe BestOf){
-        myBestOf = BestOf;
-    }
+
     public Recipe getMyBestOf(){
         return myBestOf;
     }

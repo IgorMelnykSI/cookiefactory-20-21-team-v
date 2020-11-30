@@ -9,6 +9,7 @@ import cookies.recipe.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -56,7 +57,7 @@ class TouristTest {
         store1.initIngre(30);
     }
     @Test
-    void creatOrder() throws MyException {
+    void creatOrder() throws MyException, ParseException {
         store.initIngre(30);
         Order od = t.creatNoDiscountOrder(mp,way1, date,store,home);
         assertEquals(null,od.getDeliveryAddress());
@@ -73,7 +74,7 @@ class TouristTest {
 //    }
 
     @Test
-    void createPrivateOrder() throws MyException {
+    void createPrivateOrder() throws MyException, ParseException {
         mp.clear();
         t.createPrivateRecipe("myrecipe1","Crunchy","Peanut butter","Vanilla","Mixed","M&M’s™ and Reese’s buttercup");
         Recipe myRecipe=t.getPrivateRecipes().get(0);
