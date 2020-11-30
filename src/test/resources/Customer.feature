@@ -48,12 +48,12 @@ Feature: Customer
 
 
 
-    Scenario: Peter wants to choose another store
+    Scenario: The store has a technical problem, so Peter choose another store
     When the "store" has a technical problem, Peter choose the "polytechStore"
     Then the pickUpStore has been changed to "polytechStore"
 
 
-    Scenario: Peter wants to choose another store
+    Scenario: The "store" has many orders chosen at the same time, so Peter choose another store
       When the "store" has many orders chosen at the same time , Peter choose the "polytechStore"
       Then the pickUpStore has been changed to "polytechStore"
 

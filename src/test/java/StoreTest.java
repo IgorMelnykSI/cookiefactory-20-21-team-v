@@ -119,14 +119,13 @@ public class StoreTest {
 
     @Test
     public void modifyAllIngredientsQuantity(){
-        cookieFactory.addStore(store1);
-        Dough plain = new Dough("Plain",2.0);
+        store1.initIngre(0);
         Dough tmp = cookieFactory.getDoughList().get(1);
-        assertFalse(store1.isIngredientAvailable(plain,1));
+        assertFalse(store1.isIngredientAvailable(tmp,1));
         assertFalse(store1.isIngredientAvailable(tmp,1));
 
         store1.modifyAllIngredientsQuantity(10);
-        assertFalse(store1.isIngredientAvailable(plain,11));
+        assertFalse(store1.isIngredientAvailable(tmp,11));
         assertTrue(store1.isIngredientAvailable(tmp,1));
 
         store1.modifyAllIngredientsQuantity(0);
@@ -136,10 +135,9 @@ public class StoreTest {
 
     @Test
     public void modifyIngredientQuantity(){
-        cookieFactory.addStore(store2);
-        Dough plain = new Dough("Plain",2.0);
+        store2.initIngre(0);
         Dough tmp = cookieFactory.getDoughList().get(1);
-        assertFalse(store2.isIngredientAvailable(plain,1));
+        assertFalse(store2.isIngredientAvailable(tmp,1));
         assertFalse(store2.isIngredientAvailable(tmp,1));
 
         assertTrue(store2.modifyIngredientQuantity(tmp,10));
@@ -156,7 +154,7 @@ public class StoreTest {
 
     @Test
     public void updateIngredient(){
-        cookieFactory.addStore(store1);
+        store1.initIngre(0);
         Dough plain = new Dough("Plain",2.0);
         Dough tmp = cookieFactory.getDoughList().get(1);
         assertFalse(store1.isIngredientAvailable(plain,1));
