@@ -22,6 +22,10 @@ Feature: Store Manager
     Then Paule adds 100 "White chocolate"
     Then Check the quantity of "White chocolate" is 110
 
+  Scenario: Paule confirm the order ordered by Laura
+    When Laura order 5 cookies of "recipe1", she want to pick it in store1 at "8:30"
+    Then Paule confirm the order as achievable
+
 
 
 
