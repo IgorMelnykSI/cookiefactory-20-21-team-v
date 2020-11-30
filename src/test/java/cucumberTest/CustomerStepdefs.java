@@ -142,6 +142,27 @@ public class CustomerStepdefs implements En {
                 () -> {
                     assertEquals(member2.isLoyal(), true);
                 });
+        When("Bob reached the time of order he selected",
+                () ->
+                {
+                    String dateStr1 = "2020-11-25 10:20:15";
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date pickUpDate = dateFormat.parse(dateStr1);
+                    String reachTime = "2020-11-25 11:30:05";
+                    order1 =new Order();
+                    order1.setPickUpDate(pickUpDate);
+                });
+        Then("Bob picked up his order successfully",
+                () -> {
+                    assertEquals(order1.judgeTheTime("2020-11-25 11:30:05"),false);
+                });
+
+
+
+
+
+
+
         When("^the \"([^\"]*)\" has a technical problem, Peter choose the \"([^\"]*)\"$",
                 (String store, String store1) ->
                 {

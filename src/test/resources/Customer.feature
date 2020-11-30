@@ -41,6 +41,12 @@ Feature: Customer
       When the "store" that he has chosen lacks ingredients , Peter choose the "polytechStore"
       Then the pickUpStore has been changed to "polytechStore"
 
-  Scenario: Peter wants to change the way from picking up to a delivery
-    When Peter changes the way from picking up to a delivery
-    Then Check the delivery fee is 6,and the order is finished
+
+    Scenario: Peter wants to change the way from picking up to a delivery
+      When Peter changes the way from picking up to a delivery
+      Then Check the delivery fee is 6,and the order is finished
+
+    Scenario: Bob wants to pick his order in store.
+     When Bob reached the time of order he selected
+     Then Bob picked up his order successfully
+
