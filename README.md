@@ -2,7 +2,7 @@
 cookiefactory-20-21-team-v created by GitHub Classroom
 
 ## User stories
-### User Story #1 ( MUST Sizing L ) 
+### User Story #1 ( MUST Sizing L ) :heavy_check_mark:
 **As** a customer, **I want** to order the basic recipe **in order to** buy the cookies.
 
 Acceptance criteria
@@ -16,10 +16,10 @@ Acceptance test
 - Action: I don't have an account, and I order the recipe.
 - Expected result: My order is confirmed.
 
-#### feature: 
-#### Scenario:
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: Bob make an order of a basic recipe
 
-### User Story #2 ( MUST Sizing M ) 
+### User Story #2 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer non-registered, **I want** to register an account **in order to** save my information. 
 
 Acceptance criteria
@@ -31,6 +31,9 @@ Acceptance test
 - Initialisation: I am a customer non-registered and I want to have my own account.
 - Action: I register an account.
 - Expected result: I successfully register an account.
+
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
+#### The name of scenario: Bob register an account
 
 ### User Story #3 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer registered, **I want** to join “Loyalty program” **in order to** profit further discounts.
