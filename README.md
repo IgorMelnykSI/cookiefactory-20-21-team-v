@@ -264,7 +264,7 @@ Acceptance test
 - Action: I contact the MarcelEat and increase 50% price of delivery fee.
 - Expected result: The delivery fee is increase 50% and the order is delived by the MarcelEat.
 
-### User Story #19 ( MUST Sizing M ) 
+### User Story #19 ( MUST Sizing M ) :heavy_check_mark:
 **As** a store manager, **I want** to check if my store can accept the orders **in order to** make sure the store have enough ingredients to make the order.
 
 Acceptance criteria
@@ -276,6 +276,9 @@ Acceptance test
 - Initialization: I received an order
 - Action: I check the store have enough ingredients to make the order.
 - Expected result: The order is confirmed as achievable.
+
+#### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
+#### The name of scenario: Paule confirm the order ordered by Laura
 
 ### User Story #20 ( MUST Sizing S ) :heavy_check_mark:
 **As** a store manager, **I want** to increase the price of the personnel recipe by 25% **in order to** get a reasonable profit.
