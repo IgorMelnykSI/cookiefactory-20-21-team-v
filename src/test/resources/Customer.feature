@@ -5,15 +5,14 @@ Feature: Customer
     And A customer name "Peter" who join the "Loyalty program"
     And A customer name "Laura" with an account
     And A customer Bob with no account
-    And A customer Sam with no account
 
-  Scenario: Bob wants to register
-    When "Bob" wants to register a member account
-    Then "Bob" has a member account
+  Scenario: Bob register an account
+    When "Bob" register an account
+    Then Bob has an account
 
-  Scenario: Sam wants to make an order of a basic recipe
-    When Sam wants to make an order of a basic recipe "recipe1"
-    Then Sam made an order of a basic recipe "recipe1"
+  Scenario: Bob make an order of a basic recipe
+    When Bob ordered 5 basic recipes named "recipe1"
+    Then The order is confirmed
 
   Scenario: Peter wants to make his first order
     When Peter wants to order 5 cookies of "recipe1", He wants to pick it in "store1" at "16:30"
@@ -28,31 +27,8 @@ Feature: Customer
     When Laura wants to join the "Loyalty program"
     Then check Laura has joined the "Loyalty program"
 
-  Scenario: Bob wants to pick his order in store.
-   When Bob reached the time of order he selected
-    Then Bob picked up his order successfully
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  Scenario: Peter wants to choose another store
+    Scenario: Peter wants to choose another store
     When the "store" has a technical problem, Peter choose the "polytechStore"
     Then the pickUpStore has been changed to "polytechStore"
 

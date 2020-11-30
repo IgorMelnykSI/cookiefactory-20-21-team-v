@@ -21,3 +21,42 @@ Feature: Store Manager
     When Store1 lack the ingredient "White chocolate", only 10
     Then Paule adds 100 "White chocolate"
     Then Check the quantity of "White chocolate" is 110
+
+  Scenario: Paule has received request that the customer want to change the way from picking up to a delivery
+    When Laura changes the way from picking up to a delivery
+    Then Paule contact MarcelEat and increase 50% of delivery fee
+    Then Check the delivery fee is 6,and the order is finished
+
+  Scenario: Paule confirm the order ordered by Laura
+    When Laura order 5 cookies of "recipe1", she want to pick it in store1 at "8:30"
+    Then Paule confirm the order as achievable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> eace436c21de165897acf2afca533f01f0a8ae03

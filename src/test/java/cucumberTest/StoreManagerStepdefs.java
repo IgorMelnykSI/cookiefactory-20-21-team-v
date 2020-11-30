@@ -6,6 +6,8 @@ import cookies.Store;
 import cookies.customer.Member;
 import cookies.customer.Tourist;
 import cookies.manager.StoreManager;
+import cookies.order.FinishState;
+import cookies.order.State;
 import cookies.recipe.Recipe;
 import cookies.recipe.Ingredient;
 import io.cucumber.java8.En;
@@ -16,8 +18,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StoreManagerStepdefs implements En {
 
@@ -26,7 +27,6 @@ public class StoreManagerStepdefs implements En {
     CookieFactory factory = new CookieFactory();
     Tourist tourist;
     Order order1;
-    Member member1;
 
 
     public StoreManagerStepdefs() { // implementation des steps dans le constructeur (aussi possible dans des méthodes)
@@ -90,25 +90,50 @@ public class StoreManagerStepdefs implements En {
         (String ingredientName, Integer quantity) -> {
             assertEquals(store1.getIngredientQuantity(factory.getIngredient(ingredientName)),quantity);
         });
-        When("Laura wants to order {int} cookies of {string}, He wants to pick it in {string} at {string}",
-                (Integer sum, String recipe, String store, String time) ->
+        When("Laura order {int} cookies of {string}, she want to pick it in store1 at {string}",
+                (Integer sum, String recipe, String time) ->
                 {
                     Recipe rp = factory.getRecipe(recipe);
                     Map<Recipe, Integer> mp = new HashMap<>();
                     mp.put(rp,sum);
                     DateFormat fmt =new SimpleDateFormat("HH:mm");
                     Date date = fmt.parse(time);
-                    store1 = factory.getStore(store);
-                    store1.initIngre(50);
                     int way=1;
                     String home="Polytech nice sophia";
-                    order1 = member1.creatDiscountOrder(mp,way,date,store1,home);
+                    order1 = tourist.creatNoDiscountOrder(mp,way,date,store1,home);
                 });
-        Then("check that the store can take the order {string}",
-                (String result) -> {
-                    boolean res = Boolean.valueOf(result);
-                    assertEquals(store1.checkOrder(order1), res);
+        Then("Paule confirm the order as achievable",
+                () -> {
+                    assertTrue(store1.checkOrder(order1));
                 });
+
+        When("^Laura changes the way from picking up to a delivery$", () -> {
+            Recipe rp = factory.getRecipesList().get(0);
+            Map<Recipe, Integer> mp = new HashMap<>();
+            mp.put(rp,5);
+            DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = fmt.parse("2021-12-01 17:36:01");
+            store1 = new Store("store1","address1","8:30","19:00",0.2);
+            store1.initIngre(50);
+            int way=1;
+            String home="Polytech nice sophia";
+            order1 = new Order(mp,way,date,store1,home);
+            order1.caculatePrice();
+            order1.changePickToDelivery("2020-12-01 17:36:01");
+
+        });
+        Then("^Paule contact MarcelEat and increase (\\d+)% of delivery fee$", (Integer arg0) -> {
+            storeManager.contactMarcelEat(order1);
+        });
+        Then("^Check the delivery fee is (\\d+),and the order is finished$", (Integer arg0) -> {
+            assertEquals(6,order1.getPrice()-2.8*5);
+            assertEquals("Finished",order1.getState().handle(order1));
+        });
+
+
+
+
+
     }
 
 }

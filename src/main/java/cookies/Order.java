@@ -217,12 +217,13 @@ public class Order implements Subject {
         String instruction=state.handle(this);
         System.out.println("The State of the order : "+instruction);
     }
+    public State getState(){
+        return this.state;
+    }
 
     @Override
     public void pickTheOrder(Order order) {
-
         System.out.println("pick the order");
-
     }
 
 }

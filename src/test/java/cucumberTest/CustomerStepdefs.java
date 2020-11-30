@@ -21,8 +21,7 @@ public class CustomerStepdefs implements En {
     CookieFactory factory;
     Member member1;
     Member member2;
-    Tourist tourist1;
-    Tourist tourist2;
+    Tourist tourist;
     Order order1;
     Order order2;
     Order order3;
@@ -49,25 +48,21 @@ public class CustomerStepdefs implements En {
                 });
         And("A customer Bob with no account",
                 ()->{
-                    tourist1 = new Tourist();
+                    tourist = new Tourist();
                 });
-        And("A customer Sam with no account",
-                ()->{
-                    tourist2 = new Tourist();
-                });
-        When("{string} wants to register a member account",
+        When("{string} register an account",
                 (String name)->{
-                    tourist1 = new Member(name);
+                    tourist = new Member(name);
                 });
-        Then("{string} has a member account",
-                (String name) -> {
-                    Member tmp = (Member)tourist1;
-                    assertTrue(name.equals(tmp.getName()));
+        Then("Bob has an account",
+                () -> {
+                    assertTrue(tourist instanceof Member);
                 });
-        When("Sam wants to make an order of a basic recipe {string}",
-                (String r)->{
+        When("Bob ordered {int} basic recipes named {string}",
+                (Integer sum, String r)->{
                     Recipe recipe = factory.getRecipe(r);;
                     Map<Recipe,Integer> mp = new HashMap<>();
+                    mp.put(recipe,sum);
                     date = new Date();
                     GregorianCalendar gc = new GregorianCalendar();
                     gc.set(Calendar.YEAR,2020);
@@ -78,14 +73,11 @@ public class CustomerStepdefs implements En {
                     home="polytech nice sophia";
                     store = new Store("store1","Antibes","8:00","16:00",0.15);
                     store.initIngre(30);
-                    mp.put(recipe,10);
-                    order4 = tourist2.creatNoDiscountOrder(mp,way,date,store,home);
+                    order4 = tourist.creatNoDiscountOrder(mp,way,date,store,home);
                 });
-        Then("Sam made an order of a basic recipe {string}",
-                (String r) -> {
-                    Map<Recipe,Integer> recipes=new HashMap<>();
-                    recipes = order4.getRecipes();
-                    assertTrue(factory.getRecipe(r).compareRecipe((Recipe) recipes.keySet().toArray()[0]));
+        Then("The order is confirmed",
+                () -> {
+                    assertTrue(store.checkOrder(order4));
                 });
         When("Peter wants to order {int} cookies of {string}, He wants to pick it in {string} at {string}",
                 (Integer sum, String recipe, String store, String time) ->
@@ -175,7 +167,7 @@ public class CustomerStepdefs implements En {
                     mp.put(recipe,10);
 
                     if(this.store.hasProblem()){
-                        order1 = tourist2.creatNoDiscountOrder(mp,way,date,this.store1,home);
+                        order1 = member1.creatNoDiscountOrder(mp,way,date,this.store1,home);
                     }
 
 
@@ -215,7 +207,7 @@ public class CustomerStepdefs implements En {
                     }
 
                     if(this.store.isBusy(date)){
-                        order1 = tourist2.creatNoDiscountOrder(mp,way,date,this.store1,home);
+                        order1 = member1.creatNoDiscountOrder(mp,way,date,this.store1,home);
                     }
         });
 
@@ -242,9 +234,10 @@ public class CustomerStepdefs implements En {
                     home="polytech nice sophia";
                     mp.put(recipe,10);
                     if(!this.store.checkRecipes(mp)){
-                        order1 = tourist2.creatNoDiscountOrder(mp,way,date,this.store1,home);
+                        order1 = member1.creatNoDiscountOrder(mp,way,date,this.store1,home);
                     }
         });
+
 
     }
 
