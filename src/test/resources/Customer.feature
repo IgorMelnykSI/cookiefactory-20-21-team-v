@@ -41,3 +41,6 @@ Feature: Customer
       When the "store" that he has chosen lacks ingredients , Peter choose the "polytechStore"
       Then the pickUpStore has been changed to "polytechStore"
 
+     Scenario: Bob wants to pick his order in store.
+     When Bob reached the time of order he selected
+     Then Bob picked up his order successfully
