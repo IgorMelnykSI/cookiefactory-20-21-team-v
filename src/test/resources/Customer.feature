@@ -5,15 +5,14 @@ Feature: Customer
     And A customer name "Peter" who join the "Loyalty program"
     And A customer name "Laura" with an account
     And A customer Bob with no account
-    And A customer Sam with no account
 
-  Scenario: Bob wants to register
-    When "Bob" wants to register a member account
-    Then "Bob" has a member account
+  Scenario: Bob register an account
+    When "Bob" register an account
+    Then Bob has an account
 
-  Scenario: Sam wants to make an order of a basic recipe
-    When Sam wants to make an order of a basic recipe "recipe1"
-    Then Sam made an order of a basic recipe "recipe1"
+  Scenario: Bob make an order of a basic recipe
+    When Bob ordered 5 basic recipes named "recipe1"
+    Then The order is confirmed
 
   Scenario: Peter wants to make his first order
     When Peter wants to order 5 cookies of "recipe1", He wants to pick it in "store1" at "16:30"
