@@ -5,6 +5,7 @@ import cookies.Order;
 import cookies.Store;
 import cookies.customer.Member;
 import cookies.customer.Tourist;
+import cookies.manager.StoreManager;
 import cookies.recipe.Recipe;
 import io.cucumber.java8.En;
 
@@ -236,6 +237,27 @@ public class CustomerStepdefs implements En {
                     if(!this.store.checkRecipes(mp)){
                         order1 = member1.creatNoDiscountOrder(mp,way,date,this.store1,home);
                     }
+        });
+
+        When("^Peter changes the way from picking up to a delivery$", () -> {
+            Recipe rp = factory.getRecipesList().get(0);
+            Map<Recipe, Integer> mp = new HashMap<>();
+            mp.put(rp,5);
+            DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = fmt.parse("2021-12-01 17:36:01");
+            store1 = new Store("store1","address1","8:30","19:00",0.2);
+            store1.initIngre(50);
+            int way=1;
+            String home="Polytech nice sophia";
+            order1 = new Order(mp,way,date,store1,home);
+            order1.caculatePrice();
+            order1.changePickToDelivery("2020-12-01 17:36:01");
+            StoreManager storeManager=new StoreManager("Paile",store1);
+            storeManager.contactMarcelEat(order1);
+        });
+        Then("^Check the delivery fee is (\\d+),and the order is finished$", (Integer arg0) -> {
+            assertEquals(6,order1.getPrice()-2.8*5);
+            assertEquals("Finished",order1.getState().handle(order1));
         });
 
 
