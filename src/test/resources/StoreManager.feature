@@ -21,3 +21,32 @@ Feature: Store Manager
     When Store1 lack the ingredient "White chocolate", only 10
     Then Paule adds 100 "White chocolate"
     Then Check the quantity of "White chocolate" is 110
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

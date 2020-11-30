@@ -29,25 +29,6 @@ Feature: Customer
     Then check Laura has joined the "Loyalty program"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     Scenario: Peter wants to choose another store
     When the "store" has a technical problem, Peter choose the "polytechStore"
     Then the pickUpStore has been changed to "polytechStore"

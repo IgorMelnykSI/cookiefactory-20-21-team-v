@@ -109,6 +109,9 @@ public class StoreManagerStepdefs implements En {
                     boolean res = Boolean.valueOf(result);
                     assertEquals(store1.checkOrder(order1), res);
                 });
+
+
+
     }
 
 }
