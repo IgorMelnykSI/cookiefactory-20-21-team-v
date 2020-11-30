@@ -225,8 +225,4 @@ public class Order implements Subject {
     public void pickTheOrder(Order order) {
         System.out.println("pick the order");
     }
-
-    public State getState() {
-        return state;
-    }
 }
