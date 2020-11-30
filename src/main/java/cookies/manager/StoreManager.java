@@ -38,7 +38,7 @@ public class StoreManager{
     public void contactMarcelEat(Order or){
         Order order=or;
         if(order.getTheWay()=="MarcelEat"){
-            MarcelEat marcelEat=new MarcelEat();
+            marcelEat=new MarcelEat();
             marcelEat.pickTheOrder(order);
             order.setState(new FinishState());
         }
