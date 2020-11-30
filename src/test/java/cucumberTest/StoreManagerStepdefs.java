@@ -3,13 +3,9 @@ package cucumberTest;
 import cookies.CookieFactory;
 import cookies.Order;
 import cookies.Store;
-import cookies.customer.Member;
 import cookies.customer.Tourist;
 import cookies.manager.StoreManager;
-import cookies.order.FinishState;
-import cookies.order.State;
 import cookies.recipe.Recipe;
-import cookies.recipe.Ingredient;
 import io.cucumber.java8.En;
 
 import java.text.DateFormat;

@@ -2,7 +2,7 @@ package customer;
 
 import cookies.CookieFactory;
 import cookies.Store;
-import cookies.order.MyException;
+import cookies.orderState.MyException;
 import cookies.recipe.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

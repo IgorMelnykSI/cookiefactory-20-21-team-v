@@ -1,8 +1,7 @@
 package cookies.customer;
 
 import cookies.*;
-import cookies.order.FinishState;
-import cookies.order.MyException;
+import cookies.orderState.MyException;
 import cookies.recipe.*;
 
 

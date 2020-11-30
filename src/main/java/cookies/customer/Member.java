@@ -1,11 +1,9 @@
 package cookies.customer;
 
 import cookies.CookieItem;
-import cookies.MarcelEat;
 import cookies.Order;
 import cookies.Store;
-import cookies.order.FinishState;
-import cookies.order.MyException;
+import cookies.orderState.MyException;
 import cookies.recipe.Recipe;
 
 import java.text.ParseException;

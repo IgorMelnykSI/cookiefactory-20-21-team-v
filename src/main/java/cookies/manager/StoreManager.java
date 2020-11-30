@@ -4,7 +4,7 @@ import cookies.MarcelEat;
 import cookies.Order;
 import cookies.Store;
 import cookies.Subject;
-import cookies.order.FinishState;
+import cookies.orderState.FinishState;
 
 public class StoreManager{
 

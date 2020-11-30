@@ -1,12 +1,11 @@
 package cucumberTest;
-import com.sun.source.tree.AssertTree;
 import cookies.CookieFactory;
 import cookies.Order;
 import cookies.Store;
 import cookies.customer.Member;
 import cookies.customer.Tourist;
 import cookies.manager.StoreManager;
-import cookies.order.ReadyState;
+import cookies.orderState.ReadyState;
 import cookies.recipe.Recipe;
 import io.cucumber.java8.En;
 

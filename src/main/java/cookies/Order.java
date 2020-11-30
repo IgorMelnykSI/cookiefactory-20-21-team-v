@@ -1,6 +1,6 @@
 package cookies;
 
-import cookies.order.*;
+import cookies.orderState.*;
 import cookies.recipe.Recipe;
 
 import java.text.DateFormat;
@@ -212,10 +212,8 @@ public class Order implements Subject {
     }
 
     public void setState(State s){
-        System.out.println("change state");
         state = s;
         String instruction=state.handle(this);
-        System.out.println("The State of the order : "+instruction);
     }
     public State getState(){
         return this.state;

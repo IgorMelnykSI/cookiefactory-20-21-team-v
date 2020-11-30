@@ -1,4 +1,4 @@
-package cookies.order;
+package cookies.orderState;
 
 public class MyException extends Exception {
     public MyException(String message){
