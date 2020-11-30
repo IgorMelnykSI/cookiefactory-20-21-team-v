@@ -344,6 +344,31 @@ public class CustomerStepdefs implements En {
                     assertNotEquals(order1.getPrice(),originalPriceVal,0.01);
                     assertEquals(order1.getState().handle(order1),"Confirmed");
                 });
+        When("^Peter ordered (\\d+) bestOf recipes$", (Integer sum) -> {
+            Order[] orders = new Order[30];
+            Recipe rp = factory.getRecipe("recipe1");
+            Map<Recipe, Integer> mp = new HashMap<>();
+            mp.put(rp,10);
+            DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date1 = fmt.parse("2020-11-10 17:36:00");
+            Date date2 = fmt.parse("2020-11-11 17:36:00");
+            Date date3 = fmt.parse("2020-11-12 17:36:00");
+            int way=1;
+            String home="Polytech nice sophia";
+            store1 = new Store("store1","Antibes","8:00","16:00",0.15);
+            store1.initIngre(3000);
+            for(int i = 0; i < 9; i++)
+                orders[i]= tourist.creatNoDiscountOrder(mp,way,date1,store1,home);
+            for(int i = 9; i < 22; i++)
+                orders[i]= tourist.creatNoDiscountOrder(mp,way,date2,store1,home);
+            for(int i = 22; i < 30; i++)
+                orders[i]= tourist.creatNoDiscountOrder(mp,way,date3,store1,home);
+            order1 = tourist.creatNoDiscountOrder(mp,way,date1,store1,home);
+            
+        });
+        Then("^The price is discounted by (\\d+)%$", (Integer arg0) -> {
+            assertEquals(order1.getPrice(),28);
+        });
 
 
     }

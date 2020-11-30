@@ -62,7 +62,9 @@ Feature: Customer
     When Laura ordered 5 cookies of "recipe1", and she doubled the flavour
     Then Check the actual price is "14.50", isn't "14.00", and she successfully ordered
 
-
+  Scenario: Peter wants to buy the most popular recipe
+    When Peter ordered 10 bestOf recipes
+    Then The price is discounted by 10%
 
 
 
