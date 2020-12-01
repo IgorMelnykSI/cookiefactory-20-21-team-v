@@ -153,7 +153,7 @@ public class CookieFactory implements Observed_Subject{
     public void addRecipe(Recipe newRecipe) {
         recipesList.add(newRecipe);
         setMap();
-        for(Store s:storeList){
+        for(Store s: storeList){
             s.responseRecipeChange(recipesList);
         }
     }
@@ -169,7 +169,7 @@ public class CookieFactory implements Observed_Subject{
 
     public void deleteRecipe(String name) {
        recipesList.remove(getRecipe(name));
-        for(Store s:storeList){
+        for(Store s: storeList){
             s.responseRecipeChange(recipesList);
         }
     }
@@ -191,15 +191,11 @@ public class CookieFactory implements Observed_Subject{
 
     public void addStore(Store store) {
         storeList.add(store);
-        for(Store s: storeList){
-            s.response(getNearbyStores(s));
-        }
+        addObserverStore(store);
     }
     public void deleteStore(String name) {
         storeList.remove(getStore(name));
-        for(Store s: storeList){
-            s.response(getNearbyStores(s));
-        }
+        deleteObserverStore(name);
     }
 
     public ArrayList<Store> getStoreList() {
@@ -309,6 +305,20 @@ public class CookieFactory implements Observed_Subject{
 
     public ArrayList<Ingredient> getIngredientList() {
         return ingredientList;
+    }
+
+    @Override
+    public void addObserverStore(Observer store) {
+        for(Store s: storeList){
+            s.response(getNearbyStores(s));
+        }
+    }
+
+    @Override
+    public void deleteObserverStore(String name) {
+        for(Store s: storeList){
+            s.response(getNearbyStores(s));
+        }
     }
 
 }

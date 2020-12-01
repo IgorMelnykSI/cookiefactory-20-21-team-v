@@ -1,5 +1,8 @@
 package cookies.recipe;
 
+import cookies.Observer;
+import cookies.Store;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -170,5 +173,6 @@ public class Recipe {
             this.price += topping.getPrice()*(duplicate - 1);
         }
     }
+
 
 }
