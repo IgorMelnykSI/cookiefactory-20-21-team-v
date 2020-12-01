@@ -20,9 +20,11 @@ public class CookieFactory implements Observed_Subject{
     private FlavourCreator flavourCreator;
     private DoughCreator doughCreator;
     private ArrayList<Ingredient> ingredientList;
+    private ArrayList<Observer> observerList;
 
     public CookieFactory() {
         storeList = new ArrayList<>();
+        observerList = new ArrayList<>();
         doughList = new ArrayList<>();
         toppingList = new ArrayList<>();
         mixList = new ArrayList<>();
@@ -46,6 +48,7 @@ public class CookieFactory implements Observed_Subject{
 
     public void resetFactory() {
         this.storeList.clear();
+        this.observerList.clear();
         this.doughList.clear();
         this.toppingList.clear();
         this.mixList.clear();
@@ -127,6 +130,7 @@ public class CookieFactory implements Observed_Subject{
     private void initStoreList() {
         Store store1 = new Store("store1","Biot","8:30","18:00",0.2);
         storeList.add(store1);
+        observerList.add(store1);
     }
 
     public ArrayList<Recipe> getRecipesList() {
@@ -153,8 +157,8 @@ public class CookieFactory implements Observed_Subject{
     public void addRecipe(Recipe newRecipe) {
         recipesList.add(newRecipe);
         setMap();
-        for(Store s: storeList){
-            s.responseRecipeChange(recipesList);
+        for(Observer o:observerList){
+            o.responseRecipeChange(recipesList);
         }
     }
 
@@ -169,8 +173,8 @@ public class CookieFactory implements Observed_Subject{
 
     public void deleteRecipe(String name) {
        recipesList.remove(getRecipe(name));
-        for(Store s: storeList){
-            s.responseRecipeChange(recipesList);
+        for(Observer o:observerList){
+            o.responseRecipeChange(recipesList);
         }
     }
 
@@ -192,10 +196,14 @@ public class CookieFactory implements Observed_Subject{
     public void addStore(Store store) {
         storeList.add(store);
         addObserverStore(store);
+        for(Observer o:observerList)
+            o.response(storeList);
     }
     public void deleteStore(String name) {
         storeList.remove(getStore(name));
         deleteObserverStore(name);
+        for(Observer o:observerList)
+            o.response(storeList);
     }
 
     public ArrayList<Store> getStoreList() {
@@ -309,16 +317,12 @@ public class CookieFactory implements Observed_Subject{
 
     @Override
     public void addObserverStore(Observer store) {
-        for(Store s: storeList){
-            s.response(getNearbyStores(s));
-        }
+        observerList.add(store);
     }
 
     @Override
     public void deleteObserverStore(String name) {
-        for(Store s: storeList){
-            s.response(getNearbyStores(s));
-        }
+        observerList.remove(getStore(name));
     }
 
 }
