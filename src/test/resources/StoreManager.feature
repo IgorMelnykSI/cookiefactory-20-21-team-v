@@ -5,11 +5,11 @@ Feature: Store Manager
     And A store manager of name "Paule" who manage store1
     And A customer named Laura
 
-  Scenario: Paule can change the opening hours
+  Scenario: Paule changes the opening hours
     When Paule changes working time, the new opening time is "8:00", new closing time is "22:00"
     Then Check the actual working time is now from "8:00" to "22:00"
 
-  Scenario: Paule can change the tax
+  Scenario: Paule changes the tax
     When Paule changes the tax of the store, the new tax is "0.18"
     Then Check the actual tax is "0.18"
 
@@ -22,7 +22,7 @@ Feature: Store Manager
     Then Paule adds 100 "White chocolate"
     Then Check the quantity of "White chocolate" is 110
 
-  Scenario: Paule confirm the order ordered by Laura
+  Scenario: Paule confirms the order ordered by Laura
     When Laura order 5 cookies of "recipe1", she want to pick it in store1 at "8:30"
     Then Paule confirm the order as achievable
 
@@ -31,8 +31,7 @@ Feature: Store Manager
     Then Paule contact MarcelEat and increase 50% of delivery fee
     Then Check the delivery fee is 6,and the order is finished
 
-
-  Scenario: Paule wants the store automatically to calculate the most popular recipe over the last 30 days
+  Scenario: The store automatically calculates the most popular recipe over the last 30 days
     When The "recipe1" was ordered the most times over 30 days
     Then Check the "recipe1" is the bestof
 
