@@ -1,5 +1,14 @@
-# cookiefactory-20-21-team-v
-cookiefactory-20-21-team-v created by GitHub Classroom
+# Cookiefactory-20-21-team-v
+The conception project "cookie factory" of team V 
+
+## Technologies used
+- Java version: 11
+- junit version: 5.6.2
+- cucumber version: 6.5.0
+
+## Run all tests
+
+`mvn clean package`
 
 ## User stories
 ### User Story #1 ( MUST Sizing L ) :heavy_check_mark:
@@ -17,7 +26,7 @@ Acceptance test
 - Expected result: My order is confirmed.
 
 #### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
-#### The name of scenario: Bob make an order of a basic recipe
+#### The name of scenario: Bob makes an order of a basic recipe
 
 ### User Story #2 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer non-registered, **I want** to register an account **in order to** save my information. 
@@ -33,7 +42,7 @@ Acceptance test
 - Expected result: I successfully register an account.
 
 #### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
-#### The name of scenario: Bob register an account
+#### The name of scenario: Bob registers an account
 
 ### User Story #3 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer registered, **I want** to join “Loyalty program” **in order to** profit further discounts.
@@ -50,7 +59,7 @@ Acceptance test
 - Expected result: I successfully joined.
 
 #### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
-#### The name of scenario: Laura join the "Loyalty program"
+#### The name of scenario: Laura joins the "Loyalty program"
 
 ### User Story #4 ( MUST Sizing S ) :heavy_check_mark:
 **As** a store manager, **I want** to change the opening hours **in order to** match customer flow.
@@ -85,7 +94,7 @@ Acceptance test
 - Expected result: I get my order.
 
 #### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
-#### The name of scenario: Bob wants to pick his order in store.
+#### The name of scenario: Bob picks his order in store.
 
 ### User Story #6 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to pay my order by credit card **in order to** make order successfully.
@@ -118,7 +127,7 @@ Acceptance test
 - Expected result: Le prix réduit de 10%.
 
 #### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
-#### The name of scenario: Peter use discount 10% after an order of 30 cookies
+#### The name of scenario: Peter uses discount 10% after an order of 30 cookies
 
 ### User Story #8 ( MUST Sizing M ) :heavy_check_mark:
 **As** a brand manager. **I want** to add new basic recipes to the list every month **in order to** draw more customers. 
@@ -134,7 +143,7 @@ Acceptance test
 - Expected result: The new basic recipe is successfully added.
 
 #### The name of *feature* Cucumber file: BrandManager.feature ( ../test/resources/BrandManager.feature )
-#### The name of scenario: Jason wants to add a new recipe
+#### The name of scenario: Jason adds a new recipe
 
 ### User Story #9 ( MUST Sizing S ) :heavy_check_mark:
 **As** a store manager. **I want** to change the tax **in order to** obey the law or get customers
@@ -165,6 +174,9 @@ Acceptance test
 - Action: I change the basic recipe list by deleting a basic recipe.
 - Expected result: The basic recipe is successfully deleted.
 
+#### The name of *feature* Cucumber file: BrandManager.feature ( ../test/resources/BrandManager.feature )
+#### The name of scenario: Jason deletes a recipe
+
 ### User Story #11 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer, **I want** the store to send the order to my home through the service MarcelEat **in order to** save my time.
 
@@ -179,7 +191,7 @@ Acceptance test
 - Expected result: My order is delivered by MarcelEat to my home.
 
 #### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
-#### The name of scenario: Peter wants to use MarcelEat to deliver the order to himself
+#### The name of scenario: Peter uses MarcelEat to deliver the order to himself
 
 ### User Story #12 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to choose another store when the original store has a technical problem **in order to** still buy my cookies. 
@@ -211,7 +223,7 @@ Acceptance test
 - Expected result: The recipe is made as the BestOf cookie.
 
 #### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
-#### The name of scenario: Paule wants the store automatically to calculate the most popular recipe over the last 30 days
+#### The name of scenario: The store automatically calculates the most popular recipe over the last 30 days
 
 ### User Story #14 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to order the BestOf cookie **in order to** pay 10% less.
@@ -227,7 +239,7 @@ Acceptance test
 - Expected result: The price is reduced 10%.
 
 #### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
-#### The name of scenario: Peter wants to buy the most popular recipe
+#### The name of scenario: Peter buys the most popular recipe
 
 ### User Story #15 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer, **I want** to order the personnel recipe created by myself **in order to** better suit my taste.
@@ -243,7 +255,7 @@ Acceptance test
 - Expected result: I successfully ordered.
 
 #### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
-#### The name of scenario: Laura order her personnel recipe
+#### The name of scenario: Laura orders her personnel recipe
 
 ### User Story #16 ( MUST Sizing M ) :heavy_check_mark:
 **As** a customer, **I want** to change the basic recipe as the personnel recipe **in order to** better suit my taste.
@@ -259,7 +271,7 @@ Acceptance test
 - Expected result: I successfully ordered.
 
 #### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
-#### The name of scenario: Laura double the ingredient
+#### The name of scenario: Laura doubles the ingredient
 
 ### User Story #17 ( MUST Sizing S ) :heavy_check_mark:
 **As** a customer, **I want** to change the way from picking up at the store to home delivery **in order to** get my order.
@@ -275,7 +287,7 @@ Acceptance test
 - Expected result: My order is delivered by MarcelEat to my home.
 
 #### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
-#### The name of scenario: Peter wants to change the way from picking up to a delivery
+#### The name of scenario: Peter changes the way from picking up to a delivery
 
 ### User Story #18 ( MUST Sizing M ) :heavy_check_mark:
 **As** a store manager, I receive a request that the customer want to change the way from picking up to a delivery , **I want** to contact the MarcelEat and increase 50% price of delivery fee **in order to** complete the order and get a reasonable profit.
@@ -307,7 +319,7 @@ Acceptance test
 - Expected result: The order is confirmed as achievable.
 
 #### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
-#### The name of scenario: Paule confirm the order ordered by Laura
+#### The name of scenario: Paule confirms the order ordered by Laura
 
 ### User Story #20 ( MUST Sizing S ) :heavy_check_mark:
 **As** a store manager, **I want** to increase the price of the personnel recipe by 25% **in order to** get a reasonable profit.
