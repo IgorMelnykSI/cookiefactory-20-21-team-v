@@ -286,7 +286,7 @@ Acceptance test
 - Action: I change the way from picking up to home delivery.
 - Expected result: My order is delivered by MarcelEat to my home.
 
-#### The name of *feature* Cucumber file: StoreManager.feature ( ../test/resources/StoreManager.feature )
+#### The name of *feature* Cucumber file: Customer.feature ( ../test/resources/Customer.feature )
 #### The name of scenario: Peter changes the way from picking up to a delivery
 
 ### User Story #18 ( MUST Sizing M ) :heavy_check_mark:
